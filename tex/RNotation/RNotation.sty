@@ -1,0 +1,16 @@
+%
+% To use this package in Overleaf, place a file called latexmkrc in the project's root directory that contains the following line: 
+%
+%   $ENV{'TEXINPUTS'}='./tex//:' . $ENV{'TEXINPUTS'};
+%
+% latexmkrc has no file extension (no .tex, .sty, etc). 
+% 
+% In order for this to work, the Rnotation folder must be inside a folder called tex, where tex is in the project's root directory.
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{RNotation}[R Notation Package]
+
+\RequirePackage{RNotation::packages}
+\RequirePackage{RNotation::new_environments}
+\RequirePackage{RNotation::new_commands}

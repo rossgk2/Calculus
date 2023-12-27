@@ -1,0 +1,438 @@
+\part*{Appendix}
+
+\subsection*{The power rule for real number exponents}
+
+Unfortunately, this proof requires knowledge of the calculus of exponential and logarithmic functions, which one does not know these concepts when they first encounter the power rule.
+
+By the change of base for exponential functions, we have $x^c = e^{c\ln(x)}$. Thus
+
+\begin{align*}
+    \frac{d}{dx} x^c = \frac{d}{dx} e^{c\ln(x)} = e^{c\ln(x)} \cdot \frac{c}{x} = x^c \cdot \frac{c}{x} = cx^{c - 1}.
+\end{align*}
+
+\begin{comment}
+\subsubsection*{Approach 2: prove and use the generalized binomial theorem}
+
+We will show that a generalized version of the binomial theorem holds; we will show that for any real numbers $a, b, c$, we have
+
+\begin{align*}
+   (a + b)^c = \sum_{k = 0}^\infty {}_c C_k a^{c - k} b^k \text{ when $|b| < |a|$}.
+\end{align*}
+
+Once we know this fact, we can follow a similar argument as was used to show that $\frac{d}{dx}x^n = nx^{n - 1}$ for integer $n$. We compute the derivative of $x^c$ as
+
+\begin{align*}
+   \frac{d}{dx} x^c = \lim_{h \rightarrow 0} \frac{(x + h)^c - x^c}{h}.
+\end{align*}
+
+Then, we use $a = x$ and $b = h$ in the above generalized binomial theorem to expand $(x + h)^c$. Note the restriction $|b| = |h| < |x| = |a|$ for the generalized binomial theorem does not hinder us, since, as $h \rightarrow 0$, we can ignore the values of $h$ for which the restriction is not true. Thus we have\footnote{In the below we use various theorems about infinite sums. The results of these theorems are intuitive (i.e. they are analogs of theorems that hold for regular finite sums), but they still do need to be proved for the argument to be made perfectly rigorous.}
+
+\begin{align*}
+   \lim_{h \rightarrow 0} \frac{\sum_{k = 0}^\infty ({}_c C_k x^{c - k} h^k)  - x^c}{h}
+   &= \lim_{h \rightarrow 0} \frac{\sum_{k = 0}^\infty ({}_c C_k x^{c - k} h^k)  - x^c}{h}
+   = \lim_{h \rightarrow 0} \frac{x^c + cx^{c - 1}h + \sum_{k = 2}^\infty ({}_c C_k x^{c - k} h^k)  - x^c}{h} \\
+   &= cx^{c - 1} + \lim_{h \rightarrow 0} \sum_{k = 2}^\infty ({}_c C_k x^{c - k} h^{k - 1}) 
+   = cx^{c - 1} + \sum_{k = 2}^\infty ({}_c C_k x^{c - k} \lim_{h \rightarrow 0} (h^{k - 1}))
+   = cx^{c - 1}.
+\end{align*}
+
+So, we get $\frac{d}{dx} x^c = cx^{c - 1}$ \textit{if} the generalized binomial theorem is true. We now prove the generalized binomial theorem by showing that the infinite series of the generalized binomial theorem is the Taylor series of the function $f_{a, c}$ defined by $f_{a,c}(b) := (a + b)^c$. 
+
+Using the power rule for integer exponents, we have
+
+\textbf{WE MUST ASSUME $c$ is an integer to use the power rule, which blocks us from obtaining the desired deriative.}
+
+\begin{align*}
+   \frac{df_{a,c}}{db}\Big|_b = c(c - 1) ... (c - k + 1)(a + b)^{c - k} = ({}_c C_k k!) (a + b)^{c - k},
+\end{align*}
+
+so $\frac{df_{a,c}}{db}\Big|_0 = ({}_c C_k k!) a^{c - k}$, and thus the Taylor series for $f_{a,c}$ centered at $0$ is
+
+\begin{align*}
+   T(b) = \sum_{k = 0}^\infty \frac{1}{k!} \frac{df_{a,c}}{db}\Big|_0 b^k = \sum_{k = 0}^\infty \frac{1}{k!} ({}_c C_k k!) a^{c - k} b^k = \sum_{k = 0}^\infty {}_c C_k a^{c - k} b^k.
+\end{align*}
+
+Letting $T_k$ denote the $k$th term of the Taylor series, we have $\lim_{k \rightarrow \infty} \Big| \frac{T_{k + 1}}{T_k} \Big| = \lim_{k \rightarrow \infty} \Big| \frac{n - k}{k + 1}a^{-1}b \Big|$. The ratio test states that if $a, b$ are such that $\lim_{k \rightarrow \infty} \Big| \frac{T_{k + 1}}{T_k} \Big| < 1$, then we have $f_{a,c}(b) = T(b)$. Using the previous expression for $\lim_{k \rightarrow \infty} \Big| \frac{T_{k + 1}}{T_k} \Big| < 1$ shows that we have $f_{a,c}(b) = T(b)$ when $|b| < |a|$.
+\end{comment}
+
+\subsection*{Conflation of functions}
+
+Suppose you are doing some calculations in which you know some quantity $f$ as a function of position $x$ and position $x$ as a function of time $t$. Formally, you have a function $f_x$ that maps position to quantity and a function $x_t$ that maps time to position. From these functions, we can obtain a function $f_t$ that maps time to quantity: we have $f_t(t) := f_x(x_t(t))$, i.e. $f_t = f_x \circ x_t$.
+
+In this sort of situation, where it is clear from context that the particular letter of the alphabet  $x$ is associated with the input of $f$, the following definitions are implicitly understood:
+
+\begin{align*}
+    \frac{df}{dx} &:= \frac{df_x(x)}{dx} \\
+    \frac{df}{dt} &:= \frac{df_t(t)}{dt} = \frac{df_x(x(t))}{dt} = \frac{df_x(x(t))}{dx(t)} \frac{dx(t)}{dt}.
+\end{align*}
+
+That is, the meaning of $\frac{df}{d\alpha}$ depends on what letter of the alphabet is plugged in for $\alpha$.
+
+There is additionally the implicit definition that whenever we write $f$, we really mean $f_x$; that is, $f := f_x$. Employing this last- most confusing- definition, we can write the second equation of the above as
+
+\begin{align*}
+    \frac{df}{dt} := \frac{df(x(t))}{dx(t)} \frac{dx(t)}{dt}.
+\end{align*}
+
+We will not use this confusing convention in this book, but, being an extremely common convention, it deserves mention. 
+
+\begin{comment}
+
+Let's now consider the situation from a more general perspective. Just as occurred in the above example, every symbol $S$ representing a physical quantity is typically associated with a ``preferred symbol'' $T$, in the sense that we prefer to think of the physical quantity represented by $S$ as depending on the physical quantity represented by $T$ rather than as depending on some other physical quantity. In the above example, the preferred symbol of $F$ would be $x$, since we started with the functions $F_x$ and $x_t$. $F$'s preferred symbol is \textit{not} $t$, because we did not start with the function $F_t$, and instead had to deduce it from $F_x$ and $x_t$.
+
+In general, let's use $\overline{S}$ to denote the preferred symbol of an arbitrary symbol $S$, and let's use $S_T$ to denote the function that maps the physical quantity represented by $T$ to the physical quantity denoted by $S$. Note that in analogy to the fact $F_t = F_x \circ x_t$, we have $S_T = S_{\overline{S}} \circ \overline{S}_T$. [We'll also establish the convention that for any symbol $S_S$ is equal to the identity function for any symbol $S$.] 
+
+One last notion we'll need is that of a symbol being an ``eventual preferred letter''. We will say that a symbol $T$ is an \textit{eventual preferred letter} of a symbol $S$ if $T$ is one of the symbols $\overline{S}, \overline{\overline{S}}, \overline{\overline{\overline{S}}}, \overline{\overline{\overline{\overline{S}}}}, ...,$ and so on.
+
+Now, remember how we conflated $F$ with $F_x$ previously? Analogously, when it is clear what a symbol $S$'s preferred symbol $\overline{S}$ is, it makes some sense to conflate the symbol $S$ with the function $S_{\overline{S}}$. Once this conflation has been established, then it is sensible to define 
+
+\begin{align*}
+    \frac{dS}{dT} :=
+    \begin{cases}
+        S_T' & \text{$T$ is an eventual preferred letter of $S$} \\
+        0 & \text{$T$ is not an eventual preferred letter of $S$}
+    \end{cases}
+\end{align*}
+
+This definition formalizes the practice of using the symbol in the ``denominator'' of the derivative to determine what function is being differentiated.
+
+To spell things out, this definition has the following consequences:
+
+\begin{align*}
+    \frac{dS}{d\overline{S}} &= {S_{\overline{S}}}' \\
+    \frac{dS}{dT} &= S_T' = (S_{\overline{S}} \circ \overline{S}_T)' = (S_{\overline{S}}' \circ \overline{S}_T) (\overline{S}_T)' \text{ when $T$ is an eventual preferred letter of $S$ with $T \neq \overline{S}$}.
+\end{align*}
+
+Specifically, in the example, we have
+
+\begin{align*}
+    \frac{dF}{dx} &= F_x' \\
+    \frac{dF}{dt} &= F_t' = (F_x \circ x_t)' = (F_x' \circ x_t) x_t'.
+\end{align*}
+
+\vspace{.5cm}
+
+[Need this before stating chain rule. Suppose $\Phi$ is function addition, function multiplication, or function composition. (So, $\Phi(S, T)$ is either equal to $S + T$, or $ST$, or $S \circ T$ (assuming $S$ and $T$ are composable)). If $T$ is an eventual preferred letter of $S$, then $\Phi(S, T)$ is interpreted to mean $\Phi(S_{\overline{T}}, T)$ and to have preferred letter $\overline{T}$.]
+\begin{itemize}
+    \item Example: If $\overline{g} = f$ and $\overline{f} = x$ then $g_x = g_f \circ f_x = g \circ f$. Therefore $gf$ is interpreted to be $g_x f = (g  \circ f) f$. Thus, since $\overline{\frac{df}{dx}} = x$, $g \frac{df}{dx}$ is interpreted to mean $(g \circ f) \frac{df}{dx}$.
+\end{itemize}
+
+\begin{mdframed}
+    If $f$ is the preferred letter of $g$, and $x$ is the preferred letter of $f$, then 
+        
+    \begin{align*}
+        \frac{dg}{dx} = \frac{dg}{df} \frac{df}{dx}.
+    \end{align*}
+    
+    [$\frac{dg}{df}$ is interpreted as $\frac{dg_x}{dx} = g' \circ f$ due to above rule involving $\Phi$]
+\end{mdframed}
+
+For comparison, the nicest possible way to state the chain rule without the notion of ``preferred letters'' is $\frac{d(g \circ f)}{dx} = \frac{dg}{df} \frac{df}{dx}$.
+
+... indefinite integrals ...
+
+\begin{align*}
+    \int S \spc dT := 
+    \begin{cases}
+        \Big( \int S_T \Big) \circ T_{\overline{T}} & \text{ $T = \overline{S}$} \\
+        \text{take advantage of first line of this def} & \text{ $T$ is an eventual preferred letter of $S$} \\
+        ST & \text{$T$ is not an eventual preferred letter of $S$}
+    \end{cases}.
+\end{align*}
+
+note, in particular
+
+\begin{align*}
+    \int S \spc d\overline{S} = \Big( \int S_{\overline{S}} \Big) \circ \overline{S}_{\overline{\overline{S}}}.
+\end{align*}
+
+gives us change of variables theorem
+
+\begin{mdframed}
+    If $g$ and $f$ are functions, $f$ is the preferred letter of $g$, and $x$ is the preferred letter of $f$, then
+       
+    \begin{align*}
+        \int g \frac{df}{dx} dx = \int g \spc df.
+    \end{align*}
+    
+    [theorem restates $\int (g \circ f) f' = (\int g) \circ f$]
+    
+    [convention involving $\Phi$ required to interpret lhs integrand correctly]
+    
+    [rhs interpretation: $\int g \spc df = (\int g_f) \circ f_x = (\int g) \circ f$]
+\end{mdframed}
+
+(have to use second ``other syntactical rule'' for left integrand to make sense)
+
+... definite integrals ...
+
+\begin{align*}
+    \int_a^b S \spc dT :=
+    \begin{cases}
+        \int_a^b S_T & T \neq \overline{S}, \text{ even when $T$ is not a preferred letter of $S$} \\
+        \int_{\overline{S}(a)}^{\overline{S}(b)} S_{\overline{S}} & T = \overline{S}
+    \end{cases}.
+\end{align*}
+
+this implies
+
+\begin{align*}
+    \int_a^b S \spc dT :=
+    \begin{cases}
+        \int_a^b S_T & T \neq \overline{S} \text{ and $T$ is a preferred letter of $S$} \\
+        b - a & T \neq \overline{S} \text{ and $T$ is not a preferred letter of $S$} \\
+        \int_{\overline{S}(a)}^{\overline{S}(b)} S_{\overline{S}} & T = \overline{S}
+    \end{cases}.
+\end{align*}
+
+gives us change of variables theorem for definite integrals
+
+\begin{mdframed}
+    If $g$ and $f$ are functions, $f$ is the preferred letter of $g$, and $x$ is the preferred letter of $f$, then
+        
+    \begin{align*}
+        \int_a^b g \frac{df}{dx} dx = \int_{f(a)}^{f(b)} g \spc df.
+    \end{align*}
+\end{mdframed}
+
+\subsubsection*{The actual physicist's perspective on functions and the chain rule}
+
+Unfortunately, many calculus and physics textbooks conflate functions with functions evaluated on inputs, and operate under the nonsensical convention that $S(T)$ should be interpreted to mean either $S_T$ or $S_T(T)$, depending on context. This can make things really confusing.
+
+\end{comment}
+
+\subsection*{Single-variable calculus derivative notation}
+
+There are many types of derivative notation used in single-variable calculus. In this book, I wanted to establish notation for single-variable derivatives that is as intuitive and unambiguous as possible. The first criterion I prioritized for derivative notation was:
+
+\begin{enumerate}
+    \item The notation must be some sort of Leibniz notation, since the chain rule is most elegantly stated when it appears to be a cancellation of fractions.
+\end{enumerate}
+
+Without further ado, the first candidate notation is:
+
+\begin{align*}
+    \frac{df}{dx} &:= f' \\
+    \frac{dg}{df} &:= g' \circ f \text{ when $f$ is a function}.
+\end{align*}
+
+The chain rule is stated pleasingly in this notation as
+
+\begin{align*}
+    \frac{dg(f)}{dx} = \frac{dg}{df} \frac{df}{dx}.
+\end{align*}
+
+(Recall that $g(f)$ is alternative notation for $g \circ f$). 
+
+Unfortunately, this notation does have a problem. Recall the inverse derivative rule in prime notation:
+
+\begin{align*}
+    (f^{-1})'(x) = \frac{1}{(f' \circ f^{-1})(x)}.
+\end{align*}
+
+If we rewrite this rule in our first candidate notation, we obtain
+
+\begin{align*}
+    \frac{df^{-1}}{dx} = \frac{1}{\frac{df}{df^{-1}}}.
+\end{align*}
+
+Making the intuitive definition $\frac{dx}{df^{-1}} := \frac{1}{\frac{df^{-1}}{dx}}$ and taking the reciprocal of both sides of the above then yields the result
+
+\begin{align*}
+    \frac{dx}{df^{-1}} = \frac{df}{df^{-1}},
+\end{align*}
+
+which is not at all intuitive.
+
+The second candidate notation is:
+
+\begin{align*}
+    \frac{dg(f(x))}{df(x)} := g'(f(x)).
+\end{align*}
+
+With this notation, the chain rule is
+
+\begin{align*}
+    \frac{dg(f(x))}{dx} = \frac{dg(f(x))}{df(x)} \frac{dg(x)}{dx},
+\end{align*}
+
+which is again pleasing, although more cluttered than the statement of the chain rule in the first notation.
+
+The inverse derivative rule in the second notation is
+
+\begin{align*}
+    \frac{df^{-1}(x)}{dx} = \frac{1}{\frac{df(f^{-1}(x))}{df^{-1}(x)}}.
+\end{align*}
+
+If, similarly to before, we make the intuitive definition $\frac{dx}{df^{-1}(x)} := \frac{1}{\frac{df^{-1}(x)}{dx}}$ and take the reciprocal of both sides of the above, we now get an intuitive result:
+
+\begin{align*}
+    \frac{dx}{df^{-1}(x)} = \frac{df(f^{-1}(x))}{df^{-1}(x)}.
+\end{align*}
+
+This result is intuitive and easily remembered because the ``numerators'' of each side ($x$ and $f(f^{-1}(x))$) are equal.
+
+In addition to the above, I considered two more criteria when evaluating notations.
+
+\begin{enumerate}
+    \item[2.] The notation must be compatible with the preferred derivative notation for the $i$th partial derivative of a function $f:\R^n \rightarrow \R$, which is $\frac{\pd f(x_1, ..., x_i, ..., x_n)}{\pd x_i}$ and \textit{not} $\frac{\pd f}{\pd x_i}$. (The former is preferred because it requires no convention to establish that $x_i$ is to be treated as the $i$th argument of $f$, and thus works better when dealing with concrete examples: the meaning of $\frac{\pd f(a, b, c)}{da}$ is clear, while the meaning of $\frac{df}{da}$ requires context.)
+    \item[3.] The notation should allow for statements involving functions rather than functions evaluated on inputs.
+\end{enumerate}
+
+The first notation satisfies (3) but not (2), and the second notation satisfies (2) but not (3). Since the first notation also has the extremely glaring issue regarding the inverse derivative rule discussed above, the second notation is to me the clear choice.
+
+\subsection*{Properties of exponential functions}
+
+[the sections regarding exponential functions and $e$ draw heavily from \url{https://paramanands.blogspot.com/2014/05/theories-of-exponential-and-logarithmic-functions-part-3.html#.YSz6iN9OlPY}]
+
+Show $b^{x + y} = b^x b^y$ and that $x \mapsto b^x$ is continuous. For continuity, it suffices to show continuity at $x = 0$ and then use $b^{x + y} = b^x b^y$.
+
+\subsection*{Justification that $e$ exists and other related technical facts}
+
+Here, we prove that there is a real number $b > 0$ for which $\lim_{h \rightarrow 0} \frac{b^h - 1}{h} = 1$. Knowing this fact justifies defining $e$ to be the real number such that ${\Big( \frac{d}{dx} e^x \Big)\Big|_0 = \lim_{h \rightarrow 0} \frac{e^h - 1}{h} = 1}$.
+
+In order to prove that there is a real number $b > 0$ for which $\lim_{h \rightarrow 0} \frac{b^h - 1}{h} = 1$, we will prove the following three facts:
+
+\begin{enumerate}
+    \item $\lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ converges for all nonzero real numbers $b$.
+    \item The function defined by $f(b) := \lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ is invertible. In other words, 
+    \begin{enumerate}
+        \item[2.1.] $f$ is one-to-one.
+        \item[2.2.] For every real number $y > 0$ there exists a real number $b > 0$ such that $y = f(b)$.
+    \end{enumerate}
+    \item $f^{-1}(1) > 0$.
+\end{enumerate}
+
+Before we prove (1), (2), or (3), first note that that $f(1) = 0$ and that $f$ is continuous wherever it is defined\footnote{$f$ is continuous wherever it is defined because $b \mapsto \frac{b^h - 1}{h}$ is a composition of continuous functions of $b$ and because $\lim_{b \rightarrow b_0}$ and $\lim_{h \rightarrow 0}$ commute.}. 
+
+\vspace{.25cm}
+
+Now we prove that these facts are true.
+
+\begin{enumerate}
+    \item ($\lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ converges for all nonzero real numbers $b$).
+    
+    Clearly, the limit does not exist when $b = 0$. 
+        
+    First, we will show that the left-sided limit $\lim_{h \rightarrow 0^-} \frac{b^h - 1}{h}$ exists. Due to the monotone convergence theorem, we know that the left-sided limit must exist if it is the case that for all $b \neq 0$ the function $h \mapsto \frac{b^h - 1}{h}$ is bounded and monotone on $(0, 1) - \{0\}$. In the below we prove that this is indeed the case.
+    
+    \begin{itemize}
+        \item (Monotonicity on $(0, 1) - \{0\}$). Using $a = h, r = \frac{1}{n}, s = \frac{1}{n + 1}$ in inequality (\ref{ineq2}), we see that for $b > 0$ the function $n \mapsto n(b^{\frac{1}{n}} - 1)$ is decreasing. Substituting $h = \frac{1}{n}$ shows that $h \mapsto \frac{b^h - 1}{h}$ is an increasing function for all $b > 0$. A similar argument shows that $h \mapsto \frac{b^h - 1}{h}$ is a decreasing function of $h$ for all $b < 0$. Thus $h \mapsto \frac{b^h - 1}{h}$ is monotone on $(0, 1) - \{0\}$.
+        \item (Boundedness on $(0, 1)$). From inequality (\ref{ineq11}), we know that $b^{h - 1}(b - 1) < \frac{b^h - 1}{h} < b - 1$ for all $b > 1, h \in (0, 1)$. Thus $g$ is bounded on $(0, 1)$.
+    \end{itemize}
+    
+    Now we show that the the left-sided limit is the same as the right-sided limit. Consider the left sided limit $\lim_{h \rightarrow 0^-} \frac{b^h - 1}{h}$, and substitute $k = -h$ so that $k \rightarrow 0^+$. We have
+    
+    \begin{align*}
+        &\lim_{h \rightarrow 0^-} \Big( \frac{b^h - 1}{h} \Big) 
+        = \lim_{k \rightarrow 0^+} \Big( \frac{b^{-k} - 1}{-k} \cdot \frac{b^k}{b^k} \Big) 
+        = \lim_{k \rightarrow 0^+} \Big( \frac{1 - b^k}{-kb^k} \Big)
+        = \lim_{k \rightarrow 0^+} \Big( \frac{b^k - 1}{kb^k} \Big) \\ 
+        &= \frac{\lim_{k \rightarrow 0^+} \Big( \frac{b^k - 1}{k} \Big)}{\lim_{k \rightarrow 0^+} (b^k)}
+        = \frac{\lim_{k \rightarrow 0^+} \Big( \frac{b^k - 1}{k} \Big)}{1}
+        = \lim_{h \rightarrow 0^+} \Big( \frac{b^h - 1}{h} \Big).
+    \end{align*}
+    
+    \item ($f$ is invertible).
+    
+    Recall from the above that $f$ is invertible if
+    
+    \begin{enumerate}
+        \item[2.1.] $f$ is one-to-one.
+        \item[2.2.] For every real number $y > 0$ there exists a real number $b > 0$ such that $y = f(b)$.
+    \end{enumerate}
+    
+    We already know that $f$ is one-to-one because we showed that $f$ is monotone on our way to showing (1). So, we just need to show (2.2).
+    
+    In order to show (2.2), we'll need to first glean some inspiration from wishful thinking: if it \textit{were} true that $f$ was invertible, then we could follow the discussion of the earlier section ``Derivatives of exponential functions'' to obtain that $\frac{d}{dx} b^x = f(b) b^x = \log_e(b) b^x$, where $e := f^{-1}(1)$. So, we would have $f(b) = \log_e(b)$ for all nonzero $b$, i.e. $f = \log_e$.
+    
+    Now, we don't \textit{actually} know that $f$ is invertible, so we can't just assume that $f = \log_e$. However, what we \textit{can} do is try to show that $f$ satisfies properties of logarithms, and then try to use those properties to show that (2.2) is true.
+    
+    It's pretty straightforward to show that $f(ab) = f(a) + f(b)$ and $f(\frac{1}{b}) = -f(b)$ by using properties of limits. From this it follows that $f(b^x) = xf(b)$ for integer $x$.
+        
+    Now, we will use the fact that $f(b^x) = xf(b)$ for integer $x$ to show that $\lim_{b \rightarrow \infty} f(b) = \infty$ and $\lim_{b \rightarrow 0^+} f(b) = -\infty$. Once we know this, we are done, since if $\lim_{b \rightarrow 0^+} f(b) = -\infty$, $\lim_{b \rightarrow \infty} f(b) = \infty$, and as $f$ is continuous, then the intermediate value theorem guarantees that for every real number $y > 0$ there is a real number $b > 0$ such that $y = f(b)$.
+    
+    \begin{itemize}
+        \item If we show that $\lim_{b \rightarrow \infty} f(b) = \infty$, then $\lim_{b \rightarrow 0^+} f(b) = -\infty$ follows because $f(\frac{1}{b}) = -f(b)$. Before we show $\lim_{b \rightarrow \infty} f(b) = \infty$, we need to show that $b \mapsto f(b)$ is increasing for $b > 1$.
+        \begin{itemize}
+            \item ($b \mapsto f(b)$ is increasing for $b > 1$). If $1 < a < b$ then $\frac{a}{b} < 1$, so $f(\frac{a}{b}) = f(a) - f(b) < 0$, which gives $f(a) < f(b)$.
+        \end{itemize}
+        \item ($\lim_{b \rightarrow \infty} f(b) = \infty$). Let $L > 0$. We need to show that there is a $b$ such that $f(b) > L$. 
+            
+        Choose any $a > 1$ so that $f(a) > 0$. Then $L = nf(a)$ for some integer $n > 0$. I.e., $L = nf(a) = f(a^n)$. Since $f$ is increasing for $b > 1$, and as $a^n > a > 1$, any $b > a^n$ will work: $f(b) > f(a^n) = L$.
+    \end{itemize}
+    \item To show that $f^{-1}(1) > 0$, it suffices to show that $f(b) > 0$ when $b > 1$.
+    
+    Since we know $b^{h - 1}(b - 1) < \frac{b^h - 1}{h} < (b - 1)$ from inequality (\ref{ineq11}), we can take limits of both sides and then use the continuity of $x \mapsto b^x$ to obtain $\frac{b - 1}{b} < f(b) < b - 1$. This shows that $f(b) > 0$ when $b > 1$.
+\end{enumerate}
+
+\subsection*{Inequalities}
+    
+Let $a > 1$ be a real number and let $r > 0$ be an integer. Since $a^r > a^i$ for each $i$, we have ${ra^r > 1 + a + a^2 + ... + a^{r - 1}}$. Multiply both sides by $a - 1 > 0$ and simplify to see $ra^r(a - 1) > a^r - 1$. Add $r(a^r - 1)$ to both sides and factor to get $r(a^{r + 1} - 1) > (r + 1)(a^r - 1)$. Thus $\frac{a^{r + 1} - 1}{r + 1} > \frac{a^r - 1}{r}$. A similar argument shows $\frac{1 - b^{r + 1}}{r + 1} < \frac{1 - b^r}{r}$ for all real numbers $b \in (0, 1)$. In all,
+
+\begin{align}
+    \label{ineq1}
+    \frac{a^{r + 1} - 1}{r + 1} > \frac{a^r - 1}{r} \text{ and } \frac{1 - b^{r + 1}}{r + 1} < \frac{1 - b^r}{r},
+\end{align} 
+
+for all real numbers $a, b$ with $a > 1, b \in (0, 1)$ and for all integers $r, s$ with $0 < s < r$.
+
+It follows that if $r, s$ are positive integers with $r > s$ then
+
+\begin{align}
+    \label{ineq2}
+    \frac{a^r - 1}{r} > \frac{a^s - 1}{s} \text{ and } \frac{1 - b^r}{r} < \frac{1 - b^s}{s},
+\end{align}
+
+for all real numbers $a, b$ with $a > 1$ and $b \in (0, 1)$. 
+
+These inequalities can be extended to hold for rational $r, s$ such that $0 < s < r$.
+
+Use $s = 1$ in each equation from (\ref{ineq2}) to obtain the first line of the below, and $r = 1$ in each equation from (\ref{ineq2}) to obtain the second line of the below:
+
+\begin{align}
+    \label{ineq3}
+    a^r - 1 > r(a - 1) &\text{ and } 1 - b^r < r(1 - b) \text{ for $r > 1$} \\
+    \label{ineq4}
+    a^s - 1 < s(a - 1) &\text{ and } 1 - b^s > s(1 - b) \text{ for $s \in (0, 1)$}.
+\end{align}
+
+Again consider $a > 1$ and $b \in (0, 1)$. Then $\frac{1}{a} \in (0, 1)$ and $b > 1$, so we can substitute $b = \frac{1}{a}$ and $a = \frac{1}{b}$ into the previous two inequalities. After simplifying, we obtain
+
+\begin{align}
+   \label{ineq5}
+   a^r - 1 < r a^{r - 1}(a - 1) \text{ and } 1 - b^r > rb^{r - 1}(1 - b) \\
+   \label{ineq6}
+   a^s - 1 > sa^{s - 1}(a - 1) \text{ and } 1 - b^s < sb^{s - 1}(1 - b)
+\end{align}
+
+for all real numbers $a, b$ with $a > 1, b \in (0, 1)$ and all rational $r, s$ with $0 < s < r$.
+
+Combining together the inequalities from (\ref{ineq3}), (\ref{ineq4}), (\ref{ineq5}), (\ref{ineq6}), (e.g. combine the first inequality of (\ref{ineq3}), which involves $a^r - 1$, with the first equation of (\ref{ineq5}), which also involves $a^r - 1$), we obtain
+
+\begin{align}
+    \label{ineq7}
+    ra^{r - 1}(a - 1) > a^r - 1 > r(a - 1) \text{ and } sa^{s - 1}(a - 1) < a^s - 1 < s(a - 1) \\
+    \label{ineq8}
+    rb^{r - 1}(1 - b) < 1 - b^r < r(1 - b) \text{ and } sb^{s - 1}(1 - b) > 1 - b^s > s(1 - b).
+\end{align}
+
+for all $a, b \in \R$ with $a \in (0, 1), b > 1$ and for all rational $r, s$ with $r > 1, s \in (0, 1)$.
+
+Multiplying each side of these inequalities by $-1$, we have
+
+\begin{align}
+    \label{ineq9}
+    ra^{r - 1}(1 - a) < 1 - a^r < r(1 - a) \text{ and } sa^{s - 1}(1 - a) > 1- a^s > s(1 - a) \\
+    \label{ineq10}
+    rb^{r - 1}(b - 1) > b^r - 1 > r(b - 1) \text{ and } sb^{s - 1}(b - 1) < b^s - 1 < s(b - 1).
+\end{align}
+
+for all $a, b \in \R$ with $a \in (0, 1), b > 1$ and for all rational $r, s$ with $r > 1, s \in (0, 1)$.
+
+Dividing the second equation of (\ref{ineq10}) by $s$, we have in particular that
+
+\begin{align}
+    \label{ineq11}
+     b^{s - 1}(b - 1) < \frac{b^s - 1}{s} < b - 1 \text{ for all real $b > 1$ and rational $s \in (0, 1)$}.
+\end{align}

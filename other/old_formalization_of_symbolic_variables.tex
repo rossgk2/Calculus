@@ -1,0 +1,83 @@
+\subsection*{Optional: physicist notation for calculus}
+
+\begin{itemize}
+    \item Example. Suppose that the net force $F$ as a function of position $x$ is given by $F(x)$, and that position as a function of time is given by $x(t)$.
+    
+    What if we want to express the net force in terms of time? A mathematician would notate force at time $t$ by $F(x(t))$. A physicist would notate it as $F(t)$.
+    
+    If we use typical conventions, the physicist's notation doesn't make sense; since the function $F$ was defined to nap position to force, plugging time $t$ into $F$ is nonsensical. 
+    
+    The physicist's perspective isn't completely, insane, though. What the physicist is intending to do is to speak of two separate functions: one function $F_x$ that maps position $x$ to force $F$, and another function $F_t$ that maps time $t$ to force $F$. We then have $F_t(t) = F_x(x(t))$.
+    
+    Physicists just end up using the unfortunate convention of denoting $F_x(x)$ by $F(x)$ and $F_t(t)$ by $F(t)$. Thus, we see that the convention in physics is to disambiguate function names by using function arguments that have different symbols.
+
+    \item Physics notation that uses the above unfortunate convention can be made sense of if we formalize a way of allowing a function to determine its output by taking into account the letter of the alphabet used in its input.
+    
+    \newcommand{\AAA}{\mathcal{A}}
+    \newcommand{\BBB}{\mathcal{B}}
+    \newcommand{\sym}{\text{sym}}
+    \newcommand{\val}{\text{val}}
+    
+    In order to do this, we need some way to inspect the letter of the alphabet that is used to denote a variable. For example, we want to be able to formalize a statement such as
+    
+    \begin{quotation}
+        Define the syntax ``$f(x)$'' to mean ``$g(x)$'', where ``$f(x)$'' has meaning \textit{only} if the input to $f$ is literally the symbol $x$, and is not $y$, nor $a$, nor $b$, nor $c$, etc.
+    \end{quotation}
+    
+    We can find the formalization we need by realizing that a variable is really a $(\text{symbol}, \text{value})$ pair. For example, if we use a variable $x$ to represent an arbitrary real number, then what we are really doing is considering a pair $(x, \val(x))$; $x$ is the \textit{symbol}, and $\val(x)$ is the real number \textit{value} corresponding to that name. Normally, we use a variable's symbol to denote its value; i.e., we use $x$ to denote $\val(x)$.
+    
+    Notice that, in general, the name of a symbol is equal to the symbol itself: $\sym(a) = a$, $\sym(b) = b$, $\sym(c) = c$, and so on. In other words, symbols are in general self-symbolic, or \textit{autosymbolic}. In order to further discuss the syntax of variables, it is useful to be able to consider unautosymbolic symbols. An \textit{unautosymbolic symbol} is a symbol $\AAA$ whose corresponding value is a symbol-value pair, and for which $\sym(\AAA)$ is defined to be the symbol of the symbol-value pair.
+    
+    An example of an unautosymbolic variable is $(\AAA, (x, \val(x))$, i.e. $\AAA = (x, \val(x))$. For this unautosymbolic variable, we have $\sym(\AAA) = x$.
+
+    ...
+    
+    ...
+    
+    Now, the above statement formalizes as
+    
+    \begin{align*}
+        f(\sym(\AAA)) := g(\val(\AAA)) \text{ when $\sym(\AAA) = x$}.
+    \end{align*}
+    
+    Note that a typical function definition, ``$f(x) := g(x)$'' translates into ``$f(\val(\AAA)) := g(\val(\AAA))$ for any $\AAA$'', and thus does not take into account $\sym(\AAA)$.
+
+    Now that we have formalized a way to discuss the symbols we use for our variables, we can present the definitions that formalize the physicist's convention of disambiguating function names by using function arguments that have different symbols.
+    
+    Our first definition is that of a ``function-with-symbol''. We denote a \textit{function-with-symbol with function $f$ and symbol $\AAA$} as $f_\AAA$. Functions with symbols $f_\AAA$ and $g_\BBB$ are considered to be equal if and only if $\sym(\AAA) = \sym(\BBB)$.
+    
+    If $f_\AAA$ is a function-with-symbol, we define
+    
+    \begin{align*}
+        \begin{cases}
+            f(\sym(\AAA)) := f_\AAA(\val(\AAA)) = f_x(x) & \sym(\AAA) = x \\
+            f(\sym(\AAA)) := \text{undefined} & \text{otherwise}
+        \end{cases}
+    \end{align*}
+    
+    and
+    
+    \begin{align*}
+        f &:= f(\AAA), \text{ where $\sym(\AAA) = x$}.
+    \end{align*}
+    
+    2. Suppose that $f$ is a function with preferred letter $g$, and that there is a function named $g$ whose preferred letter is $x$. Then we define $f_x$ to be the function defined by $f_x := f_g \circ g$.
+
+    3. Suppose $f$ is a function with preferred letter $x$, and suppose $g$ is also a function with preferred letter $x$. Then we define $f_g$ to be the function-with-preferred-letter defined by
+    
+    \begin{align*}
+        f_g(g_0) := f_x(g_x^{-1}(g_0)) = (f_x \circ g_x^{-1})(g_0).
+    \end{align*}
+    
+    \item Suppose that a function $g$ has a preferred letter $f$, and that there is also a function $f$ with preferred letter $x$ (so, $f$ is being used for two purposes- it is used once as a preferred letter and once as the name of a function).
+    
+    We define
+    
+    \begin{align*}
+        g([x]) &:= (g_f \circ f_x)([x]) \\
+        \frac{dg}{d[x]} &:= (g_f \circ f_x)', \text{ with preferred letter $x$}
+    \end{align*}
+    
+     \item another physicist convention (it's actually a good one): conflate functions with functions evaluated at inputs [not really related to above, most relevant to chain rule; add more in the above example]
+    
+\end{itemize}

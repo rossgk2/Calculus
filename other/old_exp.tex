@@ -1,0 +1,45 @@
+We do so by proving the more general fact that the function ${f:(0, \infty) \rightarrow (0, \infty)}$ defined by $f(x) := \Big( \frac{d}{dx} b^x \Big)\Big|_{x = 0} = \lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ is invertible. (Note, the $b$ for which $\Big( \frac{d}{dx} b^x \Big)\Big|_{x = 0} = 1$ is $f^{-1}(1)$).
+        
+            To show $f$ is invertible, we notice that if it \textit{were} invertible, we could follow the above argument to obtain that $\frac{d}{dx} b^x = f(b) b^x = \log_e(b) b^x$, where $e := f^{-1}(1)$ so, we would have $f(b) = \log_e(b)$, i.e. $f = \log_e$.
+            
+            This suggests that we try to show $f = \log_e$. If we did so, we would be done, since logarithms are invertible. There is a problem with this, however- we don't know that $e := f^{-1}(1)$ exists, since we haven't yet proven that $f$ is invertible!
+            
+            We are again saved by ``what if'' arguments. If $e := f^{-1}(1)$ \textit{does} exist, previous discussion has shown that it is equal to $\lim_{n \rightarrow \infty} \Big(1 + \frac{1}{n}\Big)^n$. This motivates us to define $d := \lim_{n \rightarrow \infty} \Big(1 + \frac{1}{n}\Big)^n$. If we show that $d$ is a convergent limit and that $f = \log_d$, then we are done.
+    
+            Showing that $d$ is convergent is technical; see here for that : \url{https://planetmath.org/convergenceofthesequence11nn}.
+            
+            To show $f = \log_d$, it suffices to show that $f(b^x) = xf(b)$ and that $f(d) = 1$, since these facts imply $f(x) = f(d^{\log_{d}(x)}) = \log_{d}(x) f(d) = \log_{d}(x)$.
+            
+            \vspace{.5cm}
+            
+            $f(b_1 b_2) = f(b_1) + f(b_2)$, $f(\frac{1}{b}) = -f(b)$, and $f(d) = 1$, where $d := \lim_{n \rightarrow \infty} (1 + \frac{1}{n})^n$. Note, our definition of $d$ is motivated by our knowledge that, if $f$ is invertible, then $f^{-1}(1) = d$.
+            
+            \begin{align*}
+                    f(ab) &= \lim_{h \rightarrow 0} \Big( (ab)^h – \frac{1}{h} \Big) 
+                    = \lim_{h \rightarrow 0} \Big( \frac{1}{h} \Big( (ab)^h + b^h – b^h – 1\Big) \Big)
+                    = \lim_{h \rightarrow 0} \Big( \frac{(a^h - 1)b^h}{h} + \frac{b^h - 1}{h} \Big) \\
+                    &= \lim_{h \rightarrow 0} \frac{a^h - 1}{h} + \lim_{h \rightarrow 0} \frac{b^h - 1}{h}
+                    = f(a) + f(b).
+            \end{align*}
+                
+            \begin{align*}
+                    f\Big( \frac{1}{b} \Big) = \lim_{h \rightarrow 0} \Big( \frac{\frac{1}{b^h} - 1}{h} \cdot \frac{b^h}{b^h} \Big) = \lim_{h \rightarrow 0} \frac{1 - b^h}{h b^h} = \text{justify} = \lim_{h \rightarrow 0} \frac{1 - b^h}{h} = - \lim_{h \rightarrow 0} \frac{b^h - 1}{h} = -f(b).
+            \end{align*}
+            
+            \vspace{1cm}
+            
+            Show that $\lim_{n \rightarrow \infty} \Big( 1 + \frac{1}{n} \Big)^{nx} = \lim_{n \rightarrow \infty} \Big( 1 + \frac{x}{n} \Big)^n$ \url{https://math.stackexchange.com/a/358873}
+            
+            \begin{align*}
+                f(e^x) = \lim_{h \rightarrow 0} \frac{(e^x)^h – 1}{h} = \lim_{h \rightarrow 0} \frac{(\lim_{n \rightarrow \infty} (1 + \frac{x}{n})^n)^h - 1}{h} = \lim_{h \rightarrow 0} \lim_{n \rightarrow \infty} \frac{(1 + \frac{x}{n})^{nh} - 1}{h} \geq x,
+            \end{align*}
+            
+            where the inequality at the end is by Bernoulli.
+        
+            Great link: \url{https://paramanands.blogspot.com/2014/05/theories-of-exponential-and-logarithmic-functions-part-3.html?m=0#.YSzvQN9OlPY}
+        
+            Then show $f(e^x) \leq x$.
+            
+    ======================
+    
+    Since $\ln(b) = \lim_{h \rightarrow 0} \frac{b^h - 1}{h}$, we have $\lim_{h \rightarrow 0} \frac{e^h - 1}{h} = 1$. Let $k$ be such that $h = \ln(k + 1)$, so that we can change the variables of the limit to obtain $\lim_{h \rightarrow 0} \frac{e^h - 1}{h} = \lim_{k \rightarrow 0} \frac{k}{\ln(k + 1)}$. (We can solve $h = \ln(k + 1)$ for $k$ to obtain the explicit expression $k = e^h - 1$). Thus, we have $\lim_{k \rightarrow 0} \frac{k}{\ln(k + 1)} = 1$. Since $x \mapsto \frac{1}{x}$ is continuous for $x > 0$ and since $f(\lim_{x \rightarrow c} g(x)) = \lim_{x \rightarrow c} f(g(x))$ for continuous $f$, we can take reciprocals to obtain that $\lim_{k \rightarrow 0} \frac{1}{k} \ln(k + 1) = 1$. Thus $\lim_{k \rightarrow 0} \ln( (k + 1)^{\frac{1}{k}} ) = 1$. Substitute $\ell := \frac{1}{k}$ to see $\lim_{\ell \rightarrow \infty} \ln\Big( \Big( 1 + \frac{1}{\ell} \Big)^\ell \Big) = 1$. Logarithms are continuous, so $\ln\Big( \lim_{\ell \rightarrow \infty} \Big( 1 + \frac{1}{\ell} \Big)^\ell \Big) = 1$. Exponentiate both sides to obtain that $\lim_{\ell \rightarrow \infty} \Big( 1 + \frac{1}{\ell} \Big)^\ell = e^1$, as desired.
