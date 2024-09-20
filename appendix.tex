@@ -289,9 +289,9 @@ Show $b^{x + y} = b^x b^y$ and that $x \mapsto b^x$ is continuous. For continuit
 
 \subsection*{Justification that $e$ exists and other related technical facts}
 
-Here, we prove that there is a real number $b > 0$ for which $\lim_{h \rightarrow 0} \frac{b^h - 1}{h} = 1$. Knowing this fact justifies defining $e$ to be the real number such that ${\Big( \frac{d}{dx} e^x \Big)\Big|_0 = \lim_{h \rightarrow 0} \frac{e^h - 1}{h} = 1}$.
+Here, we prove that there is a real number $b > 0$ for which $\lim_{h \rightarrow 0} \frac{b^h - 1}{h} = 1$. Knowing this fact justifies defining $e$ to be this number.
 
-In order to prove that there is a real number $b > 0$ for which $\lim_{h \rightarrow 0} \frac{b^h - 1}{h} = 1$, we will prove the following three facts:
+In order to prove $e$ exists, we will prove the following three facts:
 
 \begin{enumerate}
     \item $\lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ converges for all nonzero real numbers $b$.
@@ -300,7 +300,7 @@ In order to prove that there is a real number $b > 0$ for which $\lim_{h \righta
         \item[2.1.] $f$ is one-to-one.
         \item[2.2.] For every real number $y > 0$ there exists a real number $b > 0$ such that $y = f(b)$.
     \end{enumerate}
-    \item $f^{-1}(1) > 0$.
+    \item $e = f^{-1}(1) > 0$.
 \end{enumerate}
 
 Before we prove (1), (2), or (3), first note that that $f(1) = 0$ and that $f$ is continuous wherever it is defined\footnote{$f$ is continuous wherever it is defined because $b \mapsto \frac{b^h - 1}{h}$ is a composition of continuous functions of $b$ and because $\lim_{b \rightarrow b_0}$ and $\lim_{h \rightarrow 0}$ commute.}. 

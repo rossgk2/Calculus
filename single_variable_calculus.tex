@@ -65,18 +65,23 @@ The following properties of limits that we present (but do not prove) are hopefu
 
 \vspace{.25cm}
 
+If $\lim_{x \rightarrow p} f(x)$ exists, then
+
+\begin{align*}
+    \lim_{x \rightarrow p} (c f(x)) = c \lim_{x \rightarrow p} f(x)
+\end{align*}
+
 If $\lim_{x \rightarrow p} f(x)$ and $\lim_{x \rightarrow p} g(x)$ both exist, then
 
 \begin{align*}
-    \lim_{x \rightarrow p} (c f(x)) &= c \lim_{x \rightarrow p} f(x) \\
     \lim_{x \rightarrow p} (f(x) + g(x)) &= \lim_{x \rightarrow p} f(x) + \lim_{x \rightarrow p} g(x) \\
     \lim_{x \rightarrow p} (f(x) g(x)) &= \Big( \lim_{x \rightarrow p} f(x) \Big) \Big( \lim_{x \rightarrow p} g(x) \Big) \\
     \lim_{x \rightarrow p} \frac{f(x)}{g(x)} &= \frac{\lim_{x \rightarrow p} f(x)}{\lim_{x \rightarrow p} g(x)} \text{ when } \lim_{x \rightarrow p} g(x) \neq 0
 \end{align*}
 
-The first two properties are collectively referred to as \textit{the linearity of the limit operator}\footnote{The limit operator $\lim_{x \rightarrow p}$ can be considered to be a function that sends functions to real numbers. In general, if $\Phi$ is a function that accepts other functions as input, then $\Phi$ is said to be \textit{linear} if, for all functions $f, g$ and all real numbers $c$, we (1) have $\Phi(f + g) = \Phi(f) + \Phi(g)$ and (2) have $\Phi(cf) = c\Phi(f)$. You can check that $\lim_{x \rightarrow p}$ is a linear function in this sense.
+The properties $\lim_{x \rightarrow p} (c f(x)) = c \lim_{x \rightarrow p} f(x)$ and $\lim_{x \rightarrow p} (f(x) + g(x)) = \lim_{x \rightarrow p} f(x) + \lim_{x \rightarrow p} g(x)$ are collectively referred to as \textit{the linearity of the limit operator}\footnote{The limit operator $\lim_{x \rightarrow p}$ can be considered to be a function that sends functions to real numbers. In general, if $\Phi$ is a function that accepts other functions as input, then $\Phi$ is said to be \textit{linear} if, for all functions $f, g$ and all real numbers $c$, we (1) have $\Phi(f + g) = \Phi(f) + \Phi(g)$ and (2) have $\Phi(cf) = c\Phi(f)$. The function $\lim_{x \rightarrow p}$ is linear in this sense.
 
-It may seem a bit strange that such functions are called ``linear functions''- after all, what do they have to do with lines? For the answer to this question, you will want to take a course in \textit{linear algebra}. The short answer is: inputs to linear functions are themselves ``linear elements'', and linear functions by definition ``preserve the decomposition'' of linear elements; linear functions are called what they are because they play nicely with linear elements.}. The second two properties are called the \textit{product rule for limits} and the \textit{quotient rules for limits}, respectively.
+It may seem a bit strange that such functions are called ``linear functions''- after all, what do they have to do with lines? For the answer to this question, you will want to take a course in \textit{linear algebra}. The short answer is: inputs to linear functions are themselves ``linear elements'', and linear functions by definition ``preserve the decomposition'' of linear elements; linear functions are called what they are because they play nicely with linear elements.}. The last two properties are called the \textit{product rule for limits} and the \textit{quotient rules for limits}, respectively.
     
 \subsubsection*{Limits at infinity}
 
@@ -92,11 +97,16 @@ Using the definitions of limits at infinity presented above, it's possible to pr
 
 Hopefully this is intuitive enough: make $x$ really really big, and $\frac{1}{x}$ becomes really really small.
 
-It's also possible to prove that analogous rules hold for limits at infinity \textit{that exist} to the ones described above for limits at a point. Therefore, by the limit product rule for limits at infinity that exist, we have
+Note that the limit product rule implies
 
 \begin{align*}
-    \lim_{x \rightarrow \infty} \frac{1}{x^c} = 0 &\text{ and } \lim_{x \rightarrow -\infty} \frac{1}{x^c} = 0 \text{ for all $c > 0$}, \\
-    \lim_{x \rightarrow \infty} x^{-c} = 0 &\text{ and } \lim_{x \rightarrow -\infty} x^{-c} = 0 \text{ for all $c < 0$}.
+    \lim_{x \rightarrow \infty} x^{-n} = 0 &\text{ and } \lim_{x \rightarrow -\infty} x^{-n} = 0 \text{ for all integers $n > 0$}.
+\end{align*}
+
+[Applying the squeeze theorem], we obtain
+
+\begin{align*}
+    \lim_{x \rightarrow \infty} x^{-c} = 0 &\text{ and } \lim_{x \rightarrow -\infty} x^{-c} = 0 \text{ for all $c > 0$}.
 \end{align*}
 
 \subsubsection*{Limits at infinity of a rational function}
@@ -251,6 +261,12 @@ Geometrically, the argument of the limit, $\frac{f(x + \Delta x) - f(x)}{\Delta 
 
 When we take the limit $\Delta x \rightarrow 0$ of the slope of this secant line, the inputs $x$ and $x + \Delta x$ become infinitely close, and thus the endpoints $(x, f(x))$ and $(x + \Delta x, f(x + \Delta x))$ of the secant line become infinitely close. Intuitively, it should be clear that, if it exists, the limit approached by taking $\Delta x \rightarrow 0$ is the slope of the line that touches the graph of $f$ at the point $(x, f(x))$ and that ``aligns with the slope of the function's graph at that point''. We call this line the \textit{tangent line}\footnote{Though we were speaking of tangent lines to gain intuition about the derivative, if we are to be formal, then we actually use the derivative to define what it means for a line to be a tangent line. The \textit{tangent line} to the graph $f$ at $(x, f(x))$ is the line of slope $f'(x)$ that passes through $(x, f(x))$.} to $f$ at $(x, f(x))$.
 
+\subsubsection*{Differentiability}
+
+When the derivative of a function $f$ exists at an input $p$, we say that \textit{$f$ is differentiable at $p$}.
+
+If $f$ is differentiable at all inputs $p$, we say \textit{$f$ is differentiable}.
+
 \subsubsection*{Continuity is a requirement for differentiability}
 
 [TO DO]
@@ -291,13 +307,13 @@ In particular, we have
 
 \subsubsection*{Leibniz vertical bar notation}
 
-When we prefer to think of $f$ as changing in response to an input that is specifically associated with the symbol $x$ but want to evaluate $f'$ at a point $p$, we \textit{can} do so by using the fact $\frac{df(p)}{dp} = f'(p)$. This is not intuitive, however; the presence of $p$ in $\frac{df(p)}{dp}$ associates the letter $p$ with the changing input rather than $f$. To remedy this situation, we define the following notations involving a vertical bar:
+When we prefer to think of $f$ as changing in response to an input that is specifically associated with the symbol $x$ but want to evaluate $f'$ at a point $p$, we \textit{can} do so by using the fact $\frac{df(p)}{dp} = f'(p)$. This is not intuitive, however; the presence of $p$ in $\frac{df(p)}{dp}$ associates the letter $p$ with the input (we would rather that the letter $x$ be associated with the input). To remedy this situation, we define the following notation involving a vertical bar:
 
 \begin{align*}
     \frac{df}{dx}\Big|_p &:= f'(p).
 \end{align*}
 
-Notice, the letter in the ``denominator'' of the derivative on the left side of the above is irrelevant. 
+One oddity of this notation is that the letter in the ``denominator'' of the derivative on the left side of the above is irrelevant: we have $\frac{df}{da}\Big|_p = \frac{df}{db}\Big|_p = \frac{df}{dc}\Big|_p = ... = \frac{df}{dz}\Big|_p$.
 
 We also define vertical bar notation that is compatible with the operator notation:
 
@@ -309,7 +325,7 @@ We also define vertical bar notation that is compatible with the operator notati
 
 People often write $\frac{df}{dx}$ to mean either $f'$ or $f'(x)$. 
 
-Using $\frac{df}{dx}$ to mean $f'$ leads to more notation problems (see ``Single-variable calculus derivative notation'' in the appendix), and using $\frac{df}{dx}$ to mean $f'(x)$ is also confusing, since the convention of using $\frac{df}{dx}$ to mean $f'$ does exist.
+Using $\frac{df}{dx}$ to mean $f'$ leads to more notation problems (see ``Single-variable calculus derivative notation'' in the appendix), and using $\frac{df}{dx}$ to mean $f'(x)$ is also confusing because it conflicts with the practice of using $\frac{df}{dx}$ to mean $f'$.
 
 In this book, we will not ever use the notation $\frac{df}{dx}$ in this book; only $f'$, $f'(x)$, $\frac{df(g(x))}{dg(x)}$, $\frac{df(x)}{dx}$, $\frac{d}{dx}f(x)$, and $\frac{df}{dx}\Big|_p$.
 
@@ -354,7 +370,7 @@ This formula can be extended to work for real numbers, not just integers. (See t
     }
 \end{align*}
 
-For example, $\frac{d}{dx} x^{\frac{1}{2}} = \frac{1}{2}x^{-\frac{1}{2}}$ and that $\frac{d}{dx} x^\pi = \pi x^{\pi - 1}$.
+For example, $\frac{d}{dx} x^{\frac{1}{2}} = \frac{1}{2}x^{-\frac{1}{2}}$ and $\frac{d}{dx} x^\pi = \pi x^{\pi - 1}$.
 
 \subsection*{Linearity of the derivative}
 
@@ -449,7 +465,8 @@ Notice that it now appears as if the $df(x)$'s of the right side are cancelling 
     \frac{dg(f(x))}{dx} &= \frac{dg(f(x))}{df(x)} \frac{df(x)}{dx} \text{ for all $x$}
 \end{empheq}
 
-\subsubsection*{A bad way to state the chain rule}
+\begin{comment}
+\subsubsection*{A bad way to state the chain rule (old version)}
 
 Most calculus textbooks state the chain rule as follows:
 
@@ -465,6 +482,35 @@ The main problem that underlies this notation is the conflation of a \textit{par
 \end{itemize}
 
 The above notation \textit{only works if you have explicit formulas for $g$ and $f$}, and even then, you are only allowed to substitute $f(x)$ in for $u$ \textit{after} you have computed an explicit formula for $\frac{dg}{du}$. So, please don't try to understand the above notation. Just know that it's very commonly used but very bad.
+\end{comment}
+
+\subsubsection*{A bad way to state the chain rule}
+
+Most calculus textbooks state the chain rule in the following confusing way:
+
+\begin{align*}
+    \text{If $y = f(u)$ and $u = g(x)$ are differentiable functions, then } \frac{dy}{dx} = \frac{dy}{du} \frac{du}{dx}.
+\end{align*}
+
+There are several problems with this statement: 
+
+\begin{itemize}
+    \item The phrase ``If $y = f(u)$ and $u = g(x)$ are differentiable functions'' is meant to be interpreted by the reader as the following system of equations:
+
+    \begin{align*}
+        \begin{cases}
+           y = f(u) \\
+           u = g(x)
+        \end{cases},
+        \text{ where $x$ is a real number and $f, g$ are differentiable}.
+    \end{align*}
+
+    It's extremely unclear that this interpretation is intended, since no phrase that indicates $x$ is supposed to have many possible values (like ``$x$ is a real number'' or ``where $x$ is a real number'') is included.
+    
+    \item The phrase ``If $y = f(u)$ and $u = g(x)$ are differentiable functions'' implies that $y$ and $u$ are functions, which is not the case; $y$ and $u$ are outputs of functions, and are not functions themselves; they are variables in the above-mentioned system of equations.
+
+    \item Not all expressions obtained by making the substitutions specified in the system of equations are defined. Namely, if we perform the substitutions $y = f(u)$ and $u = g(x)$ in the term $\frac{dy}{du}$, we obtain $\frac{dy}{du} = \frac{df(u)}{du} = \frac{df(g(x))}{dg(x)}$, which is a notation that isn't defined in most texts. (As we have seen, the correct definition is $\frac{df(g(x))}{dg(x)} := f'(g(x))$.)  
+\end{itemize}
 
 \section*{More differentiation formulas}
 
@@ -746,7 +792,7 @@ For the sake of having concrete notation, we will \textit{define} $e$ to be the 
 Now, we use change of base for exponential functions in order to determine $\frac{d}{dx} b^x$ by making use of the fact that we know the derivative of $e^x$. We have
 
 \begin{align*}
-    \frac{d}{dx} b^x = \frac{d}{dx} e^{\log_e(b^x)} = \frac{d}{dx} e^{\log_e(b) x} = \log_e(b) e^{\log_e(b) x} = \log_e(b) e^{\log_e(b^x)} = \log_e(b) b^x.
+    \frac{d}{dx} b^x = \frac{d}{dx} e^{\log_e(b^x)} = \frac{d}{dx} e^{\log_e(b) x} = \log_e(b) e^{\log_e(b^x)} = \log_e(b) b^x.
 \end{align*}
 
 In all,

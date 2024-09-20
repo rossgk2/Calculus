@@ -1,10 +1,14 @@
 \part*{Multivariable calculus}
 
-Maybe say that ``in this part of book $f:X \rightarrow Y$ means that $\text{dom}(f) \subseteq X$, which is slightly conventional, since the convention is that $\text{dom}(f) = X$''?
+\subsection*{References}
+
+\begin{itemize}
+    \item \textit{The Calculus of Several Variables} by Robert C Rogers of Nagoya University in Japan: \url{https://www.math.nagoya-u.ac.jp/~richard/teaching/s2016/Ref2.pdf}
+    \item \textit{Vector Calculus, Linear Algebra, and Differential Forms} by Hubbard and Hubbard
+    \item \textit{Calculus on Manifolds} by Michael Spivak
+\end{itemize}
 
 \subsection*{Lin alg teaser}
-
-Definitely gonna require some linear algebra
 
 \begin{itemize}
     \item Copy-paste discussion of $\R^n$ over from linear algebra (or find a way to allow this and the linear algebra file to use same dependency)
@@ -22,312 +26,168 @@ Definitely gonna require some linear algebra
     \end{itemize}
 \end{itemize}
 
-\subsection*{Intro}
+\newpage
 
-The previous area of calculus presented by this book is known as \textit{single variable calculus}, since it was about studying functions that send real numbers to real numbers. Multivariable calculus is about studying three different kinds of functions:
+\section*{Differentiation}
 
-\begin{enumerate}
-    \item Functions that send scalars to vectors (i.e. functions that send a single number to multiple scalars). These can be thought of as trajectories through space, since the single scalar input can be thought of time, and the multiple scalar outputs can be thought of as coordinates in a vector.
-    
-    \item Functions that send vectors to scalars (i.e. functions that send multiple numbers to a single scalar). These can be thought of as ``surfaces'', as, for example, a function sending two scalars to a single scalar can be thought of as associating a point on the $x, y$ plane to a height on the $z$ axis.
+\subsection*{Introduction}
 
-    \item Functions that send vectors to vectors. These can be thought of as ``vector fields'', i.e. functions that assign an arrow (vector) to every point in space.
-    \begin{itemize}
-        \item In a certain special case (when the input space is 2D and the output space is 3D), these functions can also be thought of as describing how to distort a region of the plane into a 3D surface.
-    \end{itemize}
-\end{enumerate}
+There are two approaches to the theory of multivariable differentiation: bottom-up and top-down.
 
-We can define what it means to differentiate and integrate each above type of function. Notably, differentiating functions of type (2) at a point requires a choice of direction, and integrating functions of type (2) allows us to compute the volume of 3D solids.
+The bottom-up approach has the advantage of requiring no prerequisites other than single-variable calculus. It is often seen in physics contexts, since the bottom-up approach starts with concepts that are both easily digestible and highly relevant to physics (such as the differential and integral calculus of functions $\R \rightarrow \R^n$ and partial derivatives of functions $\R^n \rightarrow \R$). After these digestible concepts are covered, though, study turns to functions $\R^n \rightarrow \R^m$, where a real disadvantage becomes apparent: only at this point, far into the study of multivariable calculus, is a jarring definition of multivariable differentiability (for functions $\R^n \rightarrow \R^m$) given, and the nuanced relationship between differentiability and the existence of partial derivatives is explored.
 
-The pinnacle of multivariable calculus is ``vector calculus''\footnote{This is somewhat a strange name, since all of multivariable calculus involves vectors. I think vector calculus is probably called what it is because many of the vectors in vector calculus in interpreted as directed line segments, which is the interpretation physicists often intend when they say ``vector''.}. In vector calculus, one integrates vector fields over volumes. There are different ways to integrate a vector field: one can compute the \textit{flux} of the vector field through a bounding surface, compute the \textit{divergence} of the vector field within a bounding surface, or compute the work done by the vector field along a bounding loop. All of these computations are related by various generalizations of the fundamental theorem of calculus.
+In the top-down approach, the definition of multivariable differentiability comes early. Because it comes early, it is not jarring- no pattern of derivative definitions has been set yet. The nuanced relationship between differentiability and the existence of partial derivatives is explored immediately, and, even better, the fact that the multivariable derivative (of a function $\R^n \rightarrow \R^m$) is the directional derivative is treated as a centralizing fact instead of a sidenote. 
 
-\subsection*{Functions $\R \rightarrow \R^n$}
+The top-down approach is clearly superior. Its only disadvantage is that it requires knowledge of linear algebra.
+
+\subsection*{Bottom-up approach}
+
+First, study functions $\R \rightarrow \R^n$.
 
 \begin{itemize}
-    \item The graph of a function $\R \rightarrow \R^n$ can be interpreted as a ``space curve''.
-    \item Examples of such functions
-    \begin{itemize}
-        \item Line in $\R^n$
-        \item Circle in $\R^2$
-        \item Helix in $\R^3$
-    \end{itemize}
-    \item Define derivative of a function $\R \rightarrow \R^n$ with limits. Prove that $\frac{d\xx}{dt}$ is the vector of the component functions' derivatives.
-    \item This formula for $\frac{d\xx}{dt}$ immediately suggests a definition for $\int \xx \spc dt$, since we should have $\int \frac{d\xx}{dt} dt = \xx + c$.
-    \item If $f:\R \rightarrow \R$ and $\xx:\R^n \rightarrow \R$ then $\xx \circ f:\R^n \rightarrow R$, so we can consider $\frac{d}{dt}(\xx \circ f)$. Unpacking the definitions and using the single-variable chain rule, we can see that $\frac{d}{dt}(\xx(f(t)) = \frac{d\xx}{df} \frac{df}{dt}$, where $\frac{d\xx}{df} := \xx' \circ f$ is notation analogous to that of [put reference here].
+    \item Define derivatives and integrals of functions $\R^n \rightarrow \R$. 
+    \item Study space curves and derive the Frenet frame.
 \end{itemize}
 
-\subsubsection*{Arclength and the Frenet frame}
+Next, study functions $\R^n \rightarrow \R$.
+    
+\begin{itemize}
+    \item Define the directional derivative of $f:\R^n \rightarrow \R$ as $\frac{\pd f}{\pd \vv} \Big|_\pp := \frac{d (f \circ \xx)}{dt}\Big|_{t_0}$, where $\xx$ is a curve satisfying $\xx(t_0) = \pp$ and $\frac{d\xx(t)}{dt}\Big|_{t_0} = \vv$.
+    \begin{itemize}
+        \item Prove that the directional derivative doesn't depend on the curve chosen.
+    \end{itemize}
+    \item Prove that the limit expression, $\frac{\pd f}{\pd \vv}\Big|_\pp = \lim_{h \rightarrow 0} \frac{f(\pp + h\vv) - f(\pp)}{h}$, of the directional derivative, follows.
+    \item For $f:\R^n \rightarrow \R$, define $\pd_i f := \frac{\pd f}{\pd \see_i}$.
+    \begin{itemize}
+        \item Aside: for $\ff = (f_1, ..., f_n)^\top:\R \rightarrow \R^n$, define $\boldsymbol{\pd}_i \ff := (\pd_i f_1, ..., \pd_i f_n)^\top$.
+    \end{itemize}
+    \item Prove the chain rule for partial derivatives (often called ``the multivariable chain rule''), $\frac{d (f \circ \xx)(t)}{dt} =\sum_{i = 1}^n \frac{\pd f(\xx)}{\pd x_i} \frac{dx_i(t)}{dt}$.
+    \item Define $\nabla_\xx f|_\pp := (\frac{\pd f}{\pd x_1}\Big|_\pp, ..., \frac{\pd f}{\pd x_n}\Big|_\pp)^\top$, so that application of the multivariable chain rule gives $\frac{\pd f}{\pd \vv} \Big|_\pp = (\underset{\xx}{\nabla} f)|_\pp \cdot \frac{d\xx(t)}{dt}\Big|_{t_0}= \nabla_\xx f|_\pp \cdot \vv$.
+    \item Remark that $(\vv, f) \mapsto \frac{\pd f}{\pd \vv} \Big|_\pp$ is linear in both arguments.
+    \item Use the fact that $\frac{\pd f}{\pd \vv}\Big|_\pp = \nabla f|_\pp \cdot \vv$ to prove that $\nabla f$ is the direction of greatest increase in $f$, and (somewhat surprisingly) that $-\nabla f$ is the direction of greatest decrease in $f$.
+\end{itemize}
+
+Use the previous results in differential calculus to generalize to functions $\R^n \rightarrow \R^m$.
 
 \begin{itemize}
-    \item $s(t) := \int_0^t ||\frac{d\xx(t)}{dt}|| dt$; $s$ is strictly increasing and is therefore invertible (i.e. ``$t(s)$'' exists)
-    \item $\xx(t) \cdot \frac{d\xx(t)}{dt} = \frac{1}{2} \frac{d}{dt} (\xx(t) \cdot \xx(t)) = \frac{1}{2} \frac{d}{dt} ||\xx(t)||^2 = 0$, so curves are perpendicular to their derivatives
-    \item $\TT(t) := \widehat{\frac{d\xx_t(t)}{dt}} = \frac{d\xx_t(t)/dt}{||d\xx_t(t)/dt||} = \frac{d\xx_t(t)/dt}{ds(t)/dt} = \frac{d\xx_t(t)}{dt} \frac{dt}{ds} = \frac{d\xx_t(t(s))}{ds} = \frac{d\xx_s(s)}{ds}$
-    \item $\NN(t) := \widehat{\frac{d\TT(t)}{dt}} = \frac{d\TT(t)/dt}{||d\TT(t)/dt||} = ... = \frac{d^2\xx(s)/ds^2}{||d^2\xx(s)/ds^2||}$
-    \item $K(s) := ||\frac{d\TT}{ds}|| = ||\frac{d^2\xx(s)}{ds^2}|| = ... = \frac{d\TT(t)/dt}{ds/dt}$
-    \item 
-
-    \begin{align*}
-        \aa(t) = \frac{d}{dt}(||\vv(t)|| \TT(t)) &= \frac{d||\vv(t)||}{dt} \TT(t) + ||\vv(t)|| \frac{d\TT(t)}{dt} \\
-        &= \frac{d||\vv(t)||}{dt} \TT(t) + ||\vv(t)|| \Big(\Big|\Big|\frac{d\TT(t)}{dt}\Big|\Big| \NN(t)\Big) \\
-        &= \frac{d||\vv(t)||}{dt} \TT(t) + ||\vv(t)|| \spc \Big|\Big|\frac{d\TT(t)}{dt}\Big|\Big| \NN(t)
-    \end{align*}
+    \item Use the chain rule for partial derivatives to prove a new chain rule: $\frac{d (\ff \circ \xx)(t)}{dt} = \frac{\pd \ff(\xx)}{\pd \xx} \frac{d\xx(t)}{dt}$, where $\frac{\pd \ff(\xx)}{\pd \xx}$ is the matrix whose $i$th row is $\nabla_\xx f_i$.
+    \item Aside on how since the $i$th column of $\frac{\pd \ff(\xx)}{\pd \xx}$ is $\frac{\pd \ff(\xx)}{\pd x_i}$, we have $\frac{d (\ff \circ \xx)(t)}{dt} = \sum_{i = 1}^{n} \frac{\pd \ff(\xx)}{\pd x_i} \frac{d x_i(t)}{dt}$.
 \end{itemize}
 
-\subsection*{Functions $\R^n \rightarrow \R$}
+Then, discuss content from the beginning of the top-down approach regarding $\DD \ff$, including the fact that $\DD \ff = \frac{\pd \ff}{\pd \xx}$ when $\ff$ is continuously differentiable.
+
+\subsection*{Top-down approaches}
+
+\subsubsection*{Spivak's \textit{Calculus on Manifolds}}
+
+Let $\ff:\R^n \rightarrow \R^m$.
 
 \begin{itemize}
-    \item Examples of such functions
-    \begin{itemize}
-        \item Equation of a plane
-        \item Quadric surfaces?
-    \end{itemize}
-    
-    \item Notice that if $\xx:\R \rightarrow \R^n$ and $f:\R^n \rightarrow \R$ then $f \circ \xx$ is a function $\R 
-    \rightarrow \R$, and we can take its ``regular'' derivative from single-variable calculus.
-
-    \item Define directional derivative as $\frac{\pd f}{\pd \vv} \Big|_\pp := \frac{d (f \circ \xx)}{dt}\Big|_{t_0}$, where $\xx$ is a curve satisfying $\xx(t_0) = \pp$ and $\frac{d\xx}{dt}\Big|_{t_0} = \vv$. Since the line $\xx(t) = \pp + (t - t_0) \vv$ is a curve satisfying $\xx(t_0) = \pp$ and $\frac{d\xx}{dt}\Big|_{t_0}$, then we have $\frac{\pd f}{\pd \vv} \Big|_\pp = \frac{d}{dt}\Big(f(\pp + (t - t_0) \vv) \Big)\Big|_{t_0}$.
-    \begin{itemize}
-        \item Footnote: one must prove that the directional derivative is the same no mater which curve $\xx$ satisfying $\xx(t_0) = \pp$ and $\frac{d\xx}{dt}\Big|_{t_0} = \vv$ is used.
-    \end{itemize}
-    
-    \item It is sometimes useful to express the directional derivative as a limit. 
-        
-        We have
-        
-        \begin{align*}
-            \frac{\pd f}{\pd \vv}\Big|_\pp 
-            &= \frac{d}{dt}\Big(f(\pp + \vv t)\Big)\Big|_{t_0}
-            = \lim_{h \rightarrow 0} \Big( \frac{f(\pp + \vv(t + h)) - f(\pp + \vv t)}{h} \Big) \Big|_{t_0} \\
-            &= \lim_{h \rightarrow 0} \Big( \Big( \frac{f(\pp + \vv(t + h)) - f(\pp + \vv t)}{h} \Big) \Big|_{t_0} \Big)
-            = \lim_{h \rightarrow 0} \frac{f(\pp + h\vv) - f(\vv)}{h}.
-        \end{align*}
-        
-        Therefore
-        
-        \begin{align*}
-            \frac{\pd f}{\pd \vv}\Big|_\pp = \lim_{h \rightarrow 0} \frac{f(\pp + h\vv) - f(\vv)}{h}.
-        \end{align*}
-        
-        Many authors define the directional derivative using this formula.
-
-    \item Define $\frac{\pd}{\pd x_i} := \frac{\pd}{\pd \see_i}$. Use alternate limit characterization of directional derivative to show that $\frac{\pd f}{\pd x_i}$ is the derivative of $x_i \mapsto f(x_1, ..., x_i, ..., x_n)$
-    
-    \item Convention: $\frac{\pd f}{\pd x}, \frac{\pd f}{\pd y}, \frac{\pd f}{\pd z}$ almost always refer to the partial derivative of $f$ with respect to the first, second, or third argument, respectively.
-    
-    \item Further investigation of the directional derivative is made easier by knowing the following multivariable chain rule:
-    
-    Let $\xx:\R \rightarrow \R^n$ and $f:\R^n \rightarrow \R$ be sufficiently differentiable, and set $\xx(t_0) = \pp$. It can be proved that %http://www.math.harvard.edu/~knill/teaching/summer2011/handouts/33-chainrule.pdf
-
-    \begin{align*}
-        \frac{d (f \circ \xx)}{dt} = \frac{\pd f}{\pd x_1} \frac{dx_1}{dt} + ... + \frac{\pd f}{\pd x_n} \frac{dx_n}{dt}.
-    \end{align*}
-    
-    In the proof of this fact, we recognize certain limits as $\frac{\pd f}{\pd \see_i}$ by appealing to the limit characterization of the directional derivative.
-    
-    Give a proof in the appendix. To prove the theorem for $n = 2$, use the identity
-    
-    \begin{align*}
-        \frac{f(x(t + h), y(t + h)) - f(x(t), y(t))}{h} = \frac{f(x(t + h), y(t + h)) - f(x(t), y(t + h))}{h} + \frac{f(x(t), y(t + h)) - f(x(t), y(t))}{h}.
-    \end{align*}
-    
-    As $h \rightarrow 0$ the left side converges to $\frac{d}{dt}f(x(t), y(t))$. Use the technique which proves the single-variable chain rule to show that the terms on the right side converge to the required expressions.
-    
-    \item Define $(\nabla_\xx f)|_\pp := \begin{pmatrix} \frac{\pd f}{\pd x_1}\Big|_\pp \\ \vdots \\ \frac{\pd f}{\pd x_n}\Big|_\pp \end{pmatrix}$, so that $\frac{\pd f}{\pd \vv} \Big|_\pp = (\underset{\xx}{\nabla} f)|_\pp \cdot \frac{d\xx(t)}{dt}\Big|_{t_0}= (\nabla_\xx f)|_\pp \cdot \vv$.
-    
-    \item Notice that $\pp \mapsto (\nabla_\xx f)|_\pp$ is a function $\R^n \rightarrow \R^n$. We have not encountered functions $\R^n \rightarrow \R^n$ yet. All we need to know for know is how to think about such a function. In general, one can interpret a function $\R^n \rightarrow \R^m$ as assigning a directed line segment in $\R^m$ to a point in $\R^n$. (Notice: we are relying on two ways of conceptualizing vectors here. The vectors in $\R^n$ are thought of as directed line segments and the vectors in $\R^m$ are thought of as locations).
-    
-    \item Consider the function $(\vv, f) \mapsto \frac{\pd f}{\pd \vv} \Big|_\pp$. Remark that the last bullet point implies that this function is linear in $\vv$. (The one before that did too, but it is easier seen with the last bullet point). We can use the definition $\frac{\pd f}{\pd \vv} \Big|_\pp := \frac{d (f \circ \xx)}{dt}\Big|_\pp$ to show that this function is also linear in $f$. Therefore for every $\pp \in \R^n$ the function $(\vv, f) \mapsto \frac{\pd f}{\pd \vv} \Big|_\pp$ is linear in both arguments. Will have to decide on whether or not to define ``linear function''.
-    
-    \item Prove that $\nabla f$ is direction of greatest increase in $f$, and (somewhat surprisingly) that $-\nabla f$ is the direction of greatest decrease in $f$.
-    
-    \begin{proof}
-        We have just shown that $\frac{\pd f}{\pd \vv}\Big|_\pp = (\nabla_\xx f)|_\pp \cdot \vv$. Then, using the the definition of the dot product, we have ${(\nabla_\xx f)|_\pp \cdot \vv = ||(\nabla_\xx f)|_\pp|| \spc ||\proj(\vv \rightarrow (\nabla_\xx f)|_\pp)||}$. This dot product is maximized when the projection of $\vv$ onto $(\nabla_\xx f)|_\pp$ is $\vv$ itself. Thus, when the directional derivative is maximized, $\vv = (\nabla_\xx f)|_\pp$.
-        
-        The magnitude of this maximal directional derivative is ${(\nabla_\xx f)|_\pp \cdot \vv = ||(\nabla_\xx f)|_\pp|| \spc ||\proj(\vv \rightarrow (\nabla_\xx f)|_\pp)||}$. When $||\vv|| = 1$, this reduces to $||(\nabla_\xx f)|_\pp||$.
-    \end{proof}
-    
-    \item Multiple integrals, iterated integrals, and Fubini's theorem
+    \item (Defn). (p. 16). $\ff$ is \textit{differentiable at $\pp \in \R^n$} iff there exists a linear function $\DD \ff|_\pp:\R^n \rightarrow \R^m$ such that $\lim_{\hh \rightarrow \mathbf{0}} \frac{||\ff(\xx + \hh) - \ff(\xx) - \DD \ff|_\pp(\hh)||}{||\hh||} = 0$.
+    \item (Theorem). (p. 16). If $\DD \ff|_\pp$ exists then it is unique.
+    \item (Theorem). (p. 20). Rules about $\DD \ff|_\pp$.
+    \item (Defn). (p. 25). For $f:\R^n \rightarrow \R$, define the \textit{$i$th partial derivative $\pd_i f$  of $f$} to be the derivative of $x \mapsto f(x_1, ..., x_{i - 1}, x, x_{i + 1}, ..., x_n)$.
+    \item (Theorem). (p. 30). If $\ff = (f_1, ..., f_n)^\top$ is differentiable at $\pp$, then $\pd_i f_j$ exists at $\pp$ for all $i, j$ and the standard matrix of $\DD \ff|_\pp$ is $(\pd_i f_j|_\pp)$.
+    \item (Remark). (p. 30). If $\ff$'s first partial derivatives all exist at $\pp$ then it is not necessarily the case that $\ff$ is differentiable at $\pp$.
+    \item (Defn). (p. 31). $\ff = (f_1, ..., f_n)^\top$ is \textit{continuously differentiable at $\pp \in \R^n$} iff all partial derivatives $\pd_i f_j$ are continuous at $\pp$ and every partial derivative $\pd_i f_j$ is defined in some open set containing $\pp$.
+    \item (Theorem). (p. 31). If $\ff$ is continuously differentiable at $\pp$ then $\ff$ is differentiable at $\pp$.
+    \item (Theorem). (p. 32). If $\ff = (f_1, ..., f_m)^\top:\R^n \rightarrow \R^m$ is such that each $f_i$ is continuously differentiable at $\pp$ and $g:\R^m \rightarrow \R$ is differentiable at $\ff(\pp)$, then $\pd_i (g \circ \ff)|_\pp = \sum_{j = 1}^m (\pd_j g)|_{\ff(\pp)} \pd_i (f_j)|_\pp$.
 \end{itemize}
 
-\subsection*{Functions $\R^n \rightarrow \R^m$}
+\subsubsection*{Hubbard \& Hubbard}
 
-\begin{lemma}
-    (Multivariable chain rule for differentiable functions $\R^n \rightarrow \R^m$).
-    
-    Let $\ff:\R^n \rightarrow \R^m$, $\xx:\R \rightarrow \R^n$ be sufficiently differentiable, and set $\pp := \xx(t_0)$. We have
-    
-    \begin{align*}
-        \frac{d (\ff \circ \xx)}{dt}\Big|_{t_0}
-        =
-        \begin{pmatrix}
-            \frac{d}{dt} f_1(\xx(t_0))
-            \\
-            \vdots
-            \\
-            \frac{d}{dt} f_m(\xx(t_0))
-        \end{pmatrix}
-        =
-        \begin{pmatrix}
-            (\nabla_\xx f_1) \cdot \frac{d\xx}{dt}\Big|_{t_0}
-            \\
-            \vdots
-            \\
-            (\nabla_\xx f_m) \cdot \frac{d\xx}{dt}\Big|_{t_0}
-        \end{pmatrix}
-        =
-        \begin{pmatrix}
-            \underset{\xx}{\nabla} (f_1)
-            \\
-            \vdots
-            \\
-            \underset{\xx}{\nabla} (f_m)
-        \end{pmatrix}
-        \Bigg|_\pp
-        \frac{d \xx}{d t}\Big|_{t_0}.
-    \end{align*}
-    
-    In terms of functions, we have
-    
-    \begin{align*}
-        \frac{d (\ff \circ \xx)(t)}{dt}
-        =
-        \begin{pmatrix}
-            \underset{\xx}{\nabla} (f_1)
-            \\
-            \vdots
-            \\
-            \underset{\xx}{\nabla} (f_m)
-        \end{pmatrix}
-        \frac{d \xx}{dt}.
-    \end{align*}
-    
-    Recall from Derivation \ref{ch::lin_alg::deriv::primitive_matrix} and Theorem \ref{ch::lin_alg::thm::coordinates_of_matrix_vector_product} that a matrix-vector product can be expressed as either a linear combination of column vectors or as a vector of dot products. We have already seen the second expression utilized; here is a utilization of the first:
-    
-    \begin{align*}
-        \frac{d (\ff \circ \xx)(t)}{dt}\Big|_\pp
-        =
-        \begin{pmatrix}
-            \underset{\xx}{\nabla} (f_1)
-            \\
-            \vdots
-            \\
-            \underset{\xx}{\nabla} (f_m)
-        \end{pmatrix}
-        \frac{d \xx}{d t}
-        =
-        \begin{pmatrix}
-            \underset{\xx}{\nabla} (f_1) \cdot \frac{d \xx}{d t}
-            \\
-            \vdots
-            \\
-            \underset{\xx}{\nabla} (f_m) \cdot \frac{d \xx}{d t}
-        \end{pmatrix}
-        =
-        \sum_{i = 1}^{n} \frac{\pd \ff(\xx)}{\pd x_i} \frac{d x_i(t)}{d t}.
-    \end{align*}
-\end{lemma}
+Let $\ff:\R^n \rightarrow \R^m$.
 
-\begin{defn}
-\label{ch::calc::defn::jacobian}
-    (The Jacobian).
-    
-    Let $\ff(\xx) = \begin{pmatrix} f_1(\xx) \\ \vdots \\ f_n(\xx) \end{pmatrix}$.
-    
-    Drawing upon the idea of the derivative of a function with respect to a function (see Definition \ref{ch::calc::defn::deriv_wrt_fn}), we define the \textit{Jacobian matrix} $\frac{\pd \ff}{\pd \xx}\Big|_\pp$ to be
-    
-    \begin{align*}
-        \boxed
-        {
-            \frac{\pd \ff}{\pd \xx}\Big|_\pp
-            :=
-            \begin{pmatrix}
-                (\underset{\xx}{\nabla} (f_1))|_\pp
-                \\
-                \vdots
-                \\
-                (\underset{\xx}{\nabla} (f_m))|_\pp
-            \end{pmatrix}
-        }
-    \end{align*}
-    
-    The Jacobian can also be written as
+\begin{itemize}
+    \item (Defn). (p. 103). Define the \textit{$i$th partial derivative $\boldsymbol{\pd}_i \ff|_\pp$ of $\ff:\R^n \rightarrow \R^m$} to be $\boldsymbol{\pd}_i \ff|_\pp := \lim_{h \rightarrow 0} \frac{\ff(\pp + h \see_i) - \ff(\pp)}{h}$. When $m = 1$ (so $f := \ff:\R^n \rightarrow \R$) we use an unbolded $\pd_i$.
+    \item (Defn). (p. 104). Define the \textit{directional derivative $\frac{\pd \ff}{\pd \vv}\Big|_\pp$ of $\ff:\R^n \rightarrow \R^m$ at $\pp$ along $\vv$} to be $\frac{\pd \ff}{\pd \vv}\Big|_\pp := \lim_{h \rightarrow 0} \frac{\ff(\pp + h \vv) - \ff(\pp)}{h}$.
+    \item (Theorem). (p. 106). $f: \R \rightarrow \R$ is differentiable at $p \in \R$ iff $(\Delta f)_p(h) := f(p + h) - f(p)$ is approximately a linear function, in the sense that $f$ is differentiable at $p$ iff there is a linear function $h \mapsto hf'(p):\R \rightarrow \R$ such that $\lim_{h \rightarrow 0} \frac{(\Delta f)_p(h) - hf'(p)}{h} = 0$.
+    \item (Defn, theorem). (p. 108, 114). A confusing presentation of Spivak's definition of differentiability from p. 16. and Spivak's theorem about existance of partial derivatives from p. 16.
+    \item (Defn). (p. 108). Define $\JJ \ff|_\pp$ to be the standard matrix of $\DD \ff|_\pp$.
+    \item (Theorem). (p. 109). If $\ff$ is differentiable at $\pp$ then $\frac{\pd \ff}{\pd \vv}\Big|_\pp = \DD \ff|_\pp(\vv) = \JJ \ff|_\pp \vv$.
+    \item (Remark). (p. 115). If $\DD \ff|_\pp$ exists then it is unique, since it's represented by a matrix.
+    \item (Theorem). (p. 115). Rules about $\DD \ff|_\pp$.
+    \item (Defn). (p. 124). Gives a more restrictive definition of continuous differentiablity than in Spivak that requires continuity on an open set rather than at a point.
+    \item (Theorem). (p. 124). If $\ff$ is continuously differentiable on an open set then it is differentiable on that set.
+    \item (Example). (p. 122). $f:\R^2 \rightarrow \R$ defined by $f(x, y) = \frac{x^2 y}{x^2 + y^2}$ when $(x, y) \neq (0, 0)$ and $f(x, y) = (0, 0)$ when $(x, y) = (0, 0)$ is continuous and has partial derivatives but isn't differentiable at $(0, 0)$.
+    \item (Example). (p. 123). $f:\R \rightarrow \R$ defined by $f(x) = \frac{1}{2}x + x^2 \sin\Big(\frac{1}{x}\Big)$ when $x \neq 0$ and $f(x) = 0$ when $x = 0$ is continuous and differentiable, but its derivative is not a good approximation of it at the origin: ``although the derivative at $0$ is positive, the function is not increasing in any neighborhood of $0$ since on any such interval the derivative is negative.''
+\end{itemize}
 
-    \begin{align*}
-        \Big( \frac{\pd f_i}{\pd x_j}\Big|_\pp \Big).
-    \end{align*}
+\subsection*{Proposed approach}
 
-    More common notation for the Jacobian of $\ff$ is $\DD \ff$.
-    
-    Using the Jacobian, the multivariable chain rule for differentiable functions $\R^n \rightarrow \R^m$ is now succintly stated as
-    
-    \begin{align*}
-        \boxed
-        {
-            \frac{d (\ff \circ \xx)}{dt}\Big|_\pp = \frac{\pd\ff}{\pd\xx}\Big|_\pp \frac{d\xx}{dt}\Big|_\pp
-        }
-    \end{align*}
-    
-    \begin{align*}
-        \boxed
-        {
-            \frac{d (\ff \circ \xx)}{dt} = \frac{\pd\ff}{\pd\xx} \frac{d\xx}{dt}
-        }
-    \end{align*}
-
-    Stated with the more common notation, this chain rule is
-
-    \begin{align*}
-        \DD(\ff \circ \xx) = (\DD \ff) \frac{d\xx}{dt}. 
-    \end{align*}
-\end{defn}
-
-\begin{defn}
-    (Directional derivative of a differentiable function $\R^n \rightarrow \R^m$).
-    
-    The directional derivative of a differentiable function $\ff:U \subseteq \R^n \rightarrow \R^m$ is defined analogously to that of a differentiable function $\ff:U \subseteq \R^n \rightarrow \R$. Indeed, in the special case of $m = 1$, the two definitions are equivalent.
-    
-    As was done previously, let $\xx:\R \rightarrow \R^n$ be a curve with $\xx(t_0) = \pp$ and $\frac{d\xx}{dt}\Big|_{t_0} = \vv$. We define the \textit{directional derivative $\frac{\pd f}{\pd \vv}$ of $\ff$ in the direction of $\vv$} to be
-    
-    \begin{align*}
-        \frac{\pd \ff}{\pd \vv}\Big|_\pp :=  \frac{d (\ff \circ \xx)}{dt}\Big|_\pp = \frac{\pd \ff}{\pd \xx}\Big|_\pp \frac{d\xx}{dt}\Big|_{t_0} = \frac{\pd \ff}{\pd \xx}\Big|_\pp \vv.
-    \end{align*}
-    
-    So this most general definition of directional derivative is expressed as
-    
-    \begin{empheq}[box = \fbox]{align*}
-        &\frac{\pd \ff}{\pd \vv}\Big|_\pp = \frac{\pd\ff}{\pd\xx}\Big|_\pp \vv \\
-        &\frac{\pd \ff}{\pd \vv} = \frac{\pd\ff}{\pd\xx} \frac{d\xx}{dt} = \frac{\partial \ff}{\partial \xx} \vv.
-    \end{empheq}
-
-    In the more common notation, 
-
-    \begin{align*}
-        \frac{\pd \ff}{\pd \vv} = (\DD \ff) \vv.
-    \end{align*}
-\end{defn}
-
-\begin{remark}
-    $(\ff, \vv) \mapsto \frac{\pd \ff}{\pd \vv}$ is a bilinear function.
-\end{remark}
-
-\begin{deriv}
-    \textbf{seems like the structure of this multivariable calculus section needs to be completely reworked, since we must define differentiability for functions $\R^n \rightarrow \R^m$}
-
-    right now, the structure is: functions $\R \rightarrow \R^n$, functions $\R^n \rightarrow \R$, functions $\R^n \rightarrow \R^m$. need to start with $\R^n \rightarrow \R^m$.
-
+Start with Hubbards' approach for the most part, but use Spivak's clearer definition of differentiability:
+\begin{itemize}
+    \item (Defn from Hubbards). (p. 104). Define the \textit{directional derivative $\frac{\pd \ff}{\pd \vv}\Big|_\pp$ of $\ff:\R^n \rightarrow \R^m$ at $\pp$ along $\vv$} to be $\frac{\pd \ff}{\pd \vv}\Big|_\pp := \lim_{h \rightarrow 0} \frac{\ff(\pp + h \vv) - \ff(\pp)}{h}$.
+    \item (Original). (p. 103). Define the \textit{$i$th partial derivative $\boldsymbol{\pd}_i \ff|_\pp$ of $\ff:\R^n \rightarrow \R^m$} to be $\boldsymbol{\pd}_i \ff|_\pp := \frac{\pd \ff}{\pd \see_i}\Big|_\pp$. Also define the notation $\frac{\boldsymbol{\pd} \ff(x_1, ..., x_n)}{\boldsymbol{\pd} x_i}\Big|_\pp = \frac{\pd \ff(\xx)}{\pd x_i}\Big|_\pp := \boldsymbol{\pd}_i \ff|_\pp$. With both notations, when $m = 1$ (so $f := \ff:\R^n \rightarrow \R$), we use an unbolded $\pd_i$.
+    \item (Theorem from Hubbards). (p. 106). $f: \R \rightarrow \R$ is differentiable at $p \in \R$ iff $(\Delta f)_p(h) := f(p + h) - f(p)$ is approximately a linear function, in the sense that $f$ is differentiable at $p$ iff there is a linear function $h \mapsto hf'(p):\R \rightarrow \R$ such that $\lim_{h \rightarrow 0} \frac{(\Delta f)_p(h) - hf'(p)}{h} = 0$.
+    \item (Defn from Spivak). (p. 16). $\ff$ is \textit{differentiable at $\pp \in \R^n$} iff there exists a linear function $\DD \ff|_\pp:\R^n \rightarrow \R^m$ such that $\lim_{\hh \rightarrow \mathbf{0}} \frac{||\ff(\pp + \hh) - \ff(\pp) - \DD \ff|_\pp(\hh)||}{||\hh||} = 0$. The function $\DD \ff|_\pp$ is called the \textit{total derivative}.
     \begin{itemize}
-        \item define directional derivative, define partial derivative in terms of directional derivative. these will have to be defined with limits and not in terms of curves, since speaking of curves requires knowing the chain rule involving Jacobians
-        \item motivate the limit $\lim_{\vv \rightarrow \mathbf{0}} \frac{1}{||\vv||} (\ff(\xx + \vv) - \ff(\xx) - \LL(\vv)) = \mathbf{0}$
-        \item derive that when an $\LL$ satisfying the above exists, $\LL(\vv) = \Big( \frac{\pd f_i}{\pd x_j} \Big) \vv$. define the Jacobian $\JJ := \Big( \frac{\pd f_i}{\pd x_j} \Big)$. define $\DD \FF := \LL$, so $\DD \FF$ is the linear function represented by the Jacobian.
-        \item The above shows that when the Jacobian exists, it is the unique linear transformation that is the best approximation to $\ff$ in the sense of the above limit.
-        \item a function's Jacobian can fail to exist even when its partial derivatives and directional derivatives all exist
-        \item let $f:\R^n \rightarrow \R$. We have 
+        \item (Original remark). Note that we haven't yet shown $\DD \ff|_\pp$ is unique.
     \end{itemize}
-\end{deriv}
+\end{itemize}
+
+Follow the Hubbards in presenting the fact that when both exist, the total derivative and directional derivative agree.
+
+\begin{itemize}
+    \item (Theorem from Spivak). (p. 30). If $\ff = (f_1, ..., f_n)^\top$ is differentiable at $\pp$, then $\pd_i f_j$ exists at $\pp$ for all $i, j$ and the standard matrix of $\DD \ff|_\pp$ is $(\frac{\pd f_j(\xx)}{\pd x_i})$. This matrix is called the \textit{Jacobian (of $\ff$ at $\pp$)} and is denoted by either $\JJ \ff|_\pp$ or $\frac{\pd \ff}{\pd \xx}\Big|_\pp$.
+    \item (Theorem from Hubbard). (p. 109). If $\ff$ is differentiable at $\pp$ then $\frac{\pd \ff}{\pd \vv}\Big|_\pp = \DD \ff|_\pp(\vv) = \frac{\pd \ff}{\pd \xx}\Big|_\pp \vv$.
+    \begin{itemize}
+        \item (Remark from Hubbard). If $\DD \ff|_\pp$ exists then it is unique, since it's represented by a matrix.
+    \end{itemize}
+\end{itemize}
+
+For the discussion on differentiability versus continuous differentiability, use Spivak's clear theorems and the Hubbards' examples.
+
+\begin{itemize}
+    \item (Remark from Spivak). (p. 30). If $\ff$'s first partial derivatives all exist at $\pp$ then it is not necessarily the case that $\ff$ is differentiable at $\pp$.
+    \begin{itemize}
+        \item (Example from Hubbard). (p. 122). $f:\R^2 \rightarrow \R$ defined by $f(x, y) = \frac{x^2 y}{x^2 + y^2}$ when $(x, y) \neq (0, 0)$ and $f(x, y) = (0, 0)$ when $(x, y) = (0, 0)$ is continuous and has partial derivatives but isn't differentiable at $(0, 0)$.
+    \end{itemize}
+    \item (Original). Even if all directional derivatives of $\ff$ exist at $\pp$, it is not necessarily the case that $\ff$ is differentiable at $\pp$.
+    \begin{itemize}
+        \item (Original example). Let $A = \{ (x, y) \mid \exists x \spc y = x^2 \} - \{(0, 0)\}$, and consider the characteristic function $\chi_A:\R^2 \rightarrow \R^2$ of $A$. Then the directional derivative $\frac{\pd \chi_A}{\pd \vv}\Big|_{\mathbf{0}}$ of $\chi_A$ at $\mathbf{0}$ exists for all $\vv \in \R^2$ but $\chi_A$ is not differentiable at $\mathbf{0}$.
+    \end{itemize}
+    \item (Remark from Hubbards). (p. 123). If $\ff$ is differentiable at $\pp$, then $\DD \ff|_\pp$ is not guaranteed to be a good approximation.
+    \begin{itemize}
+        \item (Example from Hubbard). (p. 123). $f:\R \rightarrow \R$ defined by $f(x) = \frac{1}{2}x + x^2 \sin\Big(\frac{1}{x}\Big)$ when $x \neq 0$ and $f(x) = 0$ when $x = 0$ is continuous and differentiable, but its derivative is not a good approximation of it at the origin, since it does not correctly indicate whether $f$ is increasing or decreasing: ``although the derivative at $0$ is positive, the function is not increasing in any neighborhood of $0$ since on any such interval the derivative is negative.''
+    \end{itemize}
+    \item (Defn from Spivak). (p. 31). $\ff = (f_1, ..., f_n)^\top$ is \textit{continuously differentiable at $\pp \in \R^n$} iff all partial derivatives $\pd_i f_j$ are continuous at $\pp$ and every partial derivative $\pd_i f_j$ is defined in some open set  containing $\pp$.
+    \item (Theorem from Spivak). (p. 31). If $\ff$ is continuously differentiable at $\pp$ then $\ff$ is differentiable at $\pp$.
+\end{itemize}   
+
+Now we state rules about $\DD \ff|_\pp$.
+
+\begin{itemize}
+    \item (Theorem from Spivak). (p. 20). Rules about $\DD \ff|_\pp$.
+    \item (Theorem from Spivak). (p. 32). If $\ff = (f_1, ..., f_m)^\top:\R^n \rightarrow \R^m$ is such that each $f_i$ is continuously differentiable at $\pp$ and $f:\R^m \rightarrow \R$ is differentiable at $\ff(\pp)$, then $\pd_i (f \circ \ff)|_\pp = \sum_{j = 1}^m (\pd_j f)|_{\ff(\pp)} \pd_i (f_j)|_\pp$.
+    \begin{itemize}
+        \item (Original). In the situation of the above theorem, define the notation $\frac{\pd f(\ff(\xx))}{\pd f_i(\xx)} := \pd_i f|_{\ff(\xx)}$. With this notation, the above theorem becomes $\frac{\pd(f \circ \ff)(\xx)}{\pd x_i}\Big|_\pp = \sum_{j = 1}^m \frac{\pd f(\ff(\xx))}{\pd f_j(\xx)} \Big|_\pp \frac{\pd f_j(\xx)}{\pd x_i}\Big|_\pp$.
+    \end{itemize}
+\end{itemize}
+
+Then prove results about functions $\R^n \rightarrow \R$:
+
+\begin{itemize}
+    \item (Original). For $f:\R^n \rightarrow \R$, we define $\nabla f := (\DD f)^\top$.
+    \item (Remark). $(\vv, f) \mapsto \frac{\pd f}{\pd \vv} \Big|_\pp$ is linear in both arguments.
+    \item (Theorem). Use the fact that $\frac{\pd f}{\pd \vv}\Big|_\pp = \nabla f|_\pp \cdot \vv$ to prove that $\nabla f$ is the direction of greatest increase in $f$, and (somewhat surprisingly) that $-\nabla f$ is the direction of greatest decrease in $f$.
+\end{itemize}
 
 \newpage
 
-\subsubsection*{Multiple integrals}
+\section*{Integration}
+
+\begin{theorem}
+    (Fubini's theorem). 
+
+    On p. 61 of \textit{Calculus on Manifolds}, Spivak notes that if $C \subseteq A \times B$, then
+
+    \begin{align*}
+        \int_C f = \int_{A \times B} \chi_C f = \int_A \Big( \int_B \chi_C(x, y) f(x, y) dy \Big) dx,
+    \end{align*}
+
+    and that the ``main difficulty in deriving expressions for $\int_C f$ will be determining $C \cap (\{x\} \times B)$ for $x \in A$''. [I think that by ``determining $C \cap (\{x\} \times B)$ for $x \in A$'', Spivak means ``determining inequalities in $x, y$ that describe the $C \cap (\{x\} \times B)$.]
+\end{theorem}
 
 \begin{deriv}
     (Change of variables).
@@ -369,12 +229,93 @@ The pinnacle of multivariable calculus is ``vector calculus''\footnote{This is s
     \end{align*}
 \end{deriv}
 
-\subsubsection*{Vector calculus}
+\section*{Vector calculus}
 
-\begin{itemize}
-    \item Green's theorem
-    \item the 2D divergence theorem
-    \item the (3D) divergence theorem
-    \item Stokes' theorem
-\end{itemize}
+\begin{defn}
+    (Divergence).
+
+    Let $S$ be a closed $3$-dimensional surface containing $\pp \in \R^3$.
+
+    \begin{align*}
+        \div(\FF)|_\pp := \lim_{\text{vol}(S) \rightarrow 0} \frac{\int_{\pd S} \FF \cdot \nn dA}{\text{vol}(S)}.
+    \end{align*}
+\end{defn}
+
+\begin{defn}
+    (Curl).
+
+    Let $S$ be a closed $2$-dimensional surface containing $\pp \in \R^3$.
+
+    \begin{align*}
+        \text{curl}(\FF)|_\pp := \lim_{\text{vol}(S) \rightarrow 0} \frac{\int_{\pd S}\FF \cdot d\rr}{\text{vol}(S)}.
+    \end{align*}
+\end{defn}
+
+\begin{theorem}
+    (Divergence formula).
+
+    \begin{align*}
+        \text{div}(\FF) = \nabla \cdot \FF.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    \url{http://www.supermath.info/CalculusIIIvectorcalculus2011.pdf}
+
+    Proof of $2$-dimensional case.
+\end{proof}
+
+\begin{theorem}
+    (Curl formula).
+
+    \begin{align*}
+        \text{curl}(\FF) = \nabla \times \FF.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    \url{http://www.supermath.info/CalculusIIIvectorcalculus2011.pdf}
+\end{proof}
+
+\begin{defn}
+    (Irrotaional vector field).
+    
+    A vector field $\FF$ is called \textit{irrotational} iff $\nabla \times \FF = \mathbf{0}$.
+\end{defn}
+
+\begin{theorem}
+    (Irrotational vector field).
+
+    A vector field $\FF$ is irrotational iff the following equivalent conditions hold:
+    
+    \begin{enumerate}
+        \item $\int_C \FF \cdot d\rr$ is independent of $C$
+        \item If $C$ is a closed curve then $\int_C \FF \cdot d\rr = 0$.
+        \item There exists $V$ such that $\FF = -\nabla V$
+    \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+    (Irrotational equals conservative).
+
+    A vector field is called \textit{conservative} iff for all closed curves $C$ we have $\int_C \FF \cdot d\rr = 0$. The above theorem shows that the set of irrotational vector fields is equal to the set of conservative vector fields.
+\end{remark}
+
+\begin{defn}
+    (Solenoidal vector field).
+
+    A vector field $\FF$ is called \textit{solenoidal} iff $\nabla \cdot \FF = \mathbf{0}$.
+\end{defn}
+
+\begin{theorem}
+    (Solenoidal vector field).
+
+    A vector field $\FF$ is solenoidal iff the following equivalent conditions hold:
+
+    \begin{enumerate}
+        \item $\int_S \FF \cdot \hat{\nn} dA$ is independent of $S$ if $\pd S$ is fixed
+        \item If $S$ is a closed surface then $\int_S \FF \cdot \hat{\nn} dA = 0$.
+        \item There exists $\AA$ such that $\FF = \nabla \times \AA$
+    \end{enumerate}
+\end{theorem}
 
