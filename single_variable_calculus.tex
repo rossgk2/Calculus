@@ -502,7 +502,7 @@ There are several problems with this statement:
            y = f(u) \\
            u = g(x)
         \end{cases},
-        \text{ where $x$ is a real number and $f, g$ are differentiable}.
+        \text{ where $x$ is a real number and $f, g$ are differentiable functions}.
     \end{align*}
 
     It's extremely unclear that this interpretation is intended, since no phrase that indicates $x$ is supposed to have many possible values (like ``$x$ is a real number'' or ``where $x$ is a real number'') is included.
@@ -753,7 +753,7 @@ The change of base for logarithms is often stated as
     \log_b(x) = \frac{\log_a(x)}{\log_a(b)}.
 \end{align*}
 
-Note that the change of base for logarithms implies that
+Note that the change of base for logarithms implies that when $x > 0$,
 
 \begin{align*}
     \log_x(b) = \frac{\log_a(b)}{\log_a(x)} = \frac{1}{\log_b(x)}.
@@ -761,7 +761,7 @@ Note that the change of base for logarithms implies that
 
 \subsection*{Derivatives of exponential functions}
 
-Given a real number $b$, let's take the derivative of $b^x$ with respect to $x$.
+Given a real number $b > 0$, let's take the derivative of $b^x$ with respect to $x$.
 
 \begin{align*}
     \frac{d}{dx} b^x = \lim_{h \rightarrow 0} \frac{b^{x + h} - b^x}{h}
@@ -783,7 +783,7 @@ Thus, the derivative of $b^x$ with respect to $x$ is
 
 That is, the derivative of $b^x$ with respect to $x$ is some constant times $b^x$. In order to obtain a more useful expression for $\frac{d}{dx} b^x$, we must evaluate the expression $\Big( \frac{d}{dx} b^x \Big)\Big|_0$. A natural way to do so is to first consider the $b$ for which\footnote{Does such a $b$ even exist? Does $\Big( \frac{d}{dx} b^x \Big)\Big|_0 = \lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ even converge for all $b$? The answer to both questions is yes, but showing so is quite technical.} we have $\Big( \frac{d}{dx} b^x \Big)\Big|_0 = 1$.
 
-For the sake of having concrete notation, we will \textit{define} $e$ to be the number such that $\Big( \frac{d}{dx} e^x \Big)\Big|_0 = 1$. Then
+For the sake of having concrete notation, we will \textit{define} $e$ to be the real number such that $\Big( \frac{d}{dx} e^x \Big)\Big|_0 = 1$. Then
 
 \begin{align*}
     \frac{d}{dx} e^x = \Big( \frac{d}{dx} e^x \Big)\Big|_0 e^x = 1 \cdot e^x = e^x.
@@ -842,7 +842,7 @@ Computing the derivative of $\ln(x)$ at $x = 1$ explicitly, we have
     \lim_{h \rightarrow 0} \frac{\ln(1 + h) - \ln(1)}{h} = \lim_{h \rightarrow 0} \frac{\ln(1 + h)}{h} = \lim_{h \rightarrow 0} \ln((h + 1)^\frac{1}{h}) = 1.
 \end{align*}
 
-Interestingly enough, a not yet encountered expression for $e^x$ jumps out at us from this above equation. Apply the function $x \mapsto e^x$ to both sides of the above (using continuity to bring the application of $x \mapsto e^x$ inside the limit) to obtain
+Interestingly enough, a not yet encountered expression for $e$ jumps out at us from this above equation. Apply the function $x \mapsto e^x$ to both sides of the above (using continuity to bring the application of $x \mapsto e^x$ inside the limit) to obtain
 
 \begin{align*}
     \lim_{h \rightarrow 0} (h + 1)^{\frac{1}{h}} = e,
@@ -860,7 +860,7 @@ Substituting $n$ in for $k$, we see that we have shown
     e &= \lim_{n \rightarrow \infty} \Big(1 + \frac{1}{n} \Big)^n.
 \end{align*}
 
-We now use this new expression for $e$ to determine a new expression for $e^x$. We have
+We now use this new expression for $e$ to determine a new expression for $e^x$. Applying the function $x \mapsto e^x$ to both sides of the above, we see that for all $x$,
 
 \begin{align*}
     e^x = \Big( \lim_{n \rightarrow \infty} \Big(1 + \frac{1}{n} \Big)^n \Big)^x = \lim_{n \rightarrow \infty} \Big(1 + \frac{1}{n}\Big)^{nx}.
@@ -1110,7 +1110,7 @@ With these new conventions, we can restate the already established integral nota
 We also define integral notation analogous to the Leibniz notation $\frac{df(g(x))}{dg(x)} := f'(g(x))$:
 
 \begin{align*}
-    \int f(g(x)) dg(x) := \Big(\int f\Big)\Big|_{g(x)}, \quad \int_a^b f(g(x)) dg(x) = \Big(\int_a^b f\Big)\Big|_{g(x)}.
+    \int f(g(x)) dg(x) := \Big(\int f\Big)\Big|_{g(x)}, \quad \int_a^b f(g(x)) dg(x) := \Big(\int_a^b f\Big)\Big|_{g(x)}.
 \end{align*}
 
 \vspace{.5cm}
@@ -1247,22 +1247,22 @@ Integrate both sides to obtain
  
 Now use the change of variables theorem to ``cancel the $dx$'s on the left side'':
 
-\begin{align*}
-    \boxed
-    {
-        \int \frac{1}{g(f(x))} df(x) = \int f(x) dx \text{ for all $x$ such that $g(f(x)) \neq 0$}.
-    }
-\end{align*}
+\begin{empheq}[box = \fbox]{align*}
+    &\text{The solution to } \frac{df(x)}{dx} = f(x) g(f(x)) \text{ for all $x$ is } \\
+    &\int \frac{1}{g(f(x))} df(x) = \int f(x) dx \text{ for all $x$ such that $g(f(x)) \neq 0$}.
+\end{empheq}
 
 In practice, we (attempt to) solve the separable differential equation by explicitly computing the above integrals and then using algebra to solve the above equation for $f$.
 
-The above integral equation can be remembered by the mnemonic of starting with the original separable differential equation
+\subsubsection*{Mnemonic for separation of variables}
+
+The solution to the differential equation
 
 \begin{align*}
-    \frac{df(x)}{dx} = f(x) g(f(x)) \text{ for all $x$},
+    \frac{df(x)}{dx} = f(x) g(f(x)) \text{ for all $x$}
 \end{align*}
 
-and then doing algebra to ``put the $f$'s and $df$'s on one side and put the $x$'s and $dx$'s on the other side''. We divide both sides by $g(f(x))$ to get the $f$'s and $df$'s on the left side, and then ``multiply both sides by $dx$'' to get the $x$'s on the right side: 
+can be remembered by the mnemonic of doing algebra to ``put the $f$'s and $df(x)$'s on one side and put the $x$'s and $dx$'s on the other side''. We divide both sides by $g(f(x))$ to get the $f$'s and $df(x)$'s on the left side, and then ``multiply both sides by $dx$'' to get the $x$'s on the right side: 
 
 \begin{align*}
     \frac{df(x)}{g(f(x))} = f(x) dx \text{ for all $x$ such that $g(f(x)) \neq 0$}.
@@ -1303,7 +1303,7 @@ exactly as before.
     Substitute $h = g'$, so $g = \int h \spc dx$. Thus
     
     \begin{align*}
-        \int fh \spc dx = fh - \int f'H \spc dx, \text{ where } H = \int h \spc dx.
+        \int fh \spc dx = fH - \int f'H \spc dx, \text{ where } H = \int h \spc dx.
     \end{align*}
     
     Rewriting the above with the letters $f, g$, and $G$, we have
@@ -1311,14 +1311,28 @@ exactly as before.
     \begin{align*}
         \boxed
         {
-            \int fg \spc dx = fg - \int f'G \spc dx, \text{ where } G = \int g \spc dx
+            \int fg \spc dx = fG - \int f'G \spc dx, \text{ where } G = \int g \spc dx
         }
     \end{align*}
     
-    When using the above formula, pick $f$ to be a function whose derivative is computable, and pick $g$ to be a function whose integral is computable.
+    When using the above formula, pick $f$ to be a function whose derivative is computable, and pick $G$ to be a function whose integral is computable.
     
     [insert spaces in integrals]
     
-    
-    \item I advise that you do not use the mnemonic involving $u, v, du$, and $dv$. It's more confusing to use the mnemonic than to rederive the integration by parts formula, in my opinion. 
+    \item We now present the most popular way to state the integration by parts formula. Above, we showed that
+
+    \begin{align*}
+        \int f(x) g'(x) \spc dx = f(x) g(x) - \int g(x) f'(x) \spc dx \text{ for all $x$}
+    \end{align*}
+
+    If we use the mnemonics ``$df(x) = f'(x) dx$'' and ``$dg(x) = g'(x) dx$'', we can write this formula as:
+
+    \begin{align*}
+        &\int f(x) dg(x) = f(x) g(x) - \int g(x) df(x), \\
+        &\text{ where ``$dg(x) = g'(x) dx$'' and ``$df(x) = f'(x) dx$''}
+    \end{align*}
+
+    Note that the meanings of $df(x)$ and $dg(x)$ in the above are \textit{not} the same as the meanings that make most sense\footnote{The definition $\int f(g(x)) dg(x) := (\int f)|_{g(x)}$, which was given earlier, is what makes most sense.} Therefore, \textit{please ignore this formula.} It is included only for completeness.
+
+    Unfortunately, the above formula is most commonly written with $u := f$ and $v := g$, in the even more sloppy notation ``${\int u \spc dv = uv - \int v \spc du}$''.
 \end{itemize}
