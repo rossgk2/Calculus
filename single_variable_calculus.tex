@@ -30,7 +30,7 @@ Similarly, if, as inputs of $f$ that are \textit{less} than $p$ get closer and c
 
 The $-$ on the ``$p^-$'' below the limit indicates that the limit here is taken ``from the left''; the inputs that are getting closer to $p$ are all less than $p$.
 
-If the limits of $f$ at $p$ from the left and from the right are the same, then we define the so-called \textit{two sided limit} to be equal to the left and right limits\footnote{The colon-equals sign $:=$ is used here instead of a regular equals sign $=$ to indicate that the combination of symbols on the left side is being \textit{defined} to mean whatever is written on the right side. While some authors use the regular equals sign $=$ to denote definitions, I prefer to use the colon-equals $:=$ because I think it is important to disambiguate ``equality by definition'' from ``equality resulting from mathematical reasoning''.}:
+If the limits of $f$ at $p$ from the left and from the right are the same, then we define the so-called \textit{two-sided limit} to be equal to the left and right limits\footnote{The colon-equals sign $:=$ is used here instead of a regular equals sign $=$ to indicate that the combination of symbols on the left side is being \textit{defined} to mean whatever is written on the right side. While some authors use the regular equals sign $=$ to denote definitions, I prefer to use the colon-equals $:=$ because I think it is important to disambiguate ``equality by definition'' from ``equality resulting from mathematical reasoning''.}:
 
 \begin{align*}
     \lim_{x \rightarrow p} f(x) 
@@ -121,7 +121,7 @@ To illustrate the point, let's now examine the end behavior of $x \mapsto \frac{
     = \lim_{x \rightarrow \infty} \frac{\sum_{i = 1}^n p_i x^i}{\sum_{j = 1}^m q_j x^j}.
 \end{align*}
 
-We now consider three cases. It is either the case that $n > m$, $n = m$, or $n < m$. We can actually ignore the case $n > m$, since we can obtain the result for this case by following an argument that is similar to the one used for the case $n < m$. So, we can assume $n < m$ and $n = m$, i.e. we can assume $n \leq m$.
+We now consider three cases. It is either the case that $n > m$, $n = m$, or $n < m$. We can actually ignore the case $n > m$, since we can obtain the result for this case by following an argument that is similar to the one used for the case $n < m$. So, we can assume that either $n < m$ or $n = m$, i.e. we can assume $n \leq m$.
 
 At this point, we rewrite the inside of the limit:
 
@@ -138,7 +138,7 @@ Now, we will \textit{assume} that it is valid to apply the limit quotient rule a
     = \frac{\sum_{i = 1}^n p_i \lim_{x \rightarrow \infty} x^{i - n}}{\sum_{j = 1}^m q_j \lim_{x \rightarrow \infty} x^{j - n}}
 \end{align*}
 
-It is only valid to apply the limit quotient rule if the limit of the denominator in the first above equation is nonzero, and that it is only valid to apply the linearity of the limit if, for all $i$ and $j$, the limits in the sums of the second above equation exist or are infinite. Now comes the retroactive justification- as we continue our computations, we will see that all of these conditions are satisfied\footnote{In general, if we want to use a theorem that is stated in the form ``$(\text{conditions}) \implies (\text{result})$'', it is not valid to deduce that the conditions follow as a consequence of assuming the result- this is circular reasoning. It may seem that we are doing this here, but we are actually not. It just so happens that with limit laws, the computations involved in the result are the same computations that are examined in the testing of conditions. So, we can get ahead of ourselves and compute the result while simultaneously checking the calculations to make sure that the conditions are satisfied.}.
+It is only valid to apply the limit quotient rule if the limit of the denominator in the above left expression is nonzero, and it is only valid to apply the linearity of the limit if, for all $i$ and $j$, the limits in the sums of the above right expression exist or are finite. Now comes the retroactive justification- as we continue our computations, we will see that all of these conditions are satisfied\footnote{In general, if we want to use a theorem that is stated in the form ``$(\text{conditions}) \implies (\text{result})$'', it is not valid to deduce that the conditions follow as a consequence of assuming the result- this is circular reasoning. It may seem that we are doing this here, but we are actually not. It just so happens that with limit laws, the computations involved in the result are the same computations that are examined in the testing of conditions. So, we can get ahead of ourselves and compute the result while simultaneously checking the calculations to make sure that the conditions are satisfied.}.
 
 Consider the case in which the degree of the ``top'' polynomial is lesser than the degree of the ``bottom'' polynomial, i.e., the case in which $n < m$. First, we compute the limits in the numerator. Since $i \leq n$ and $n < m$, we have $i < n \iff i - n < 0$ for all $i$. Knowing that $i - n$ is negative for all $i$ then gives us that $\lim_{x \rightarrow \infty} x^{i - n} = 0$ for all $i$, and so the numerator is $\sum_{i = 1}^m p_i \lim_{x \rightarrow \infty} x^{i - n} = \sum_{i = 1}^m (p_i \cdot 0) = 0$. As for the denominator, we know that for all $j$ we have $j < m \iff j - m < 0$, and thus $\lim_{x \rightarrow \infty} x^{j - m} = 0$ for all $j < m$. Thus, the denominator is 
 
@@ -160,7 +160,7 @@ In calculus, the objects of study are what are called \textit{continuous functio
 
 \begin{itemize}
     \item We say that a function $f$ is \textit{continuous at a point} $p$ if $\lim_{x \rightarrow p} f(p)$ exists and $\lim_{x \rightarrow p} f(x) = f(p)$. 
-    \item We say that a function $f$ is \textit{continuous everywhere}, or simply \textit{continuous}, if it is continous at every point in its domain.
+    \item We say that a function $f$ is \textit{continuous everywhere}, or simply \textit{continuous}, if it is continous at every point.
 \end{itemize}
 
 It's instructive to think about how a function could fail to be continuous at a point $p$. There are two ways for a so-called \textit{discontinuity} to occur: either it is the case that $\lim_{x \rightarrow p} f(x)$ does not exist (recall, this could be due to a jump discontinuity, an infinite limit, or an oscillating limit), or it is the case that $\lim_{x \rightarrow p} f(x) \neq f(p)$. When the later occurs, $f$ is said to have a \textit{point discontinuity} at $p$. An example of a function that satisfies the later condition is
@@ -248,10 +248,12 @@ Note, we have used $:=$ instead of $=$ because we are presenting a definition ra
 There is nothing special about the variable $\Delta x$ in the above definition- it is entirely possible to write the definition of the derivative without using the $\Delta$ symbol. In fact, it is common to present the definition of the derivative using the letter $h$ in the place of $\Delta x$, as follows:
 
 \begin{align*}
-    f'(x) := \lim_{h \rightarrow 0} \frac{f(x + h) - f(x)}{h}.
+    f'(x) = \lim_{h \rightarrow 0} \frac{f(x + h) - f(x)}{h}.
 \end{align*}
 
 Here is how to interpret what $f'(x)$ means. Since $\Delta x$ goes to zero in the limit, we can imagine that $\Delta x$ is an ``infinitely small number''. Thus, $f(x + \Delta x) - f(x)$ is the change in the function $f$ that results from an infinitely small change in the input $x$. Dividing this infinitesimally small change in $f$ by the infinitesimally small change in input, $\Delta x$, intuitively gives the ``instantaneous rate of change'' of $f$ at $x$ that occurs due to the changing of the input from $x$ to $x + \Delta x$. For this reason, $f'(x)$ is often called the \textit{instantaneous rate of change of $f$ at $x$}.
+
+\subsubsection*{Secant and tangent lines}
 
 Geometrically, the argument of the limit, $\frac{f(x + \Delta x) - f(x)}{\Delta x}$, is the slope of the so-called secant\footnote{A line is said to be \textit{secant} to a graph if it intersects the graph at two or more points.} line that passes through the points $(x, f(x))$ and $(x + \Delta x, f(x + \Delta x))$, since the ``rise over run'' ratio of this line is equal to the expression that is inside the above limit:
 
@@ -315,12 +317,6 @@ When we prefer to think of $f$ as changing in response to an input that is speci
 
 One oddity of this notation is that the letter in the ``denominator'' of the derivative on the left side of the above is irrelevant: we have $\frac{df}{da}\Big|_p = \frac{df}{db}\Big|_p = \frac{df}{dc}\Big|_p = ... = \frac{df}{dz}\Big|_p$.
 
-We also define vertical bar notation that is compatible with the operator notation:
-
-\begin{align*}
-    \Big(\frac{d}{dx}f(x)\Big)\Big|_p := f'(p).
-\end{align*}
-
 \subsubsection*{The most common abuse of Leibniz notation.}
 
 People often write $\frac{df}{dx}$ to mean either $f'$ or $f'(x)$. 
@@ -353,15 +349,50 @@ In this section- and book in general- I am not a stickler about stating the cond
 
 \subsection*{The power rule}
 
-The derivative formula that pretty much everyone learns first is the formula for $\frac{d}{dx} x^n$.
-
-[PROOF: TO-DO].
+The derivative formula that pretty much everyone learns first is the formula for $\frac{d}{dx} x^n$, when $n$ is an integer. We derive the formula by starting from the definition of the derivative, which tells us
 
 \begin{align*}
-    \frac{d}{dx} x^n = nx^{n - 1} \text{ for any integer $n$}
+    \frac{d}{dx} x^n = \lim_{h \rightarrow 0} \frac{(x + h)^n - x^n}{h}.
 \end{align*}
 
-This formula can be extended to work for real numbers, not just integers. (See the appendix for a proof.)
+To evaluate this limit, we need to figure out how to rewrite the product $(x + h)^n = \underbrace{(x + h) ... (x + h)}_{\text{$n$ times}}$ as a sum. The binomial theorem tells us how to do this; recall that it says
+
+\newcommand*{\permcomb}[4][0mu]{{{}_{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+
+\begin{align*}
+    (x + h)^n = \comb{n}{0} x^n h^0 + \comb{n}{1} x^{n - 1} h^1 + \comb{n}{2} x^{n - 2} h^2 ... + \comb{n}{n} x^0 h^n,
+\end{align*}
+
+where $\comb{n}{k} = \frac{n!}{k!(n - k)!}$ is the number of unique $k$-element subsets of an $n$-element set. Noting that $\comb{n}{0} = 1$ and $\comb{n}{1} = n$, we have
+
+\begin{align*}
+    \lim_{h \rightarrow 0} \frac{(x + h)^n - x^n}{h} &=
+    \lim_{h \rightarrow 0} \frac{x^n + nx^{n - 1}h + (\comb{n}{2} x^{n - 2} h^2 + ... + \comb{n}{n} x^0 h^n) - x^n}{h}.
+\end{align*}
+
+Now, the $x^n$ in the leftmost portion of the numerator cancels with the $-x^n$ at the rightmost portion of the numerator, so
+
+\begin{align*}
+    \lim_{h \rightarrow 0} \frac{(x + h)^n - x^n}{h} &= 
+    \lim_{h \rightarrow 0} \frac{nx^{n - 1}h + (\comb{n}{2} x^{n - 2} h^2 + ... + \comb{n}{n} x^0 h^n)}{h} \\
+    &=
+    \lim_{h \rightarrow 0} \Big( nx^{n - 1} + (\comb{n}{2}x^{n - 2}h + ... + \comb{n}{n}x^0h^{n - 1}) \Big) \\
+    &= \lim_{h \rightarrow 0} nx^{n - 1} + (\lim_{h \rightarrow 0} \comb{n}{2}x^{n - 2}h + ... + \lim_{h \rightarrow 0} \comb{n}{n}x^0 h^{n - 1}) \\
+    &= nx^{n - 1} + (0 + ... + 0) \\
+    &= nx^{n - 1}.
+\end{align*}
+
+Thus
+
+\begin{align*}
+    \frac{d}{dx} x^n = nx^{n - 1} \text{ for all $x$ and any integer $n$}.
+\end{align*}
+
+So, for example $\frac{d}{dx} x^2 = 2x$ and $\frac{d}{dx} x^3 = 3x^2$. 
+
+This formula can be extended to work for real numbers, not just integers\footnote{See the appendix for a proof.}:
 
 \begin{align*}
     \boxed
@@ -578,7 +609,7 @@ Using the fact that $\cos(x) = \sin(\frac{\pi}{2} - x)$, we can compute the deri
 \begin{align*}
     \frac{d}{dx} \cos(x) 
     &= \frac{d}{dx} \sin\Big(\frac{\pi}{2} - x\Big) 
-    = \cos\Big(\frac{\pi}{2} - x\Big) \frac{d(\frac{\pi}{2} - x)}{dx}
+    = \cos\Big(\frac{\pi}{2} - x\Big) \frac{d}{dx}\Big(\frac{\pi}{2} - x\Big)
     = -\cos\Big(\frac{\pi}{2} - x\Big) = -\sin(x). 
 \end{align*}
 
@@ -1282,28 +1313,28 @@ exactly as before.
 
 \begin{itemize}
     \item Is the ``reverse product rule''.
-    \item $(fg)' = f'g + g'f$. Integrate both sides to obtain $fg = \int f'g + g'f dx = \int f'g dx + \int g'f dx$. Now subtract one of the integrals on the right side to obtain either
+    \item $(fg)' = f'g + g'f$. Integrate both sides to obtain $fg = \int (f'g + g'f) = \int f'g + \int g'f$. Now subtract one of the integrals on the right side to obtain either
     
     \begin{align*}
-        \int f'g \spc dx = fg - \int fg' \spc dx
+        \int f'g = fg - \int fg'
     \end{align*}
     
     or
     
     \begin{align*}
-        \int fg' \spc dx = fg - \int f'g \spc dx.
+        \int fg' = fg - \int f'g.
     \end{align*}
     
     It doesn't matter which of the above equations you use, as swapping $f$ and $g$ in one of the equations yields the other. We will consider the second equation,
     
     \begin{align*}
-        \int fg' \spc dx = fg - \int f'g \spc dx.
+        \int fg' = fg - \int f'g.
     \end{align*}
     
-    Substitute $h = g'$, so $g = \int h \spc dx$. Thus
+    Substitute $h = g'$, so $g = \int h$. Then
     
     \begin{align*}
-        \int fh \spc dx = fH - \int f'H \spc dx, \text{ where } H = \int h \spc dx.
+        \int fh = fH - \int f'H, \text{ where } H = \int h.
     \end{align*}
     
     Rewriting the above with the letters $f, g$, and $G$, we have
@@ -1311,7 +1342,7 @@ exactly as before.
     \begin{align*}
         \boxed
         {
-            \int fg \spc dx = fG - \int f'G \spc dx, \text{ where } G = \int g \spc dx
+            \int fg = fG - \int f'G, \text{ where } G = \int g
         }
     \end{align*}
     
@@ -1332,7 +1363,7 @@ exactly as before.
         &\text{ where ``$dg(x) = g'(x) dx$'' and ``$df(x) = f'(x) dx$''}
     \end{align*}
 
-    Note that the meanings of $df(x)$ and $dg(x)$ in the above are \textit{not} the same as the meanings that make most sense\footnote{The definition $\int f(g(x)) dg(x) := (\int f)|_{g(x)}$, which was given earlier, is what makes most sense.} Therefore, \textit{please ignore this formula.} It is included only for completeness.
+    Note that the meanings of $df(x)$ and $dg(x)$ in the above are \textit{not} the same as the meanings that make most sense\footnote{The definition $\int f(g(x)) dg(x) := (\int f)|_{g(x)}$, which was given earlier, is what makes most sense.} Additionally, it is more work to memorize the above formula and the associated meanings of $df(x)$ and $dg(x)$ than it is to derive the above boxed formula from the product rule. Therefore, \textit{please ignore this formula.} It is included only for completeness.
 
     Unfortunately, the above formula is most commonly written with $u := f$ and $v := g$, in the even more sloppy notation ``${\int u \spc dv = uv - \int v \spc du}$''.
 \end{itemize}
