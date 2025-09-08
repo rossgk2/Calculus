@@ -2,7 +2,7 @@
 
 \subsection*{The power rule for real number exponents}
 
-Unfortunately, this proof requires knowledge of the calculus of exponential and logarithmic functions, which one does not know these concepts when they first encounter the power rule.
+Unfortunately, the following proof requires knowledge of the calculus of exponential and logarithmic functions, which one does not know when they first encounter the power rule.
 
 By the change of base for exponential functions, we have $x^c = e^{c\ln(x)}$. Thus
 
@@ -55,6 +55,87 @@ so $\frac{df_{a,c}}{db}\Big|_0 = ({}_c C_k k!) a^{c - k}$, and thus the Taylor s
 Letting $T_k$ denote the $k$th term of the Taylor series, we have $\lim_{k \rightarrow \infty} \Big| \frac{T_{k + 1}}{T_k} \Big| = \lim_{k \rightarrow \infty} \Big| \frac{n - k}{k + 1}a^{-1}b \Big|$. The ratio test states that if $a, b$ are such that $\lim_{k \rightarrow \infty} \Big| \frac{T_{k + 1}}{T_k} \Big| < 1$, then we have $f_{a,c}(b) = T(b)$. Using the previous expression for $\lim_{k \rightarrow \infty} \Big| \frac{T_{k + 1}}{T_k} \Big| < 1$ shows that we have $f_{a,c}(b) = T(b)$ when $|b| < |a|$.
 \end{comment}
 
+\subsection*{Single-variable calculus derivative notation}
+
+There are many types of derivative notation used in single-variable calculus. In this book, I wanted to establish notation for single-variable derivatives that is as intuitive and unambiguous as possible. The first criterion I prioritized for derivative notation was:
+
+\begin{enumerate}
+    \item The notation must be some sort of Leibniz notation, since the chain rule is most elegantly stated when it appears to be a cancellation of fractions.
+\end{enumerate}
+
+Without further ado, the first candidate notation is:
+
+\begin{align*}
+    \frac{df}{dx} &:= f' \\
+    \frac{dg}{df} &:= g' \circ f \text{ when $f$ is a function}.
+\end{align*}
+
+The chain rule is stated pleasingly in this notation as
+
+\begin{align*}
+    \frac{dg(f)}{dx} = \frac{dg}{df} \frac{df}{dx}.
+\end{align*}
+
+(Recall that $g(f)$ is alternative notation for $g \circ f$). 
+
+Unfortunately, this notation does have a problem. Recall the inverse derivative rule in prime notation:
+
+\begin{align*}
+    (f^{-1})'(x) = \frac{1}{(f' \circ f^{-1})(x)}.
+\end{align*}
+
+If we rewrite this rule in our first candidate notation, we obtain
+
+\begin{align*}
+    \frac{df^{-1}}{dx} = \frac{1}{\frac{df}{df^{-1}}}.
+\end{align*}
+
+Making the intuitive definition $\frac{dx}{df^{-1}} := \frac{1}{\frac{df^{-1}}{dx}}$ and taking the reciprocal of both sides of the above then yields the result
+
+\begin{align*}
+    \frac{dx}{df^{-1}} = \frac{df}{df^{-1}},
+\end{align*}
+
+which is not at all intuitive.
+
+The second candidate notation is:
+
+\begin{align*}
+    \frac{dg(f(x))}{df(x)} := g'(f(x)).
+\end{align*}
+
+With this notation, the chain rule is
+
+\begin{align*}
+    \frac{dg(f(x))}{dx} = \frac{dg(f(x))}{df(x)} \frac{dg(x)}{dx},
+\end{align*}
+
+which is again pleasing, although more cluttered than the statement of the chain rule in the first notation.
+
+The inverse derivative rule in the second notation is
+
+\begin{align*}
+    \frac{df^{-1}(x)}{dx} = \frac{1}{\frac{df(f^{-1}(x))}{df^{-1}(x)}}.
+\end{align*}
+
+If, similarly to before, we make the intuitive definition $\frac{dx}{df^{-1}(x)} := \frac{1}{\frac{df^{-1}(x)}{dx}}$ and take the reciprocal of both sides of the above, we now get an intuitive result:
+
+\begin{align*}
+    \frac{dx}{df^{-1}(x)} = \frac{df(f^{-1}(x))}{df^{-1}(x)}.
+\end{align*}
+
+This result is intuitive and easily remembered because the ``numerators'' of each side ($x$ and $f(f^{-1}(x))$) are equal.
+
+In addition to the above, I considered two more criteria when evaluating notations.
+
+\begin{enumerate}
+    \item[2.] The notation must be compatible with the preferred derivative notation for the $i$th partial derivative of a function $f:\R^n \rightarrow \R$, which is $\frac{\pd f(x_1, ..., x_i, ..., x_n)}{\pd x_i}$ and \textit{not} $\frac{\pd f}{\pd x_i}$. (The former is preferred because it requires no convention to establish that $x_i$ is to be treated as the $i$th argument of $f$, and thus works better when dealing with concrete examples: the meaning of $\frac{\pd f(a, b, c)}{da}$ is clear, while the meaning of $\frac{df}{da}$ requires context.)
+    \item[3.] The notation should allow for statements involving functions rather than functions evaluated on inputs.
+\end{enumerate}
+
+The first notation satisfies (3) but not (2), and the second notation satisfies (2) but not (3). Since the first notation also has the extremely glaring issue regarding the inverse derivative rule discussed above, the second notation is to me the clear choice.
+
+
 \subsection*{Conflation of functions}
 
 Suppose you are doing some calculations in which you know some quantity $f$ as a function of position $x$ and position $x$ as a function of time $t$. Formally, you have a function $f_x$ that maps position to quantity and a function $x_t$ that maps time to position. From these functions, we can obtain a function $f_t$ that maps time to quantity: we have $f_t(t) := f_x(x_t(t))$, i.e. $f_t = f_x \circ x_t$.
@@ -62,19 +143,26 @@ Suppose you are doing some calculations in which you know some quantity $f$ as a
 In this sort of situation, where it is clear from context that the particular letter of the alphabet  $x$ is associated with the input of $f$, the following definitions are implicitly understood:
 
 \begin{align*}
-    \frac{df}{dx} &:= \frac{df_x(x)}{dx} \\
-    \frac{df}{dt} &:= \frac{df_t(t)}{dt} = \frac{df_x(x(t))}{dt} = \frac{df_x(x(t))}{dx(t)} \frac{dx(t)}{dt}.
+    \frac{df(x)}{dx} &:= \frac{df_x(x)}{dx} \\
+    \frac{df(t)}{dt} &:= \frac{df_t(t)}{dt} = \frac{df_x(x(t))}{dt} = \frac{df_x(x(t))}{dx(t)} \frac{dx(t)}{dt}.
 \end{align*}
 
-That is, the meaning of $\frac{df}{d\alpha}$ depends on what letter of the alphabet is plugged in for $\alpha$.
-
-There is additionally the implicit definition that whenever we write $f$, we really mean $f_x$; that is, $f := f_x$. Employing this last- most confusing- definition, we can write the second equation of the above as
+And, outside this book ``in the wild'', where it is common to see $\frac{df}{dx}$ meaning both $f'$ and $f'(x)$, there are these additional implicitly understood definitions:
 
 \begin{align*}
-    \frac{df}{dt} := \frac{df(x(t))}{dx(t)} \frac{dx(t)}{dt}.
+    \frac{df}{dx} &:= f_x' \text{ or } f_x'(x) \\
+    \frac{df}{dt} &:= f_t' \text{ or } f_t'(t)
 \end{align*}
 
-We will not use this confusing convention in this book, but, being an extremely common convention, it deserves mention. 
+That is, the meaning of $\frac{df(\alpha)}{d\alpha}$ and $\frac{df}{d\alpha}$ depend on what letter of the alphabet is plugged in for $\alpha$.
+
+The usefulness of this convention is that, since it encourages thinking of functions first and leaving their inputs as an afterthought, it facilitates creativity in what exactly a function's input is imagined to be. For instance, in physics, the creative choice to think of velocity as being a function of position (rather than of time, which is more typical) lets us reinterpret force $F = ma = m\frac{dv}{dt}$ as $F = m\frac{dv}{dx}\frac{dx}{dt}$, which is very convenient for computing the integral of force with respect to displacement:
+
+\begin{align*}
+    \int F \spc dx = \int m \frac{dv}{dx} \frac{dx}{dt} dx = \int m \frac{dv}{dx} v \spc dx = \int mv \frac{dv}{dx} dx = \int mv \spc dv = \frac{1}{2}mv^2.
+\end{align*}
+
+We will not use this convention in this book because it is confusing. But, being an extremely common convention in physics, it deserves mention.
 
 \begin{comment}
 
@@ -201,85 +289,6 @@ Unfortunately, many calculus and physics textbooks conflate functions with funct
 
 \end{comment}
 
-\subsection*{Single-variable calculus derivative notation}
-
-There are many types of derivative notation used in single-variable calculus. In this book, I wanted to establish notation for single-variable derivatives that is as intuitive and unambiguous as possible. The first criterion I prioritized for derivative notation was:
-
-\begin{enumerate}
-    \item The notation must be some sort of Leibniz notation, since the chain rule is most elegantly stated when it appears to be a cancellation of fractions.
-\end{enumerate}
-
-Without further ado, the first candidate notation is:
-
-\begin{align*}
-    \frac{df}{dx} &:= f' \\
-    \frac{dg}{df} &:= g' \circ f \text{ when $f$ is a function}.
-\end{align*}
-
-The chain rule is stated pleasingly in this notation as
-
-\begin{align*}
-    \frac{dg(f)}{dx} = \frac{dg}{df} \frac{df}{dx}.
-\end{align*}
-
-(Recall that $g(f)$ is alternative notation for $g \circ f$). 
-
-Unfortunately, this notation does have a problem. Recall the inverse derivative rule in prime notation:
-
-\begin{align*}
-    (f^{-1})'(x) = \frac{1}{(f' \circ f^{-1})(x)}.
-\end{align*}
-
-If we rewrite this rule in our first candidate notation, we obtain
-
-\begin{align*}
-    \frac{df^{-1}}{dx} = \frac{1}{\frac{df}{df^{-1}}}.
-\end{align*}
-
-Making the intuitive definition $\frac{dx}{df^{-1}} := \frac{1}{\frac{df^{-1}}{dx}}$ and taking the reciprocal of both sides of the above then yields the result
-
-\begin{align*}
-    \frac{dx}{df^{-1}} = \frac{df}{df^{-1}},
-\end{align*}
-
-which is not at all intuitive.
-
-The second candidate notation is:
-
-\begin{align*}
-    \frac{dg(f(x))}{df(x)} := g'(f(x)).
-\end{align*}
-
-With this notation, the chain rule is
-
-\begin{align*}
-    \frac{dg(f(x))}{dx} = \frac{dg(f(x))}{df(x)} \frac{dg(x)}{dx},
-\end{align*}
-
-which is again pleasing, although more cluttered than the statement of the chain rule in the first notation.
-
-The inverse derivative rule in the second notation is
-
-\begin{align*}
-    \frac{df^{-1}(x)}{dx} = \frac{1}{\frac{df(f^{-1}(x))}{df^{-1}(x)}}.
-\end{align*}
-
-If, similarly to before, we make the intuitive definition $\frac{dx}{df^{-1}(x)} := \frac{1}{\frac{df^{-1}(x)}{dx}}$ and take the reciprocal of both sides of the above, we now get an intuitive result:
-
-\begin{align*}
-    \frac{dx}{df^{-1}(x)} = \frac{df(f^{-1}(x))}{df^{-1}(x)}.
-\end{align*}
-
-This result is intuitive and easily remembered because the ``numerators'' of each side ($x$ and $f(f^{-1}(x))$) are equal.
-
-In addition to the above, I considered two more criteria when evaluating notations.
-
-\begin{enumerate}
-    \item[2.] The notation must be compatible with the preferred derivative notation for the $i$th partial derivative of a function $f:\R^n \rightarrow \R$, which is $\frac{\pd f(x_1, ..., x_i, ..., x_n)}{\pd x_i}$ and \textit{not} $\frac{\pd f}{\pd x_i}$. (The former is preferred because it requires no convention to establish that $x_i$ is to be treated as the $i$th argument of $f$, and thus works better when dealing with concrete examples: the meaning of $\frac{\pd f(a, b, c)}{da}$ is clear, while the meaning of $\frac{df}{da}$ requires context.)
-    \item[3.] The notation should allow for statements involving functions rather than functions evaluated on inputs.
-\end{enumerate}
-
-The first notation satisfies (3) but not (2), and the second notation satisfies (2) but not (3). Since the first notation also has the extremely glaring issue regarding the inverse derivative rule discussed above, the second notation is to me the clear choice.
 
 \subsection*{Properties of exponential functions}
 
