@@ -32,9 +32,27 @@
 
 \subsection*{Introduction}
 
-One might think that it is best to start a study of multivariable calculus with the general definition of differentiability for functions $\R^n \rightarrow \R^m$. Let's think about this. The fullest understanding of this notion of differentiability involves an understanding that a function $\R^n \rightarrow \R^m$ may have directional derivatives defined in all directions but still fail to be differentiable, since general differentiability is equivalent to having directional derivatives defined in all directions \textit{and} having these directional derivatives vary linearly with the direction vector. In order to grasp this, one must understand directional derivatives of functions $\R^n \rightarrow \R^m$. To understand these generalized directional derivatives, one must understand what partial derivatives of functions $\R^n \rightarrow \R^m$ (e.g. $\frac{\boldsymbol{\pd} \ff(x_1, ..., x_i, ..., x_n)}{\boldsymbol{\pd} x_i}$). And to understand these generalized partial derivatives, one must understand the partial derivative of a scalar-valued function (e.g. $\frac{\pd f(x_1, ..., x_i, ..., x_n)}{\pd x_i}$), and the scalar derivative of a vector valued function (e.g. $\frac{d\ff(t)}{dt}$)!
+Let's compare two approaches to multivariable calculus:
 
-So, one could argue that all of these concepts are prerequisites for general differentiability. True, one could also argue that defining generalized directional derivatives and generalized partial partial derivatives doesn't really require that much motivation, but it is at least very reasonable to have introduced all of these concepts before reaching general differentiability. That's good, because it seems quite intuitive and natural to stumble on the more rudimentary concepts first.
+\begin{enumerate}
+    \item (General differentiability first). Some linear algebra is presented. Partial and directional directional derivatives of a function $\R^n \rightarrow \R^m$ is defined and general differentiability of functions $\R^n \rightarrow \R^m$ is discussed. Functions $\R \rightarrow \R^n$ and $\R^n \rightarrow \R$ are treated as special cases, and things such as the gradient $\nabla f$ are discussed.
+    \item (Elementary concepts first). Some linear algebra is presented. Functions $\R \rightarrow \R^n$ and $\R^n \rightarrow \R$ are discussed. The directional derivative of a function $\R^n \rightarrow \R^m$ is defined, and general differentiability of functions $\R^n \rightarrow \R^m$ is discussed.
+\end{enumerate}
+
+I used to think that general differentiability first was the better way, because the difference between general differentiability and the existence of directional derivatives is subtle enough that it should be established early on. I now better understand this difference, and think it's possible to correctly motivate general differentiability even after one has only been dealing with existence of partial derivatives for a long time. In fact, one could even argue that in order to properly understand this difference, one should have learned elementary concepts first!
+
+Let me explain. My increased understanding is due to learning that general differentiability is equivalent to having directional derivatives defined in all directions \textit{and} having these directional derivatives vary linearly with the direction vector. When one knows this, the difference between the existence directional derivatives and general differentiability is clear. I realized that, in order to grasp this clarifying fact, one must understand directional and partial derivatives of functions $\R^n \rightarrow \R^m$! So one could argue that having more prior experience with ``subconcepts'' like directional and partial derivatives of scalar-valued functions and scalar derivatives of vector-valued functions, could make understanding even easier.
+
+After further thought, though, I don't really buy this. The definitions of directional and partial derivatives for functions $\R^n \rightarrow \R^m$ seem pretty immediately understandable:
+
+\begin{align*}
+    \DD_\vv \ff|_\pp &:= \lim_{h \rightarrow 0} \frac{\ff(\pp + h\vv) - \ff(\pp)}{h} \\
+    \pd_i \ff &:= \DD_{\see_i} \ff.
+\end{align*}
+
+And when one considers that, since knowledge of some linear algebra (linear transformations, dot product, and cross product) is necessary to study planes, then approaches that centralize linear algebra (instead of using it at the beginning and end, but not middle) should probably be preferred, general differentiability again seems much better.
+
+But I think one argument in favor of elementary concepts first is just so powerful it can't be beaten. It's not that elementary concepts help understanding general differentiability so much, it's that they're \textit{so elementary} it feels unnatural to postpone them for so long! I can't imagine telling someone studying physics that they absolutely must understand general differentiability before studying trajectories or partial derivatives, for example. Those concepts are just too basic to not approach right away.
 
 \subsection*{Outline}
 
@@ -48,17 +66,18 @@ First, study functions $\R \rightarrow \R^n$.
 Next, study functions $\R^n \rightarrow \R$.
     
 \begin{itemize}
-    \item Define the directional derivative of $f:\R^n \rightarrow \R$ as $\frac{\pd f}{\pd \vv} \Big|_\pp := \frac{d (f \circ \xx)}{dt}\Big|_{t_0}$, where $\xx$ is a curve satisfying $\xx(t_0) = \pp$ and $\frac{d\xx(t)}{dt}\Big|_{t_0} = \vv$.
+    \item Define the directional derivative of $f:\R^n \rightarrow \R$ as $\frac{\pd f}{\pd \vv} \Big|_\pp := \frac{d (f \circ \xx)(t)}{dt}\Big|_{t_0}$, where $\xx$ is a curve satisfying $\xx(t_0) = \pp$ and $\frac{d\xx(t)}{dt}\Big|_{t_0} = \vv$.
     \begin{itemize}
         \item Prove that the directional derivative doesn't depend on the curve chosen.
     \end{itemize}
     \item Prove that the limit expression, $\frac{\pd f}{\pd \vv}\Big|_\pp = \lim_{h \rightarrow 0} \frac{f(\pp + h\vv) - f(\pp)}{h}$, of the directional derivative, follows.
-    \item For $f:\R^n \rightarrow \R$, define $\pd_i f := \frac{\pd f}{\pd \see_i}$.
+    \item For $f:\R^n \rightarrow \R$ and $\xx = (x_1, ..., x_n)^\top$, define $\frac{\pd f(\xx)}{\pd x_i} := \frac{\pd f}{\pd \see_i}\Big|_\xx$ and $\pd_i f := \left(\xx \mapsto \frac{\pd f(\xx)}{\pd x_i}\right)$ where $\xx = (x_1, ..., x_n)$.
     \begin{itemize}
-        \item Aside: for $\ff = (f_1, ..., f_n)^\top:\R \rightarrow \R^n$, define $\boldsymbol{\pd}_i \ff := (\pd_i f_1, ..., \pd_i f_n)^\top$.
+        \item Aside: for $\ff = (f_1, ..., f_n)^\top:\R \rightarrow \R^n$ and $\xx = (x_1, ..., x_n)^\top$, define $\frac{\boldsymbol{\pd} \ff(\xx)}{\boldsymbol{\pd} x_i} := (\frac{\pd f_1(\xx)}{\pd x_1}, ..., \frac{\pd f_n(\xx)}{\pd x_n})^\top$ and $\boldsymbol{\pd}_i \ff := \left(\xx \mapsto \frac{\pd \ff(\xx)}{\pd x_i}\right)$.
     \end{itemize}
-    \item Prove the chain rule for partial derivatives (often called ``the multivariable chain rule''), $\frac{d (f \circ \xx)(t)}{dt} =\sum_{i = 1}^n \frac{\pd f(\xx)}{\pd x_i} \frac{dx_i(t)}{dt}$.
-    \item Define $\nabla_\xx f|_\pp := (\frac{\pd f}{\pd x_1}\Big|_\pp, ..., \frac{\pd f}{\pd x_n}\Big|_\pp)^\top$, so that the multivariable chain rule can be restated as $\frac{\pd f}{\pd \vv} \Big|_\pp = (\underset{\xx}{\nabla} f)|_\pp \cdot \frac{d\xx(t)}{dt}\Big|_{t_0}= \nabla_\xx f|_\pp \cdot \vv$.
+    \item When we have $\xx:\R \rightarrow \R^n$ and $f:\R^n \rightarrow \R$ then we can obtain $f \circ \xx:\R \rightarrow \R$. Prove the multivariable chain rule, $\frac{d (f \circ \xx)(t)}{dt} =\sum_{i = 1}^n \frac{\pd f(\xx)}{\pd x_i} \frac{dx_i(t)}{dt}$.
+    \item Define $\nabla_\xx f(\xx) := (\frac{\pd f(\xx)}{\pd x_1}, ..., \frac{\pd f(\xx)}{\pd x_n})^\top$ and $\nabla f := \left( \xx \mapsto \nabla_\xx f(\xx) \right)$, so that the multivariable chain rule can be restated as $\frac{d(f \circ \xx)(t)}{dt}\Big|_\pp = (\nabla f)|_\pp \cdot \frac{d\xx(t)}{dt}$.
+    \item Prove that the directional derivative is $\frac{\pd f}{\pd \vv} \Big|_\pp = (\nabla f)|_\pp \cdot \frac{d\xx(t)}{dt}\Big|_{t_0}= \nabla f|_\pp \cdot \vv$.
     \item Remark that $(\vv, f) \mapsto \frac{\pd f}{\pd \vv} \Big|_\pp$ is linear in both arguments.
     \item Use the fact that $\frac{\pd f}{\pd \vv}\Big|_\pp = \nabla f|_\pp \cdot \vv$ to prove that $\nabla f$ is the direction of greatest increase in $f$, and (somewhat surprisingly) that $-\nabla f$ is the direction of greatest decrease in $f$.
 \end{itemize}
