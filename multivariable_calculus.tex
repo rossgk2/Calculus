@@ -8,26 +8,6 @@
     \item \textit{Calculus on Manifolds} by Michael Spivak
 \end{itemize}
 
-\subsection*{Lin alg teaser}
-
-\begin{itemize}
-    \item Copy-paste discussion of $\R^n$ over from linear algebra (or find a way to allow this and the linear algebra file to use same dependency)
-    \item Define linear function, emphasize that contains the vectors doesn't have to be $\R^n$, the set of ``vectors'' could be a set of functions, example- $\frac{d}{dx}$ and $\int$ are linear functions, but \textit{don't} define vector space
-    \item Matrix-vector product and matrix-matrix product
-    \item Dot product
-    \item Cross product
-    \begin{itemize}
-        \item For $\vv \in \R^3$, derive the matrix of the linear function $\ww \mapsto \vv \times \ww$ to explain the cross product formula.
-        \item Prove that cross product satisfies the ``right hand rule'' (i.e. puts up out of the plane spanned by $\vv$ and $\ww$ if the counterclockwise angle from $\vv$ to $\ww$ is $\leq \frac{\pi}{2}$) by checking it for the standard basis.
-        \begin{itemize}
-            \item Footnote: in the approach we've used to define the cross product, the right hand rule is imposed by deciding that we should have $\see_1 \times \see_2 = \see_3$, $\see_3 \times \see_1 = \see_2$, and $\see_2 \times \see_3 = \see_1$. When the cross product is defined in the best possible way, the right hand rule is not imposed by the mathematician- it is a natural consequence of other facts. I don't present this best possible way here because it requires knowledge of what are called \textit{determinants}. If you are interested, read [...my lin alg book...] for a presentation of the best possible way.
-            \item Point the reader to my linear algebra text for the reason as to why the right hand rule arises. It all starts with noticing that the ordered basis $\{\see_1, \see_2\}$ is rotationally equivalent to $\{-\see_2, \see_1\}$.
-        \end{itemize}
-    \end{itemize}
-\end{itemize}
-
-\newpage
-
 \section*{Differentiation}
 
 \subsection*{Introduction}
@@ -53,6 +33,27 @@ After further thought, though, I don't really buy this. The definitions of gener
 And when one considers that, since knowledge of some linear algebra (linear transformations, dot product, and cross product) is necessary to study planes, then approaches that centralize linear algebra (instead of using it at the beginning and end, but not middle) should probably be preferred, general differentiability again seems much better.
 
 But I think one argument in favor of elementary concepts first is just so powerful it can't be beaten. It's not that elementary concepts help understanding general differentiability so much, it's that they're \textit{so elementary} it feels unnatural to postpone them for so long! I can't imagine telling someone studying physics that they absolutely must understand general differentiability before studying trajectories or partial derivatives, for example. Those concepts are just too basic to not approach right away.
+
+\subsection*{On linear algebra}
+
+Actually, when I remember that integral multivariable calculus requires knowing about the determinant, it seems to me that an introduction to linear algebra should simply be a prerequesite for multivariable calculus. As alluded to before, the syllabus would be:
+
+\begin{itemize}
+    \item $\R^n$
+    \item Subspaces of $\R^n$; span, bases, linear independence
+    \item Linear functions $\R^n \rightarrow \R^m$ and the matrix-vector product (first as a linear combination of columns, then in terms of entries)
+    \begin{itemize}
+        \item Some recognition that $\frac{d}{dx}$ and $\int$ are linear functions (but avoid defining vector space!)
+    \end{itemize}
+    \item Composition of linear functions and the matrix-matrix product (first as a matrix with columns given by matrix vector products, then in terms of entries)
+    \item The dot product
+    \begin{itemize}
+        \item Intuition rather than formal proof should be used to justify facts about rotations and projections used to prove that the algebraic formula implies the geometric formula
+    \end{itemize}
+    \item The determinant
+    \item Intuitive presentation of orientation
+    \item The cross product
+\end{itemize}
 
 \subsection*{Outline}
 
