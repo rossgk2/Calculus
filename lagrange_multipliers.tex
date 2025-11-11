@@ -1,0 +1,70 @@
+\section*{Lagrange multipliers}
+
+The extreme values of function $f(x, y) \mapsto (x, y)$ subject to a constraint $g(x, y) = c$ occur at the points $(x, y)$ where the contour line of one of the function's cross sections is parallel to the countour line of the constraint curve. Since contour lines are perpendicular to gradients, they are parallel when gradients are parallel, and thus the constrained extremal value occurs for the $(x^*, y^*)$ and $\lambda \in \R$ such that
+
+\begin{align*}
+    (\nabla f)_{(x^*, y^*)} = \lambda (\nabla g)_{(x^*, y^*)}.
+\end{align*}
+
+This condition specifies only the directions of extreme value vectors. To completely specify the extreme value vectors, we must describe their positions. The constraint for that is
+
+\begin{align*}
+    g(x, y) = c.
+\end{align*}
+
+Overall, we have the system
+
+\begin{align*}
+    \begin{cases}
+        \nabla f = \lambda \nabla g \text{ for some $\lambda \in \R$} \\
+        g(x, y) = c \text{ for all $(x, y)$}
+    \end{cases}.
+\end{align*}
+
+Equivalently, 
+
+\begin{align*}
+    \nabla L = \mathbf{0}, \text{ where $L(x, y, \lambda) := f(x, y) - 
+    \lambda (g(x, y) - c)$ for some $\lambda \in \R$}.
+\end{align*}
+
+The variable $\lambda$ is called the \textit{Lagrange multiplier}.
+
+\subsubsection*{Characterization of the Lagrange multiplier}
+
+There is an interesting characterization of the value $\lambda^*$ taken on by the Lagrange multipler $\lambda$ at the extremum, which we obtain by thinking about what happens when we vary the constraint $c$.
+
+If the constraint $c$ changes to $c + dc$, then the old optimal solution $(x_{\text{old}}^*, y_{\text{old}}^*)$ also changes to a new optimal solution $(x_{\text{new}}^*, y_{\text{new}}^*)$. Using a first order multivariable Taylor approximation for $dg^* := g(x_{\text{new}}^*, y_{\text{new}}^*) - g(x_{\text{old}}^*, y_{\text{old}}^*)$, we have 
+
+\begin{align*}
+    dg^* &\approx (\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)} \cdot (\Delta x^*, \Delta y^*), \text{ where $(\Delta x^*, \Delta y^*) = (x_{\text{new}}^*, y_{\text{new}}^*) - (x_{\text{old}}^*, y_{\text{old}}^*)$}.
+\end{align*}
+
+Changing $c$ to $c + dc$ is the same\footnote{If $g(x_{\text{old}}^*, y_{\text{old}}^*) = c$ and $(x_{\text{new}}^*, y_{\text{new}}^*) = c + dc$ then $dg^* := g(x_{\text{new}}^*, y_{\text{new}}^*) - g(x_{\text{old}}^*, y_{\text{old}}^*) = (c + dc) - c = dc$.} as imposing $dg^* = dc$. We should also intuitively\footnote{This really requires proof.} have $(\Delta x^*, \Delta y^*) = \delta (\widehat{\nabla f})_{(x_{\text{old}}^*, y_{\text{old}}^*)} = \delta (\widehat{\nabla g})_{(x_{\text{old}}^*, y_{\text{old}}^*)}$ for some $\delta \in \R$ since $(\widehat{\nabla f})_{(x_{\text{old}}^*, y_{\text{old}}^*)} = (\widehat{\nabla g})_{(x_{\text{old}}^*, y_{\text{old}}^*)}$ is the direction of steepest ascent in $f$. Plugging this expression for $(\Delta x^*, \Delta y^*)$ into the above, we can quickly determine that $\delta = dg^*/||(\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)}|| = dc/||(\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)}||$, and so
+
+\begin{align*}
+    (\Delta x^*, \Delta y^*) = \frac{dc}{||(\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)}||} (\widehat{\nabla g})_{(x_{\text{old}}^*, y_{\text{old}}^*)}.
+\end{align*}
+
+Now that we've determined $(\Delta x^*, \Delta y^*)$, we can use a first order multivariable Taylor approximation for $df^* := f(x_{\text{new}}^*, y_{\text{new}}^*) - f(x_{\text{old}}^*, y_{\text{old}}^*)$:
+
+\begin{align*}
+    df^* &\approx (\nabla f)_{(x_{\text{old}}^*, y_{\text{old}}^*)} \cdot (\Delta x^*, \Delta y^*) \\
+    &= (\nabla f)_{(x_{\text{old}}^*, y_{\text{old}}^*)} \cdot \frac{dc}{||(\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)}||} (\widehat{\nabla g})_{(x_{\text{old}}^*, y_{\text{old}}^*)} \\
+    &= (\nabla f)_{(x_{\text{old}}^*, y_{\text{old}}^*)} \cdot \frac{dc}{||(\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)}||^2} (\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)} \\
+    &= \lambda (\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)} \cdot \frac{dc}{||(\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)}||^2} (\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)} \\
+    &= \lambda \frac{dc}{||(\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)}||^2} ||(\nabla g)_{(x_{\text{old}}^*, y_{\text{old}}^*)}||^2 \\
+    &= \lambda \spc dc
+\end{align*}
+
+So, $df^* = \lambda \spc dc$; we conclude that $\frac{df^*}{dc} = \lambda$. Of course, the argument leading to this wasn't fully rigorous (we didn't bound the error in the Taylor approximations, or rigorously prove that  $(\Delta x^*, \Delta y^*) = \delta (\widehat{\nabla f})_{(x_{\text{old}}^*, y_{\text{old}}^*)} = \delta (\widehat{\nabla g})_{(x_{\text{old}}^*, y_{\text{old}}^*)}$ for some $\delta \in \R$). But we can achieve more rigorous verification pretty easily:
+
+\begin{align*}
+    \frac{df^*}{dc} = \frac{\partial f}{\partial x}\frac{dx^*}{dc} + \frac{\partial f}{\partial y}\frac{dy^*}{dc}
+    = \lambda^* \frac{\partial g}{\partial x}\frac{dx^*}{dc} + \lambda^* \frac{\partial g}{\partial y}\frac{dy^*}{dc}
+    = \lambda^*\left(\frac{\partial g}{\partial x}\frac{dx^*}{dc} + \frac{\partial g}{\partial y}\frac{dy^*}{dc}\right)
+    = \lambda^* \frac{dg}{dc}
+    = \lambda^* \frac{d(c)}{dc}
+    = \lambda^*.
+\end{align*}
+

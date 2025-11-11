@@ -688,69 +688,314 @@ This definition is especially intuitive because it can be remembered by noticing
 
 \newpage
 
-\section*{Derivatives of exponential and logarithmic functions}
+\section*{Exponential and logarithmic functions}
 
 In precalculus, you should have learned about the functions $x \mapsto b^x$ and $x \mapsto \log_b(x)$. You may have even learned about the number $e$, and about the natural logarithm $\ln := \log_e$. To properly understand these concepts, especially the concept of $e$, we need the tools of calculus.
 
 \subsection*{Definition of exponential functions}
 
-Let's first review what an exponential function such as $x \mapsto b^x$ really is.
+Let's first review what the exponential function $x \mapsto b^x$ really is. 
 
-When $x$ is a positive integer, we define $b^x := \underbrace{b \cdot ... \cdot b}_{\text{$x$ times}}$. When $x$ is a negative integer, we define $b^x := \frac{1}{b^{-x}}$. When $x$ is an arbitrary integer, we define $b^{\frac{1}{x}}$ to be such that $f(b) = b^{\frac{1}{x}}$ is the inverse function to $g(b) = b^x$ on the domain $b > 0$; that is, we define $b^{\frac{1}{x}}$ to be such that $f(g(b)) = (b^x)^{\frac{1}{x}} = b = (b^{\frac{1}{x}})^x = g(f(b))$. Sometimes, $b^{\frac{1}{x}}$ is instead written as $\sqrt[x]{b}$.
+\subsubsection*{Integer exponents}
 
-[see precalc text for more in depth discussion of why these definitions are chosen]
+When $n$ is a positive integer, we define the notion of \textit{exponentiating} a real number $b$:
 
-What about when $x$ is an real number, and is thus potentially irrational, i.e., inexpressible as a ratio of two integers? Well, intuitively, one would expect that if $x_{\ell}$ and $x_r$ are rational numbers with $x_{\ell} < x < x_r$, then $b^{x_{\ell}} < b^x < b^{x_r}$. If we could just keep finding rational $x_{\ell}$ and $x_r$ that are closer and closer to $x$, then it would make sense to call the limit approached by $b^{x_{\ell}}$ and $b^{x_r}$ by the name ``$b^x$''.
+\begin{align*}
+    b^n := \underbrace{b \cdot ... \cdot b}_{\text{$n$ times}}.
+\end{align*}
 
-Fortunately, it is indeed a fact that for every real number $x$ there is a sequence $(x_n)$ of rational numbers converging to $x$. Thus, as suggested above, we \textit{define} $b^x$ to be the limit that is approached by $b^{x_n}$, where the $x_n$ converge to $x$:
+The number $b$ is called the \textit{base}, and $n$ is called the \textit{exponent}. Using this definition, we can derive three ``properties of exponents'' for positive integers $n, m$:
+
+\begin{align*}
+    b^n b^m &= b^{n + m} \\
+    \frac{b^n}{b^m} &=
+    \begin{cases}
+        b^{n - m} & n > m \\
+        \frac{1}{b^{n - m}} & n < m \\
+        1 & n = m
+    \end{cases} \\
+    (b^n)^m &= b^{nm}
+\end{align*}
+
+The second property could use some simplification. If we define $b^0 := 1$ for all $b$, then the $n = m$ case of the piecewise function can be absorbed into an $n \geq m$ case:
+
+\begin{align*}
+    \frac{b^n}{b^m} =
+    \begin{cases}
+        b^{n - m} & n \geq m \\
+        \frac{1}{b^{n - m}} & n < m
+    \end{cases}.
+\end{align*}
+
+And if, when $n$ is a positive integer, we define $b^{-n}$ to be $b^{-n} := \frac{1}{b^n}$, then the above two cases consolidate into one general formula:
+
+\begin{align*}
+    \frac{b^n}{b^m} = b^{n - m} \text{ for all integers $n, m$}.
+\end{align*}
+
+The definitions $b^0 := 1$ and $b^{-n} := \frac{1}{b^n}$ actually make the previously stated properties of exponents true for \textit{all} integers $n, m$, not just \textit{positive} integers $n, m$:
+
+\begin{align*}
+    b^n b^m &= b^{n + m} \\
+    \frac{b^n}{b^m} &= b^{n - m} \\
+    (b^n)^m &= b^{nm}.
+\end{align*}
+
+In this more general formulation, the second property is a special case of the first\footnote{We have $\frac{b^n}{b^m} = b^n b^{-m} = b^{n + (-m)} = b^{n - m}$.} Thus there are really just \textit{two} properties of exponents:
+
+\begin{align*}
+    b^n b^m &= b^{n + m} \\
+    (b^n)^m &= b^{nm}.
+\end{align*}
+
+\subsubsection*{Rational exponents}
+
+Now that we've handled integer exponents, we generalize to exponents that are rational numbers, i.e., exponents that are ratios of integers. One way of stepping towards a definition of $b^x$ when $x$ is a ratio of integers, $x = \frac{m}{n}$, is to first handle the special case when $m = 1$, and figure out what $b^{\frac{1}{n}}$ should mean when $n$ is an integer.
+
+If we eventually want a version of second of the above two properties, $(b^x)^y = b^{xy}$, to hold for all real numbers $b$ and all rational numbers $x, y$, then we would need to have
+
+\begin{align*}
+    \text{``}(b^n)^{\frac{1}{n}} = b \text{ for all real numbers $b$ and all integers $n$}.\text{''}
+\end{align*}
+
+We take this condition as inspiration and simply \textit{impose} that it be the defining characteristic of $b^{\frac{1}{n}}$. Formally, what we are doing is defining for each $n$ a function $f_n$ by $f_n(b) = b^n$, and then defining $b^{\frac{1}{n}}$ to be special notation for $f_n^{-1}$. 
+
+In order for this imposition to be actually valid, though, we need to be sure that the inverse $f_n^{-1}$ exists! We need $f_n$ to be one-to-one, and we need $f_n$ to map to all numbers $c$ for which we would attempt to evaluate $f_n^{-1}(c)$. Fortunately, requiring $b > 0$, i.e., restricting $f_n$ to the domain $(0, \infty)$. solves both problems. The restriction of $f_n$ to the domain $(0, \infty)$ is one-to-one for all $n$. And for every $n$, the restriction of $f_n$ to the domain $(0, \infty)$ maps to every positive number. (So, if we accept that we can only apply $f_n^{-1}$ to positive numbers, the second issue is solved.)
+
+Thus, the implicit definition of $b^{\frac{1}{n}}$ we end up with includes the constraint $b > 0$:
+
+\begin{align*}
+    (b^n)^{\frac{1}{n}} = b \text{ for all $b > 0$ and all integers $n$}.
+\end{align*}
+
+There is even more special notation. Sometimes, $b^{\frac{1}{n}}$ is instead written as $\sqrt[n]{b}$:
+
+\begin{align*}
+    \sqrt[n]{b} := b^{\frac{1}{n}}
+\end{align*}
+
+In this notation, $\sqrt[n]{b}$ is called the \textit{$n$th root of $b$}. Please remember, though, that roots are just special notation, and no more than that. It cannot be \textit{proved} that $\sqrt[n]{b} = b^{\frac{1}{n}}$, for this statement is a \textit{definition}.
+
+Now, when $x$ is a rational number, $x = \frac{m}{n}$, we define $b^x = b^{\frac{m}{n}}$ in terms of previously existing notions:
+
+\begin{align*}
+    b^x = b^{\frac{m}{n}} := (b^m)^{\frac{1}{n}}.
+\end{align*}
+
+And we can verify that the familiar properties of exponents hold for exponents $x, y$ that are rational numbers\footnote{To prove these properties, one should first prove that they hold when (1) $x, y$ are rational numbers with a numerator of $1$ and when (2) $x, y$ are rational numbers with a denominator of $1$. We already know (2).}:
+
+\begin{align*}
+    b^x b^y &= b^{x + y} \\
+    (b^x)^y &= b^{xy}.
+\end{align*}
+
+Notice that the second property implies a useful identity:
+
+
+\begin{align*}
+    (b^m)^\frac{1}{n} = (b^\frac{1}{n})^m \iff \sqrt[n]{b^m} = (\sqrt[n]{b})^m.
+\end{align*}
+
+\subsubsection*{Real exponents}
+
+When $x$ is an real number, and is thus potentially irrational, i.e., inexpressible as a ratio of two integers, how should we define $b^x$? 
+
+Well, intuitively, one would expect that if $x_{\ell}$ and $x_r$ are rational numbers with $x_{\ell} < x < x_r$, then $b^{x_{\ell}} < b^x < b^{x_r}$. If we could just keep finding rational $x_{\ell}$ and $x_r$ that are closer and closer to $x$, then it would make sense to call the limit approached by $b^{x_{\ell}}$ and $b^{x_r}$ by the name ``$b^x$''.
+
+Fortunately, it is indeed a fact that for every real number $x$ there is a sequence $(x_n)$ of rational numbers converging to $x$. Thus, as alluded to, we \textit{define} $b^x$ to be the limit that is approached by $b^{x_n}$, where the $x_n$ converge to $x$:
 
 \begin{empheq}[box = \fbox]{align*}
     b^x := \lim_{n \rightarrow \infty} b^{x_n}, \text{ where $(x_n)$ is any sequence of rational numbers with $\lim_{n \rightarrow \infty} x_n = x$}
 \end{empheq}
 
-For this definition to be valid, we have to show that this limit exists for all $b$ and that, given two distinct sequences $(x_n)$ and $(y_n)$ of rational numbers that converge to $x$, it doesn't matter which sequence we use to compute $b^x$, i.e., $\lim_{n \rightarrow \infty} b^{x_n} = \lim_{n \rightarrow \infty} b^{y_n}$. [See appendix]
+For this definition to be valid, we have to show that this limit exists for all $b$ and that, given two distinct sequences $(x_n)$ and $(y_n)$ of rational numbers that converge to $x$, it doesn't matter which sequence we use to compute $b^x$, i.e., $\lim_{n \rightarrow \infty} b^{x_n} = \lim_{n \rightarrow \infty} b^{y_n}$. [See appendix.]
 
-\subsubsection*{Properties of exponential functions}
+\subsubsection*{Properties of exponents}
 
-We now discuss some important properties of exponential functions. For all real numbers $b, x, y$, we have:
+The familiar properties of exponents hold for real number exponents $x, y$:
+
+\begin{align*}
+    b^{x + y} &= b^x b^y \\
+    (b^x)^y &= b^{xy}
+\end{align*}
+
+We also gain an additional property:
 
 \begin{itemize}
-    \item $b^{x + y} = b^x b^y$
-    \item $(b^x)^y = b^{xy}$
     \item When $b > 0$, the function $x \mapsto b^x$ is continuous, one-to-one, and maps to all positive real numbers.
 \end{itemize}
 
-We already know from precalculus that the first two properties hold for rational $x$ and $y$. In the appendix, we use the above definition of $b^x$ to show that they hold for real numbers $x$ and $y$. We also show the third property in the appendix.
-
-Note that the third property breaks down when $b < 0$: when $b < 0$, the function $x \mapsto b^x$ is not continuous\footnote{For integer $n, m$, we have that $b^{\frac{n}{m}}$ is positive when $n$ is even and that $b^{\frac{n}{m}}$ is negative when $n$ is odd and $m$ is odd (if $n$ is odd and $m$ is even, then $b^n$ is negative and so $b^{\frac{m}{n}}$ is undefined). Thus $x \mapsto b^x$ oscillates wildly between positive and negative numbers when $b < 0$ in an arbitrary small window of inputs- it cannot be continuous.}, and does not map to every positive real number\footnote{$b^x$ cannot be a positive odd power of $b$ when $b < 0$}.
+See the appendix for a proof of these three properties. Also, note that the third property breaks down when $b < 0$. When $b < 0$, the function $x \mapsto b^x$ is not continuous\footnote{For integer $n, m$, we have that $b^{\frac{n}{m}}$ is positive when $n$ is even and that $b^{\frac{n}{m}}$ is negative when $n$ is odd and $m$ is odd (if $n$ is odd and $m$ is even, then $b^n$ is negative and so $b^{\frac{m}{n}}$ is undefined). Thus $x \mapsto b^x$ oscillates wildly between positive and negative numbers when $b < 0$ in an arbitrary small window of inputs- it cannot be continuous.}, and does not map to every positive real number\footnote{Positive real numbers of the form $b^n$, where $n$ is an odd number, cannot be mapped to by $x \mapsto b^x$ when $b < 0$}.
 
 \subsection*{Definition of logarithms}
 
-[since $x \mapsto b^x$ is one-to-one, it has an inverse. we call the inverse $\log_b$. since $b^0 = 1$ and $\lim_{x \rightarrow -\infty} = 0$ then $\log_b(1) = 0$ and $\lim_{x \rightarrow 0} \log_b(x) = - \infty$.]
+We just learned how the function $x \mapsto b^x$ is relatively nice when $b > 0$. Let's take a look at it for some representative value of $b > 0$, say $b = 5$:
 
-$\log_b$ is defined to be the inverse function to $x \mapsto b^x$. So $\log_b$ satisfies $\log_b(b^x)) = x = b^{\log_b(x)}$.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = center,
+    xlabel = {$x$},
+    ylabel = {$y$},
+    xmin = -10, xmax = 10,
+    ymin = 0, ymax = 10,
+    xtick = {-10,-9,...,10},
+    ytick = {0,1,...,10},
+    width = 12cm,
+    height = 6cm,
+    samples = 200,
+    domain = -10:2.5
+]
+\addplot[blue, thick] {5^x};
+\end{axis}
+\end{tikzpicture}
+\end{center}
 
-\subsubsection*{$\log_b$ when $b < 0$}
+Since $x \mapsto b^x$ is one-to-one, we can take its inverse. It helps to be a little more explicit, and define $f_b$ by $f_b(x) = b^x$, because the inverse $f_b^{-1}$ has a special name. We call $f_b^{-1}$ the \textit{logarithm of base $b$}, and we use the notation $\log_b := f_b^{-1}$.
 
-When $b < 0$, the function $\log_b$ is kind of nasty.
+Since $\log_b$ is the inverse of $x \mapsto b^x$, its graph is the reflection of the graph of $x \mapsto b^x$ about the line $y = x$:
 
-[TO DO]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = center,
+    xlabel = {$x$},
+    ylabel = {$y$},
+    xmin = -10, xmax = 10,
+    ymin = -10, ymax = 10,
+    xtick = {-10,-9,...,10},
+    ytick = {-10,-9,...,10},
+    width = 12cm,
+    height = 12cm,
+    samples = 1000,
+    legend pos = north west,
+    title = {Plot of $x \mapsto b^x$ and $x \mapsto \log_b(x)$, $b = 5$},
+]
+\addplot[blue, thick, domain=-10:2.5] {5^x};
+\addplot[red, thick, domain=0.00001:10] {ln(x)/ln(5)};
+\addplot[gray, dashed, domain=-10:10] {x};
+\legend{$x \mapsto b^x$, $x \mapsto \log_b(x)$, $x \mapsto x$}
+\end{axis}
+\end{tikzpicture}
+\end{center}
 
-For this reason, we will only consider $\log_b$ when $b > 0$
+Notice:
+
+\begin{itemize}
+    \item Since the domain and range of $x \mapsto b^x$ are $(-\infty, \infty)$ and $(0, \infty)$, respectivey, the domain and range of $\log_b$ are $(0, \infty)$ and $(-\infty, \infty)$, respectively. 
+    \item Since $b^0 = 1$, then $\log_b(1) = 0$.
+    \item Since $\lim_{x \rightarrow -\infty} = 0$, then $\lim_{x \rightarrow 0} \log_b(x) = -\infty$.
+\end{itemize}
+
+We also have the algebraic relationship
+
+\begin{align*}
+    \log_b(b^x) = x = b^{\log_b(x)} \text{ for all $x > 0$ and $b > 0$}.
+\end{align*}
+
+This is simply a restatement of the fact $f_b^{-1}(f_b(x)) = x = f_b(f_b^{-1}(x))$ for all $x > 0$ and $b > 0$.
 
 \subsubsection*{Properties of logarithms}
 
-Once it is shown that the above ``Properties of exponential functions'' hold for real numbers, it is easy to show that the following corresponding properties of logarithms immediately hold. For all real numbers $b, x, y > 0$, we have:
+Once it is shown that the above ``Properties of exponents'' hold for real numbers, it is easy to show that the following corresponding properties of logarithms immediately hold. For all real numbers $b, x, y > 0$, we have:
 
 \begin{itemize}
-    \item $\log_b(xy) = \log_b(x) + \log_b(y)$
-    \item $\log_b(x^y) = y\log_b(x)$
-    \item $x \mapsto \log_b(x)$ is continuous, one-to-one, and maps to \textit{all} real numbers.
+    \item $\log_b(xy) = \log_b(x) + \log_b(y)$ for all $x, y > 0$ and $b > 0$
+    \item $\log_b(x^y) = y\log_b(x)$ for all $x, y > 0$ and $b > 0$
+    \item When $b > 0$, the function $x \mapsto \log_b(x)$ is continuous, one-to-one, and maps to all real numbers.
 \end{itemize}
 
-[For intuition that helps with interpreting what these properties are saying, see precalc text.]
+While the first property first property is easy enough to \textit{prove}, it's more difficult to understand. See the next section for a good interpretation.
 
-Note, we require $b > 0$ so that the third bullet point of ``Properties of exponential functions'' is true, as, if \textit{that} bullet point is true, then the third bullet point of the immediate above must be true too. We require $x, y > 0$ because $x, y$ are elements of the range of $x \mapsto b^x$ (the range of $x \mapsto b^x$ is the positive real numbers).
+For the second property- notice that, for nonnegative values of $y$, it is an immediate consequence of the first property. Since $\log_b(\frac{1}{x}) = -\log_b(x) \iff \frac{1}{x} = b^{-\log_b(x)} \iff \frac{1}{x} = (b^{\log_b(x)})^{-1} = x^{-1} \iff \frac{1}{x} = \frac{1}{x}$, it holds for $y = -1$. From here the first property can be applied again to prove the second property for all integer $y$. And from here, it is simple enough to generalize the second property to all rational $y$. Once we know the second property is true for all rational $y$, the continuity of $\log_b$ when $b > 0$ forces it to be true for all real numbers $y$.
+
+The third property is just straightforwardly a rephrasing of the corresponding property for exponential functions.
+
+\subsubsection*{Why $\log_b(xy) = \log_b(x) + \log_b(y)$}
+
+Here's an explanation of $\log_b(xy) = \log_b(x) + \log_b(y)$. Consider that if $f_C(x) = C b^x$, then $f_C^{-1}(x) = \log_b(\frac{x}{C})$. We can interpret $f_C$ as describing the exponential growth of some quantity, where the initial amount of that quantity is $C$ (since $f(0) = Cb^0 = C$). Since $f_C^{-1}$ is the inverse to $f$, we can interpret $f_C^{-1}(x)$ as describing the amount of time needed to produce $x$ amount of the quantity, assuming that the initial amount of the quantity was $C$ and that the quantity grows by a multiplicative factor of $b$ for every $1$ unit of time:
+
+\begin{align*}
+    \text{time to grow from $C$ to $x$} = \log_b\left(\frac{x}{C}\right).
+\end{align*}
+                
+Then, we can ask: how much time would it take to produce an amount $xy$ of the quantity, given that we are starting with an initial amount $1$? There are two ways to grow to $xy$. We can either have the quantity grow from $1$ to $x$ and then from $x$ to $xy$, or just have the quantity grow from $1$ to $xy$:
+
+\begin{align*}
+    &(\text{time to grow from $1$ to $x$}) + (\text{time to grow from $x$ to $xy$}) =     (\text{time to grow from $1$ to $xy$}) \\
+    &\log_b\left(\frac{x}{1}\right) + \log_b\left(\frac{xy}{x}\right) = \log_b\left(\frac{xy}{1}\right) \\
+    &\log_b(x) + \log_b(y) = \log_b(xy)
+\end{align*}
+
+There's additional insight to be had here. Since we treat the denominator $C$ as the initial amount, then we see that the time it takes to grow the quantity by a multiplicative factor of $u$ is always the same: this is formally expressed by the fact that $f^{-1}_{u_n}(u_{n + 1}) = \log_b(\frac{u^{n + 1}}{C u^n}) = \log_b(\frac{u}{C})$. We see that, specifically, the amount of time to grow the quantity by the multiplicative factor of $u$ is $\log_b(\frac{u}{C})$, which is the amount of time it takes to grow the quantity from $C$ to $u$.
+
+\subsubsection*{Why ``logarithm''?}
+
+You may be curious why the inverse of $x \mapsto b^x$ is called the ``logarithm''. It's quite a strange name.
+
+The reason is that logarithms were first discovered in 1614, far before computers automated away the doing of arithmetic. Mathematicians needed a computational aid to help them multiply large numbers. Since $x \mapsto \log_b(x)$ is a relatively slowly increasing function of $x$, and since $\log_b(xy) = \log_b(x) + \log_b(y)$, logarithms allowed the conversion of multiplication of large numbers into addition of much smaller numbers.
+
+Since logarithms were the perfect tool for the time, mathematicians were in the habit of thinking about the reorganized number line that results from applying the logarithm to every number in the ``original'' number line. If we apply $\log_b$ for some $b > 0$ to the entire real number line, then numbers which are multiplicative factor apart in the ``original'' number line are now an additive difference apart in the reorganized number line. That is, constant ratios between numbers in the ``original'' number line correspond to constant differences between numbers in the reorganized line:
+
+\begin{align*}
+    \frac{x}{y} = c \iff \log_b(x) - \log_b(y) = c.
+\end{align*}
+
+Mathematicians called numbers in the new number line \textit{logarithms}, since this means ``ratio-number'' in Greek.
+
+\subsubsection*{How to use logarithm tables}
+
+Specifically, mathematicians had tables of precomputed logarithm values, like this:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+    \hline
+    \textbf{$x$} & \textbf{$\log_{10}(x)$} \\
+    \hline
+        1.0000 & 0.0000 \\
+    \hline
+        1.0005 & 0.0022 \\
+    \hline
+        \vdots & \vdots \\
+    \hline
+        7.0065 & 0.8455 \\
+    \hline
+    \vdots & \vdots \\
+    \hline
+        1234 & 3.0913 \\
+    \hline
+    \vdots & \vdots \\
+    \hline
+        5678 & 3.7542 \\
+    \hline
+\end{tabular}
+\label{tab:sample}
+\end{table}
+
+To multiply two large numbers, like 1234 and 5678, one would first use logarithms to convert multiplication into addition:
+
+\begin{align*}
+    1234 \cdot 5678 &= 10^{\log_{10}(1234 \cdot 5678)} = 10^{\log_{10}(1234) + \log_{10}(5678)}.
+\end{align*}
+
+Then, one would use the table to approximate the logarithms in the sum. From the table, we can see $\log_{10}(1234) \approx 3.0913$ and $\log_{10}(5678) \approx 3.7542$, so
+
+\begin{align*}
+    10^{\log_{10}(1234) + \log_{10}(5678)} \approx 10^{3.0913 + 3.7542} = 10^{6.8455}.
+\end{align*}
+
+In all, we have
+
+\begin{align*}
+    1234 \cdot 5678 \approx 10^{6.8455}.
+\end{align*}
+
+To complete the computation, we express $10^{6.8455}$ as $10^{6 + 0.8455} = 10^{0.8455} \cdot 10^6$. We leave the whole number power of $10$, which is $10^6$ in this case, alone, and consider it to be fully simplified. The exponent between $0$ and $1$, which is $0.8455$ in this case, is what we focus on. To compute $10^{0.8455}$, we just take advantage of the fact that $\log_{10}(10^{0.8455}) = 0.8455$, and look in the output column of the logarithm table for the exponent $0.8455$; the value of $10^{.08455}$ will be in the input column of the same row. Reading from the table in this way, we have
+
+\begin{align*}
+    1234 \cdot 5678 \approx 10^{6.8455} = 10^{0.8455} \cdot 10^6 \approx 7.0065 \cdot 10^6.
+\end{align*}
 
 \subsection*{Changes of base}
 
@@ -809,15 +1054,15 @@ Notice that the limit in this last expression can be rewritten:
 Thus, the derivative of $b^x$ with respect to $x$ is
 
 \begin{align*}
-   \frac{d}{dx} b^x = \Big( \frac{d}{dx} b^x \Big)\Big|_0 b^x.
+   \frac{d}{dx} b^x = \Big( \frac{d}{dx} b^x \Big)\Big|_0 b^x = c(b) b^x, \text{ where $c(b) = \Big( \frac{d}{dx} b^x \Big)\Big|_0$}.
 \end{align*}
 
-That is, the derivative of $b^x$ with respect to $x$ is some constant times $b^x$. In order to obtain a more useful expression for $\frac{d}{dx} b^x$, we must evaluate the expression $\Big( \frac{d}{dx} b^x \Big)\Big|_0$. A natural way to do so is to first consider the $b$ for which\footnote{Does such a $b$ even exist? Does $\Big( \frac{d}{dx} b^x \Big)\Big|_0 = \lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ even converge for all $b$? The answer to both questions is yes, but showing so is quite technical.} we have $\Big( \frac{d}{dx} b^x \Big)\Big|_0 = 1$.
+That is, the derivative of $b^x$ with respect to $x$ is the evaluation of some function at $b$, times $b^x$. In order to obtain a more useful expression for $\frac{d}{dx} b^x$, we must evaluate the expression $c(b)$. A natural way to do so is to first consider the $b$ for which\footnote{Does such a $b$ even exist? Does $\Big( \frac{d}{dx} b^x \Big)\Big|_0 = \lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ even converge for all $b$? The answer to both questions is yes, but showing so is quite technical.} we have $c(b) = 1$.
 
-For the sake of having concrete notation, we will \textit{define} $e$ to be the real number such that $\Big( \frac{d}{dx} e^x \Big)\Big|_0 = 1$. Then
+For the sake of having concrete notation, we will \textit{define} $e$ to be the real number such that $c(e) = 1$. Then
 
 \begin{align*}
-    \frac{d}{dx} e^x = \Big( \frac{d}{dx} e^x \Big)\Big|_0 e^x = 1 \cdot e^x = e^x.
+    \frac{d}{dx} e^x = c(e) e^x = 1 \cdot e^x = e^x.
 \end{align*}
 
 Now, we use change of base for exponential functions in order to determine $\frac{d}{dx} b^x$ by making use of the fact that we know the derivative of $e^x$. We have
