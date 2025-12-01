@@ -156,6 +156,71 @@ Now we state rules about $\DD \ff|_\pp$.
     and that the ``main difficulty in deriving expressions for $\int_C f$ will be determining $C \cap (\{x\} \times B)$ for $x \in A$''. [I think that by ``determining $C \cap (\{x\} \times B)$ for $x \in A$'', Spivak means ``determining inequalities in $x, y$ that describe the $C \cap (\{x\} \times B)$.]
 \end{theorem}
 
+We can use Fubini's theorem to change the order of integration of integrals over nonrectangular regions by interpreting such integrals to be integrals over rectangular regions. For this purpose, define a function $\Theta$ on predicates to return $1$ when the input predicate is true and $0$ when the input predicate is false. We have the following examples:
+
+\begin{example}
+    \begin{align*}
+        \int_{-1}^0 \left( \int_{-1}^y f(x, y) dx \right) dy &= \int_{-1}^0 \left( \int_{-1}^0 \Theta(x \leq y) f(x, y) dx \right) dy \\
+        &= \int_{-1}^0 \int_{-1}^0 \Theta(x \leq y) f(x, y) dx \spc dy \\
+        &= \int_{-1}^0 \int_{-1}^0 \Theta(y \geq x) f(x, y) dx \spc dy \\
+        &= \int_{-1}^0 \int_{-1}^0 \Theta(y \geq x) f(x, y) dx \spc dy \text{ by Fubini's theorem} \\
+        &= \int_{-1}^0 \left( \int_{-1}^0 \Theta(y \geq x) f(x, y) dy \right) dx \\
+        &= \int_{-1}^0 \int_x^0 f(x, y) dy \spc dx
+    \end{align*}
+
+    The key insight here is to notice that $\Theta(x \geq y) = \Theta(y \geq x)$. (This is likely equivalent to ``determining $C \cap (\{x\} \times B)$ for $x \in A$'' as mentioned by Spivak.)
+\end{example}
+
+\begin{example}   
+    \begin{align*}
+        \int_0^8 \int_{\sqrt[3]{y}}^2 f(x, y) dx \spc dy &= \int_0^8 \left( \int_0^2 \Theta(x \geq \sqrt[3]{y}) f(x, y) dx \right) dy \\
+        &= \int_0^8 \int_0^2 \Theta(x \geq \sqrt[3]{y}) f(x, y) dx \spc dy \\
+        &= \int_0^8 \int_0^2 \Theta(y \leq x^3) f(x, y) dy \spc dx \\
+        &= \int_0^8 \int_0^2 \Theta(y \leq x^3) f(x, y) dx \spc dy \text{ by Fubini's theorem} \\
+        &= \int_0^2 \left( \int_0^8 \Theta(y \leq x^3) f(x, y) dy \right) dx \\
+        &= \int_0^2 \left( \int_0^{x^3} f(x, y) dy \right) dx \\
+        &= \int_0^2 \int_0^{x^3} f(x, y) dy \spc dx
+    \end{align*}
+
+    The key insight here is to notice that $\Theta(x \geq \sqrt[3]{y}) = \Theta(y \leq x^3)$. (This is likely equivalent to ``determining $C \cap (\{x\} \times B)$ for $x \in A$'' as mentioned by Spivak.)
+\end{example}
+
+Drawing pictures of the region of integration will help uncover the ``key insights'' (or, in the words of Spivak, help in ``determining $C \cap (\{x\} \times B)$ for $x \in A$''). I've always wondered if there were a more systematic way, though, to produce produce these key insights.
+
+To better describe my wonderings, let me describe the situation more precisely. We want to compute the integral 
+
+\begin{align*}
+    \int_V f \spc dx_{i_1} ... dx_{i_k}
+\end{align*}
+
+as the iterated integral
+
+\begin{align*}
+    \int_{\ell_{i_k}}^{u_{i_k}}
+    \left( \int_{\ell_{i_{k-1}}(x_{i_k})}^{u_{i_{k-1}}(x_{i_k})}
+    \cdots
+    \left( \int_{\ell_{i_2}(x_{i_3},\dots,x_{i_k})}^{u_{i_2}(x_{i_3},\dots,x_{i_k})}
+    \left( \int_{\ell_{i_1}(x_{i_2},\dots,x_{i_k})}^{u_{i_1}(x_{i_2},\dots,x_{i_k})}
+    f \, dx_{i_1} \right) dx_{i_2} \right) \cdots \right) dx_{i_k},
+\end{align*}
+
+by determining the correct expressions for the bounds $u_{i_1}, \ell_{i_1}, ..., u_{i_k}, \ell_{i_k}$.
+
+Heuristically, one first considers $x_{i_1}$ to be a function of $x_{i_2}, ..., x_{i_k}$, and projects the region of integration $V$ down into a plane perpendicular to the $x_{i_1}$-axis. (Sometimes, but not always, this projection is the same as taking a cross section of the region of integration perpendicular to the $x_{i_1}$-axis. It is ``not always'' because the most extreme values of every other variables must be captured; it could be the case that one of these variables attains a minimum in one cross section and a maximum in another.)
+
+Here is a more precise statement of my wonderings. I've always wondered if, if we consider volumes with sufficiently nice properties, we might be able to derive a useful theorem that formalizes  how to perform this projection. I imagine this projection is complicated in general, but I also imagine that most examples seen in a multivariable calculus class, and even in physics, fall into very common special cases in which the projection greatly simplifies.
+
+The following links might be helpful in investigating this:
+
+\begin{itemize}
+    \item  \url{https://en.wikipedia.org/wiki/Cylindrical_algebraic_decomposition}
+    \item \url{https://en.wikipedia.org/wiki/Tarski%E2%80%93Seidenberg_theorem}
+\end{itemize}
+
+\newpage
+
+\subsection*{Change of variables}
+
 \begin{deriv}
     (Change of variables).
     
@@ -195,6 +260,8 @@ Now we state rules about $\DD \ff|_\pp$.
         \int_V f \spc d\text{vol} = \int_U f(\FF(\xx)) \det\Big( \frac{\pd \FF}{\pd \xx} \Big) d \text{vol}
     \end{align*}
 \end{deriv}
+
+\newpage
 
 \section*{Vector calculus}
 

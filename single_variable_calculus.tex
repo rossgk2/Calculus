@@ -704,26 +704,30 @@ When $n$ is a positive integer, we define the notion of \textit{exponentiating} 
     b^n := \underbrace{b \cdot ... \cdot b}_{\text{$n$ times}}.
 \end{align*}
 
-The number $b$ is called the \textit{base}, and $n$ is called the \textit{exponent}. Using this definition, we can derive three ``properties of exponents'' for positive integers $n, m$:
+The number $b$ is called the \textit{base}, the number $n$ is called the \textit{exponent}, and the result $b^n$ is called the \textit{($n$th) power (of $b$)}.
+
+There are some special names for particular powers of $b$. The second power of $b$, $b^2$, is often called the \textit{square of $b$}, or ``$b$ squared'', in reference to the fact that it is equal to the area of a square with side-length $b$. Similarly, the third power of $b$, $b^3$, is often called the \textit{cube of $b$}, or ``$b$ cubed''. 
+
+Anyhow, by using the definition of exponentiation, we can derive three ``properties of exponents'' for positive integer exponents $n, m$:
 
 \begin{align*}
-    b^n b^m &= b^{n + m} \\
-    \frac{b^n}{b^m} &=
+    b^n b^m &= b^{n + m}, \\
+    \frac{b^n}{b^m}, &=
     \begin{cases}
         b^{n - m} & n > m \\
         \frac{1}{b^{n - m}} & n < m \\
         1 & n = m
-    \end{cases} \\
-    (b^n)^m &= b^{nm}
+    \end{cases}, \\
+    (b^n)^m &= b^{nm}.
 \end{align*}
 
-The second property could use some simplification. If we define $b^0 := 1$ for all $b$, then the $n = m$ case of the piecewise function can be absorbed into an $n \geq m$ case:
+The second property could use some simplification. If we define $b^0 := 1$ for all $b$, then the $n = m$ case of the piecewise function can be absorbed into the other two cases:
 
 \begin{align*}
     \frac{b^n}{b^m} =
     \begin{cases}
         b^{n - m} & n \geq m \\
-        \frac{1}{b^{n - m}} & n < m
+        \frac{1}{b^{n - m}} & n \leq m
     \end{cases}.
 \end{align*}
 
@@ -736,15 +740,15 @@ And if, when $n$ is a positive integer, we define $b^{-n}$ to be $b^{-n} := \fra
 The definitions $b^0 := 1$ and $b^{-n} := \frac{1}{b^n}$ actually make the previously stated properties of exponents true for \textit{all} integers $n, m$, not just \textit{positive} integers $n, m$:
 
 \begin{align*}
-    b^n b^m &= b^{n + m} \\
-    \frac{b^n}{b^m} &= b^{n - m} \\
+    b^n b^m &= b^{n + m}, \\
+    \frac{b^n}{b^m} &= b^{n - m}, \\
     (b^n)^m &= b^{nm}.
 \end{align*}
 
-In this more general formulation, the second property is a special case of the first\footnote{We have $\frac{b^n}{b^m} = b^n b^{-m} = b^{n + (-m)} = b^{n - m}$.} Thus there are really just \textit{two} properties of exponents:
+In this more general formulation, the second property is a special case of the first\footnote{We have $\frac{b^n}{b^m} = b^n b^{-m} = b^{n + (-m)} = b^{n - m}$.} Thus there are really just \textit{two} properties of exponents. For all integers $n, m$ we have
 
 \begin{align*}
-    b^n b^m &= b^{n + m} \\
+    b^n b^m &= b^{n + m}, \\
     (b^n)^m &= b^{nm}.
 \end{align*}
 
@@ -760,7 +764,7 @@ If we eventually want a version of second of the above two properties, $(b^x)^y 
 
 We take this condition as inspiration and simply \textit{impose} that it be the defining characteristic of $b^{\frac{1}{n}}$. Formally, what we are doing is defining for each $n$ a function $f_n$ by $f_n(b) = b^n$, and then defining $b^{\frac{1}{n}}$ to be special notation for $f_n^{-1}$. 
 
-In order for this imposition to be actually valid, though, we need to be sure that the inverse $f_n^{-1}$ exists! We need $f_n$ to be one-to-one, and we need $f_n$ to map to all numbers $c$ for which we would attempt to evaluate $f_n^{-1}(c)$. Fortunately, requiring $b > 0$, i.e., restricting $f_n$ to the domain $(0, \infty)$. solves both problems. The restriction of $f_n$ to the domain $(0, \infty)$ is one-to-one for all $n$. And for every $n$, the restriction of $f_n$ to the domain $(0, \infty)$ maps to every positive number. (So, if we accept that we can only apply $f_n^{-1}$ to positive numbers, the second issue is solved.)
+In order for this imposition to be actually valid, though, we need to be sure that the inverse $f_n^{-1}$ exists! We need $f_n$ to be one-to-one, and we need $f_n$ to map to all numbers $c$ for which we would attempt to evaluate $f_n^{-1}(c)$. Fortunately, requiring $b > 0$, i.e., restricting $f_n$ to the domain $(0, \infty)$ solves both problems. The restriction of $f_n$ to the domain $(0, \infty)$ is one-to-one for all $n$. And for every $n$, the restriction of $f_n$ to the domain $(0, \infty)$ maps to every positive number. (So, if we accept that we can only apply $f_n^{-1}$ to positive numbers, the second issue is solved.)
 
 Thus, the implicit definition of $b^{\frac{1}{n}}$ we end up with includes the constraint $b > 0$:
 
@@ -774,7 +778,7 @@ There is even more special notation. Sometimes, $b^{\frac{1}{n}}$ is instead wri
     \sqrt[n]{b} := b^{\frac{1}{n}}
 \end{align*}
 
-In this notation, $\sqrt[n]{b}$ is called the \textit{$n$th root of $b$}. Please remember, though, that roots are just special notation, and no more than that. It cannot be \textit{proved} that $\sqrt[n]{b} = b^{\frac{1}{n}}$, for this statement is a \textit{definition}.
+In this notation, $\sqrt[n]{b}$ is called the \textit{$n$th root of $b$}. As you probably know, the second root of $b$, which can technically be denoted as $\sqrt[2]{b}$, is more commonly denoted simply by $\sqrt{b}$, and is most commonly referred to as the \textit{square root} of $b$.  Please remember, though, that roots are just special notation, and no more than that. It cannot be \textit{proved} that $\sqrt[n]{b} = b^{\frac{1}{n}}$, for this statement is a \textit{definition}.
 
 Now, when $x$ is a rational number, $x = \frac{m}{n}$, we define $b^x = b^{\frac{m}{n}}$ in terms of previously existing notions:
 
@@ -785,7 +789,7 @@ Now, when $x$ is a rational number, $x = \frac{m}{n}$, we define $b^x = b^{\frac
 And we can verify that the familiar properties of exponents hold for exponents $x, y$ that are rational numbers\footnote{To prove these properties, one should first prove that they hold when (1) $x, y$ are rational numbers with a numerator of $1$ and when (2) $x, y$ are rational numbers with a denominator of $1$. We already know (2).}:
 
 \begin{align*}
-    b^x b^y &= b^{x + y} \\
+    b^x b^y &= b^{x + y}, \\
     (b^x)^y &= b^{xy}.
 \end{align*}
 
@@ -815,8 +819,8 @@ For this definition to be valid, we have to show that this limit exists for all 
 The familiar properties of exponents hold for real number exponents $x, y$:
 
 \begin{align*}
-    b^{x + y} &= b^x b^y \\
-    (b^x)^y &= b^{xy}
+    b^x b^y &= b^{x + y}, \\
+    (b^x)^y &= b^{xy}.
 \end{align*}
 
 We also gain an additional property:
@@ -825,11 +829,13 @@ We also gain an additional property:
     \item When $b > 0$, the function $x \mapsto b^x$ is continuous, one-to-one, and maps to all positive real numbers.
 \end{itemize}
 
-See the appendix for a proof of these three properties. Also, note that the third property breaks down when $b < 0$. When $b < 0$, the function $x \mapsto b^x$ is not continuous\footnote{For integer $n, m$, we have that $b^{\frac{n}{m}}$ is positive when $n$ is even and that $b^{\frac{n}{m}}$ is negative when $n$ is odd and $m$ is odd (if $n$ is odd and $m$ is even, then $b^n$ is negative and so $b^{\frac{m}{n}}$ is undefined). Thus $x \mapsto b^x$ oscillates wildly between positive and negative numbers when $b < 0$ in an arbitrary small window of inputs- it cannot be continuous.}, and does not map to every positive real number\footnote{Positive real numbers of the form $b^n$, where $n$ is an odd number, cannot be mapped to by $x \mapsto b^x$ when $b < 0$}.
+See the appendix for a proof of these three properties. [TO-DO]. Also, note that the third property breaks down when $b < 0$. When $b < 0$, the function $x \mapsto b^x$ is not continuous\footnote{For integer $n, m$, we have that $b^{\frac{n}{m}}$ is positive when $n$ is even and that $b^{\frac{n}{m}}$ is negative when $n$ is odd and $m$ is odd (if $n$ is odd and $m$ is even, then $b^n$ is negative and so $b^{\frac{m}{n}}$ is undefined). Thus $x \mapsto b^x$ oscillates wildly between positive and negative numbers when $b < 0$ in an arbitrary small window of inputs- it cannot be continuous.}, and does not map to every positive real number\footnote{Positive real numbers of the form $b^n$, where $n$ is an odd number, cannot be mapped to by $x \mapsto b^x$ when $b < 0$.}.
 
 \subsection*{Definition of logarithms}
 
-We just learned how the function $x \mapsto b^x$ is relatively nice when $b > 0$. Let's take a look at it for some representative value of $b > 0$, say $b = 5$:
+We just learned how the function $x \mapsto b^x$ has nice properties when $b > 0$. We will therefore only consider $b > 0$ from this point onwards.
+
+Let's take a look at at $x \mapsto b^x$ for some representative value of $b > 0$, say $b = 5$:
 
 \begin{center}
 \begin{tikzpicture}
@@ -879,12 +885,12 @@ Since $\log_b$ is the inverse of $x \mapsto b^x$, its graph is the reflection of
 \end{tikzpicture}
 \end{center}
 
-Notice:
+The graph helps us see some important characteristics of logarithms:
 
 \begin{itemize}
-    \item Since the domain and range of $x \mapsto b^x$ are $(-\infty, \infty)$ and $(0, \infty)$, respectivey, the domain and range of $\log_b$ are $(0, \infty)$ and $(-\infty, \infty)$, respectively. 
-    \item Since $b^0 = 1$, then $\log_b(1) = 0$.
-    \item Since $\lim_{x \rightarrow -\infty} = 0$, then $\lim_{x \rightarrow 0} \log_b(x) = -\infty$.
+    \item For all $b > 0$, since the domain and range of $x \mapsto b^x$ are $(-\infty, \infty)$ and $(0, \infty)$, respectivey, the domain and range of $\log_b$ are $(0, \infty)$ and $(-\infty, \infty)$, respectively. 
+    \item Since $b^0 = 1$, then $\log_b(1) = 0$ for all $b > 0$.
+    \item Since $\lim_{x \rightarrow -\infty} = 0$, then $\lim_{x \rightarrow 0} \log_b(x) = -\infty$ for all $b > 0$.
 \end{itemize}
 
 We also have the algebraic relationship
@@ -895,25 +901,17 @@ We also have the algebraic relationship
 
 This is simply a restatement of the fact $f_b^{-1}(f_b(x)) = x = f_b(f_b^{-1}(x))$ for all $x > 0$ and $b > 0$.
 
-\subsubsection*{Properties of logarithms}
+\subsubsection*{The first property of logarithms}
 
-Once it is shown that the above ``Properties of exponents'' hold for real numbers, it is easy to show that the following corresponding properties of logarithms immediately hold. For all real numbers $b, x, y > 0$, we have:
+Since exponential functions and logarithms are inverses, then for every property of exponents there must be a corresponding property of logarithms. The first of these properties is as follows:
 
 \begin{itemize}
     \item $\log_b(xy) = \log_b(x) + \log_b(y)$ for all $x, y > 0$ and $b > 0$
-    \item $\log_b(x^y) = y\log_b(x)$ for all $x, y > 0$ and $b > 0$
-    \item When $b > 0$, the function $x \mapsto \log_b(x)$ is continuous, one-to-one, and maps to all real numbers.
 \end{itemize}
 
-While the first property first property is easy enough to \textit{prove}, it's more difficult to understand. See the next section for a good interpretation.
+Here, we give an intuitive explanation- not quite a proof- for this property. Later, we will fully nail it down with a proof.
 
-For the second property- notice that, for nonnegative values of $y$, it is an immediate consequence of the first property. Since $\log_b(\frac{1}{x}) = -\log_b(x) \iff \frac{1}{x} = b^{-\log_b(x)} \iff \frac{1}{x} = (b^{\log_b(x)})^{-1} = x^{-1} \iff \frac{1}{x} = \frac{1}{x}$, it holds for $y = -1$. From here the first property can be applied again to prove the second property for all integer $y$. And from here, it is simple enough to generalize the second property to all rational $y$. Once we know the second property is true for all rational $y$, the continuity of $\log_b$ when $b > 0$ forces it to be true for all real numbers $y$.
-
-The third property is just straightforwardly a rephrasing of the corresponding property for exponential functions.
-
-\subsubsection*{Why $\log_b(xy) = \log_b(x) + \log_b(y)$}
-
-Here's an explanation of $\log_b(xy) = \log_b(x) + \log_b(y)$. Consider that if $f_C(x) = C b^x$, then $f_C^{-1}(x) = \log_b(\frac{x}{C})$. We can interpret $f_C$ as describing the exponential growth of some quantity, where the initial amount of that quantity is $C$ (since $f(0) = Cb^0 = C$). Since $f_C^{-1}$ is the inverse to $f$, we can interpret $f_C^{-1}(x)$ as describing the amount of time needed to produce $x$ amount of the quantity, assuming that the initial amount of the quantity was $C$ and that the quantity grows by a multiplicative factor of $b$ for every $1$ unit of time:
+Let $b, C > 0$. Consider that if $f_C(x) = C b^x$, then $f_C^{-1}(x) = \log_b(\frac{x}{C})$. We can interpret $f_C$ as describing the exponential growth of some quantity, where the initial amount of that quantity is $C$ (since $f(0) = Cb^0 = C$). Since $f_C^{-1}$ is the inverse to $f$, we can interpret $f_C^{-1}(x)$ as describing the amount of time needed to produce $x$ amount of the quantity, assuming that the initial amount of the quantity was $C$ and that the quantity grows by a multiplicative factor of $b$ for every $1$ unit of time:
 
 \begin{align*}
     \text{time to grow from $C$ to $x$} = \log_b\left(\frac{x}{C}\right).
@@ -927,25 +925,56 @@ Then, we can ask: how much time would it take to produce an amount $xy$ of the q
     &\log_b(x) + \log_b(y) = \log_b(xy)
 \end{align*}
 
-There's additional insight to be had here. Since we treat the denominator $C$ as the initial amount, then we see that the time it takes to grow the quantity by a multiplicative factor of $u$ is always the same: this is formally expressed by the fact that $f^{-1}_{u_n}(u_{n + 1}) = \log_b(\frac{u^{n + 1}}{C u^n}) = \log_b(\frac{u}{C})$. We see that, specifically, the amount of time to grow the quantity by the multiplicative factor of $u$ is $\log_b(\frac{u}{C})$, which is the amount of time it takes to grow the quantity from $C$ to $u$.
+Thus
+
+\begin{align*}
+    \log_b(xy) = \log_b(x) + \log_b(y) \text{ for all $x, y > 0$ and $b > 0$}.
+\end{align*}
+
+% There's additional insight to be had here. Since we treat the denominator $C$ as the initial amount, then we see that the time it takes to grow the quantity by a multiplicative factor of $u$ is always the same: this is formally expressed by the fact that $f^{-1}_{u_n}(u_{n + 1}) = \log_b(\frac{u^{n + 1}}{C u^n}) = \log_b(\frac{u}{C})$. We see that, specifically, the amount of time to grow the quantity by the multiplicative factor of $u$ is $\log_b(\frac{u}{C})$, which is the amount of time it takes to grow the quantity from $C$ to $u$.
+
+\subsubsection*{Properties of logarithms}
+
+Having explained the first property of logarithms, we are now ready to understand all of the properties. Since there were three properties of exponential functions, there are three properties of logarithms:
+
+\begin{enumerate}
+    \item $\log_b(xy) = \log_b(x) + \log_b(y)$ for all $x, y > 0$ and $b > 0$.
+    \item $\log_b(x^y) = y\log_b(x)$ for all $x, y > 0$ and $b > 0$.
+    \item When $b > 0$, the function $x \mapsto \log_b(x)$ is continuous, one-to-one, and maps to all real numbers.
+\end{enumerate}
+
+Here are the proofs:
+
+\begin{enumerate}
+    \item[1.] Though we prefer to keep in mind the previously given intuitive argument in mind as the primary reason for why this property of logarithms is true, we should still give a formal proof, just to be extra sure we didn't miss anything.
+    
+    (Proof). Start by considering the first property of exponential functions: $b^x b^y = b^{x + y} \text{ for all $x, y$}$. Now, impose the constraint $b > 0$ so that we can take the logarithm of each side of this equation. Doing so, we obtain $\log_b(b^x b^y) = x + y$. Then, setting $u = b^x \iff x = \log_b(u)$ and $v = b^y \iff y = \log_b(v)$, and noting that since $b > 0$ we must have $u, v > 0$, we obtain another equivalent equation: $\log_b(uv) = \log_b(u) + \log_b(v)$ for all $u, v > 0$ and $b > 0$. After renaming $u$ to $x$ and $v$ to $y$, we have $\log_b(xy) = \log_b(x) + \log_b(y)$ for all $x, y > 0$ and $b > 0$, as claimed.
+
+    \item[3.] The third property is just straightforwardly a rephrasing of the corresponding property for exponential functions.
+    
+    \item[2.] While we can give a formal proof for the second property that's very similar to the one for the first property, we choose to give an alternative proof, which shows that- because logarithms are continuous- the second property is a natural consequence of the first. Since the first property ``makes sense'', the second, when viewed as a mere consequence of the first, should too.
+    
+    (Proof). Notice that for nonnegative integer values of $y$, the second property is an immediate consequence of the first property. What about for negative integer values of $y$? Let's consider $y = -1$. Since $\log_b(\frac{1}{x}) = -\log_b(x) \iff \frac{1}{x} = b^{-\log_b(x)} \iff \frac{1}{x} = (b^{\log_b(x)})^{-1} = x^{-1} \iff \frac{1}{x} = \frac{1}{x}$, the second property holds for $y = -1$. From here the first property can be applied again to prove the second property for all negative integer values of $y$, and thus all integer values of $y$. And, from here, it is simple enough to generalize the second property to all rational $y$. Once we know the second property is true for all rational $y$, the continuity of $\log_b$ when $b > 0$ forces it to be true for all real numbers $y$.
+\end{enumerate}
+
 
 \subsubsection*{Why ``logarithm''?}
 
 You may be curious why the inverse of $x \mapsto b^x$ is called the ``logarithm''. It's quite a strange name.
 
-The reason is that logarithms were first discovered in 1614, far before computers automated away the doing of arithmetic. Mathematicians needed a computational aid to help them multiply large numbers. Since $x \mapsto \log_b(x)$ is a relatively increasing function, and since $\log_b(xy) = \log_b(x) + \log_b(y)$, logarithms allowed the conversion of multiplication of large numbers into addition of much smaller numbers.
+The reason is that logarithms were first discovered in 1614, far before computers automated away the doing of arithmetic. Mathematicians needed a computational aid to help them multiply large numbers. The logarithm, having the property $\log_b(xy) = \log_b(x) + \log_b(y)$, and thus being able to convert the multiplication of many-digit numbers into addition of many-digit numbers, was the ideal tool for this. Mathematicians were therefore in the habit of thinking about the reorganized set of positive numbers that is obtained by applying a logarithm to every ``original'' positive number.
 
-Logarithms were the perfect tool for the time, so mathematicians were in the habit of thinking about the reorganized set of positive numbers that results from applying the logarithm to every ``original'' positive number. If we apply $\log_b$ for some $b > 0$ to all of the positive numbers, then numbers which are multiplicative factor apart in the ``new'' organization are now an additive difference apart in the ``original'' organization. That is, constant ratios between numbers in the ``original'' organization correspond to constant differences between numbers in the ``original'' organization:
+If we apply $\log_b$ for some $b > 0$ to all of the positive numbers, then numbers which were multiplicative factor apart in the ``original'' organization are now an additive difference apart in the ``new'' organization. That is, constant ratios between numbers in the ``original'' organization correspond to constant differences between numbers in the ``original'' organization:
 
 \begin{align*}
     \frac{x}{y} = c \iff \log_b(x) - \log_b(y) = c.
 \end{align*}
 
-Mathematicians used the term \textit{logarithm}, which means ``ratio-number'' in Greek, to refer to a number in this new organization of positive numbers, since ``ratio-number'' alludes to this property.
+When a number was thought of as living in this ``new'' organization, it was called a  \textit{logarithm}, which means ``ratio-number'' in Greek, to allude to this property.
 
-\subsubsection*{How to use logarithm tables}
+\subsubsection*{Logarithms, historically}
 
-Specifically, mathematicians had tables of precomputed logarithm values, like this:
+We now quickly give an idea of how mathematicians used logarithms to multiply large numbers. Specifically, mathematicians had tables of precomputed logarithm values, like this:
 
 \begin{table}[h]
 \centering
@@ -973,16 +1002,18 @@ Specifically, mathematicians had tables of precomputed logarithm values, like th
 \label{tab:sample}
 \end{table}
 
-To multiply two large numbers, like 1234 and 5678, one would first use logarithms to convert multiplication into addition:
+(In reality, logarithm tables were not just simple two-column tables; reading logarithm values from the actual tables involved some additional computation. We omit those details. Our two-column table is sufficient for presenting the core ideas.)
+
+To multiply two many-digit numbers, like 1234 and 5678, one would first use logarithms to convert multiplication into addition. For readability, define $\text{exp}_{10}(x) := 10^x$. We have
 
 \begin{align*}
-    1234 \cdot 5678 &= 10^{\log_{10}(1234 \cdot 5678)} = 10^{\log_{10}(1234) + \log_{10}(5678)}.
+    1234 \cdot 5678 &= \text{exp}_{10}(\log_{10}(1234 \cdot 5678)) = \text{exp}_{10}(\log_{10}(1234) + \log_{10}(5678)).
 \end{align*}
 
-Then, one would use the table to approximate the logarithms in the sum. From the table, we can see $\log_{10}(1234) \approx 3.0913$ and $\log_{10}(5678) \approx 3.7542$, so
+Now we use the table to approximate the logarithms in the sum. From the table, we can see $\log_{10}(1234) \approx 3.0913$ and $\log_{10}(5678) \approx 3.7542$, so
 
 \begin{align*}
-    10^{\log_{10}(1234) + \log_{10}(5678)} \approx 10^{3.0913 + 3.7542} = 10^{6.8455}.
+    \text{exp}_{10}(\log_{10}(1234) + \log_{10}(5678)) \approx \text{exp}_{10}(3.0913 + 3.7542) = \text{exp}_{10}(6.8455) = 10^{6.8455}.
 \end{align*}
 
 In all, we have
@@ -991,11 +1022,13 @@ In all, we have
     1234 \cdot 5678 \approx 10^{6.8455}.
 \end{align*}
 
-To complete the computation, we express $10^{6.8455}$ as $10^{6 + 0.8455} = 10^{0.8455} \cdot 10^6$. We leave the whole number power of $10$, which is $10^6$ in this case, alone, and consider it to be fully simplified. The exponent between $0$ and $1$, which is $0.8455$ in this case, is what we focus on. To compute $10^{0.8455}$, we just take advantage of the fact that $\log_{10}(10^{0.8455}) = 0.8455$, and look in the output column of the logarithm table for the exponent $0.8455$; the value of $10^{.08455}$ will be in the input column of the same row. Reading from the table in this way, we have
+To complete the computation, we express $10^{6.8455}$ as $10^{6 + 0.8455} = 10^{0.8455} \cdot 10^6$. We leave the whole number power of $10$, which is $10^6$ in this case, alone, and consider it to be fully simplified. The fractional power of $10$, which is $10^{0.8455}$ in this case, is what we focus on. To compute $10^{0.8455}$, we just take advantage of the fact that $\log_{10}(10^{0.8455}) = 0.8455$, and look in the output column of the logarithm table for the exponent $0.8455$; the value of $10^{.08455}$ will be in the input column of the same row. Reading from the table in this way, we have
 
 \begin{align*}
     1234 \cdot 5678 \approx 10^{6.8455} = 10^{0.8455} \cdot 10^6 \approx 7.0065 \cdot 10^6.
 \end{align*}
+
+This computation only differs from the exact answer $1234 \cdot 5678 = 7.006652 \cdot 10^6$ by an amount less than $.0001$, so we can see this method is pretty accurate.
 
 \subsection*{Changes of base}
 
@@ -1054,15 +1087,15 @@ Notice that the limit in this last expression can be rewritten:
 Thus, the derivative of $b^x$ with respect to $x$ is
 
 \begin{align*}
-   \frac{d}{dx} b^x = \Big( \frac{d}{dx} b^x \Big)\Big|_0 b^x = c(b) b^x, \text{ where $c(b) = \Big( \frac{d}{dx} b^x \Big)\Big|_0$}.
+   \frac{d}{dx} b^x = \Big( \frac{d}{dx} b^x \Big)\Big|_0 b^x = f(b) b^x, \text{ where $f(b) = \Big( \frac{d}{dx} b^x \Big)\Big|_0$}.
 \end{align*}
 
-That is, the derivative of $b^x$ with respect to $x$ is the evaluation of some function at $b$, times $b^x$. In order to obtain a more useful expression for $\frac{d}{dx} b^x$, we must evaluate the expression $c(b)$. A natural way to do so is to first consider the $b$ for which\footnote{Does such a $b$ even exist? Does $\Big( \frac{d}{dx} b^x \Big)\Big|_0 = \lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ even converge for all $b$? The answer to both questions is yes, but showing so is quite technical.} we have $c(b) = 1$.
+That is, the derivative of $b^x$ with respect to $x$ is the evaluation of some function at $b$, times $b^x$. In order to obtain a more useful expression for $\frac{d}{dx} b^x$, we must evaluate the expression $f(b)$. A natural way to do so is to first consider the $b$ for which\footnote{Does such a $b$ even exist? Does $\Big( \frac{d}{dx} b^x \Big)\Big|_0 = \lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ even converge for all $b$? The answer to both questions is yes, but showing so is quite technical.} we have $f(b) = 1$.
 
-For the sake of having concrete notation, we will \textit{define} $e$ to be the real number such that $c(e) = 1$. Then
+For the sake of having concrete notation, we will \textit{define} $e$ to be the real number such that $f(e) = 1$. Then
 
 \begin{align*}
-    \frac{d}{dx} e^x = c(e) e^x = 1 \cdot e^x = e^x.
+    \frac{d}{dx} e^x = f(e) e^x = 1 \cdot e^x = e^x.
 \end{align*}
 
 Now, we use change of base for exponential functions in order to determine $\frac{d}{dx} b^x$ by making use of the fact that we know the derivative of $e^x$. We have
@@ -1167,11 +1200,53 @@ We say that the money \textit{compounds} whenever it grows as a result of applyi
 
 You should be warned that the usual ways to present $e$, $e^x$ and $\ln(x)$ are all incredibly problematic. In fact, the unproblematic derivation and explanation of $e$, $e^x$ and $\ln(x)$ presented here is so uncommon that I have never read of it in another math textbook, and have only seen it discussed in an online blog by Paramanand Singh.
 
-The problem with these usual ways is that every one of them starts by assuming the truth of one of our ``end results'' (such as $e = \lim_{n \rightarrow \infty} \Big(1 + \frac{1}{n} \Big)^n$ or $e^x = \lim_{n \rightarrow \infty} \Big(1 + \frac{x}{n} \Big)^n$, or even facts we haven't learned of yet, like ``$e = \sum_{n = 0}^\infty \frac{1}{n!}$'', ``$e^x = \sum_{n = 0}^\infty \frac{x^n}{n!}$'', and ``$\ln(x) = \int_1^x \frac{1}{x} dx$'') and then uses said ``end result'' as a starting point from which to establish the properties of $e$, $e^x$ and $\ln(x)$. This is unintuitive and unnatural- who could reasonably come up with the idea to use one of these ``end results'' as a starting point without doing a ridiculous amount of prior investigation? Well-explained math is math that feels at least somewhat plausible to discover, and starting with one of the mentioned ``end results'' is not of this spirit.
+The problem with these usual ways is that every one of them starts by assuming the truth of one of our ``end results'' (such as $e = \lim_{n \rightarrow \infty} \Big(1 + \frac{1}{n} \Big)^n$ or $e^x = \lim_{n \rightarrow \infty} \Big(1 + \frac{x}{n} \Big)^n$, or even facts we haven't learned of yet, like ``$e = \sum_{n = 0}^\infty \frac{1}{n!}$'', ``$e^x = \sum_{n = 0}^\infty \frac{x^n}{n!}$'', and ``$\ln(x) = \int_1^x \frac{1}{x} dx$'') and then uses said ``end result'' as a starting point from which to establish the properties of $e$, $e^x$ and $\ln(x)$. This can technically be done without any formal logical error- but it is unintuitive and unnatural. Who could reasonably come up with the idea to use one of these ``end results'' as a starting point without doing a ridiculous amount of prior investigation? Well-explained math is math that feels at least somewhat plausible to discover, and starting with one of the mentioned ``end results'' is not of this spirit.
 
 \subsection*{Derivatives of logarithms}
 
+We already know how to take the derivative of an exponential function. Since the logarithm $\log_b$, $b > 0$, is the inverse of the exponential function $f_b$ defined by $f_b(x) = b^x$, we can determine the derivative of $\log_b$ from the general formula for derivatives of inverse functions. Applying that formula to $f_b^{-1} = \log_b$, we have
 
+\begin{align*}
+    \frac{df_b^{-1}(y)}{dy} = \frac{1}{\frac{df_b(f_b^{-1}(y))}{df_b^{-1}(y)}} \text{for all $y$ such that $\frac{df_b(f_b^{-1}(y))}{df_b^{-1}(y)} \neq 0$}.
+\end{align*}
+
+This is equivalent to
+
+\begin{align*}
+    \frac{d\log_b(y)}{dy} = \frac{1}{\frac{d}{d\log_b(y)}f_b(\log_b(y))} \text{ for all $y$ such that $\frac{d}{d\log_b(y)}f_b(\log_b(y)) \neq 0$}.
+\end{align*}
+
+Since $\frac{d}{dx}f_b(x) = \frac{d}{dx} b^x = \ln(b) b^x$, we have $\frac{d}{d\log_b(y)}f_b(\log_b(y)) = \ln(b) b^{\log_b(y)} = \ln(b) y$. Thus the above is equivalent to
+
+\begin{align*}
+    \frac{d\log_b(y)}{dy} = \frac{1}{\ln(b) y} \text{ for all $y \neq 0$}.
+\end{align*}
+
+Renaming $y$ to $x$, we have
+
+\begin{align*}
+    \boxed
+    {
+        \frac{d\log_b(x)}{dx} = \frac{1}{\ln(b) x} \text{ for all $x \neq 0$}
+    }
+\end{align*}
+
+In particular, for $\ln = \log_e$, we have
+
+\begin{align*}
+    \boxed
+    {
+        \frac{d\log_b(x)}{dx} = \frac{1}{x} \text{ for all $x \neq 0$}
+    }
+\end{align*}
+
+A nice sanity check is that when we use the change of base for logarithms to derive the derivative of $\log_b$ from the derivative $\ln$, the result we get agrees with what we already derived:
+
+\begin{align*}
+    \frac{d}{dx}\log_b(x) = \frac{d}{dx}\left( \frac{\ln(x)}{\ln(b)} \right) = \frac{1}{\ln(b)} \frac{d}{dx} \ln(x) = \frac{1}{\ln(b) x}.
+\end{align*}
+
+This can be a useful way to remember the derivative of $\log_b$ if you forget it but still remember the simpler derivative of $\ln$.
 
 \section*{Analytical geometry}
 
