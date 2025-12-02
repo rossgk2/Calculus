@@ -147,47 +147,68 @@ Now we state rules about $\DD \ff|_\pp$.
 \begin{theorem}
     (Fubini's theorem). 
 
-    On p. 61 of \textit{Calculus on Manifolds}, Spivak notes that if $C \subseteq A \times B$, then
+    On page 58 of \textit{Calculus on Manifolds}, Spivak states that if $C \subseteq A \times B$, then
 
     \begin{align*}
-        \int_C f = \int_{A \times B} \chi_C f = \int_A \Big( \int_B \chi_C(x, y) f(x, y) dy \Big) dx,
+        \int_C f &= \int_{A \times B} \chi_C f \\
+        &= \int_A \Big( \int_B \chi_C(x, y) f(x, y) dy \Big) dx \\
+        &= \int_B \Big( \int_A \chi_C(x, y) f(x, y) dy \Big) dx.
     \end{align*}
 
-    and that the ``main difficulty in deriving expressions for $\int_C f$ will be determining $C \cap (\{x\} \times B)$ for $x \in A$''. [I think that by ``determining $C \cap (\{x\} \times B)$ for $x \in A$'', Spivak means ``determining inequalities in $x, y$ that describe the $C \cap (\{x\} \times B)$.]
+    On page 61, Spivak notes that to derive an expression for $\int_C f$, one will have to either derive an expression for either the ``slice'' $C \cap (\{x\} \times B)$ when $x \in A$ or the ``slice'' $C \cap (\{y\} \times A)$ when $y \in B$.
 \end{theorem}
 
-We can use Fubini's theorem to change the order of integration of integrals over nonrectangular regions by interpreting such integrals to be integrals over rectangular regions. For this purpose, define a function $\Theta$ on predicates to return $1$ when the input predicate is true and $0$ when the input predicate is false. We have the following examples:
+We can use Fubini's theorem to change the order of integration of integrals over nonrectangular regions by interpreting such integrals to be integrals over rectangular regions. In the below, we use the convention that when $S = \{\xx \in \R^n \mid P(\xx)\}$ we use $\chi(P(\xx))$ to denote $\chi_S$.
 
 \begin{example}
+    Consider the iterated integral
+
     \begin{align*}
-        \int_{-1}^0 \left( \int_{-1}^y f(x, y) dx \right) dy &= \int_{-1}^0 \left( \int_{-1}^0 \Theta(x \leq y) f(x, y) dx \right) dy \\
-        &= \int_{-1}^0 \int_{-1}^0 \Theta(x \leq y) f(x, y) dx \spc dy \\
-        &= \int_{-1}^0 \int_{-1}^0 \Theta(y \geq x) f(x, y) dx \spc dy \\
-        &= \int_{-1}^0 \int_{-1}^0 \Theta(y \geq x) f(x, y) dx \spc dy \text{ by Fubini's theorem} \\
-        &= \int_{-1}^0 \left( \int_{-1}^0 \Theta(y \geq x) f(x, y) dy \right) dx \\
-        &= \int_{-1}^0 \int_x^0 f(x, y) dy \spc dx
+        \int_{-1}^0 \left( \int_{-1}^y f(x, y) dx \right) dy.
     \end{align*}
 
-    The key insight here is to notice that $\Theta(x \geq y) = \Theta(y \geq x)$. (This is likely equivalent to ``determining $C \cap (\{x\} \times B)$ for $x \in A$'' as mentioned by Spivak.)
-\end{example}
-
-\begin{example}   
+    Since we are given a sequence of iterated integrals to start from, we already know an expression for slices taken perpendicular to the axis of the innermost variable, which is the $x$-axis in this case. The above tells us that for each $x$,
+    
     \begin{align*}
-        \int_0^8 \int_{\sqrt[3]{y}}^2 f(x, y) dx \spc dy &= \int_0^8 \left( \int_0^2 \Theta(x \geq \sqrt[3]{y}) f(x, y) dx \right) dy \\
-        &= \int_0^8 \int_0^2 \Theta(x \geq \sqrt[3]{y}) f(x, y) dx \spc dy \\
-        &= \int_0^8 \int_0^2 \Theta(y \leq x^3) f(x, y) dy \spc dx \\
-        &= \int_0^8 \int_0^2 \Theta(y \leq x^3) f(x, y) dx \spc dy \text{ by Fubini's theorem} \\
-        &= \int_0^2 \left( \int_0^8 \Theta(y \leq x^3) f(x, y) dy \right) dx \\
-        &= \int_0^2 \left( \int_0^{x^3} f(x, y) dy \right) dx \\
-        &= \int_0^2 \int_0^{x^3} f(x, y) dy \spc dx
+        (\text{slice perpendicular to $x$-axis})(x) = C \cap (\{x\} \times A) = \{(x, y) \in \R^2 \mid -1 \leq x \leq y \leq 1 \}.
     \end{align*}
 
-    The key insight here is to notice that $\Theta(x \geq \sqrt[3]{y}) = \Theta(y \leq x^3)$. (This is likely equivalent to ``determining $C \cap (\{x\} \times B)$ for $x \in A$'' as mentioned by Spivak.)
+    Thus the above is
+
+    \begin{align*}
+        \int_{-1}^0 \left( \int_{-1}^0 \chi(-1 \leq x \leq y \leq 0) f(x, y) dx \right) dy &= \int_{-1}^0 \left( \int_{-1}^0 \chi(x \leq y) f(x, y) dx \right) dy \\
+        &= \int_{-1}^0 \left( \int_{-1}^0 \chi(x \leq y) f(x, y) dy \right) dx \text{ by Fubini's theorem} \\
+        &= \int_{-1}^0 \left( \int_{-1}^0 \chi(y \geq x) f(x, y) dy \right) dx \\
+        &= \int_{-1}^0 \int_x^0 f(x, y) dy \spc dx.
+    \end{align*}
 \end{example}
 
-Drawing pictures of the region of integration will help uncover the ``key insights'' (or, in the words of Spivak, help in ``determining $C \cap (\{x\} \times B)$ for $x \in A$''). I've always wondered if there were a more systematic way, though, to produce produce these key insights.
+\begin{example}
+    Consider the iterated integral
 
-To better describe my wonderings, let me describe the situation more precisely. We want to compute the integral 
+    \begin{align*}
+        \int_0^8 \left( \int_{\sqrt[3]{y}}^2 f(x, y) dx \right) dy.
+    \end{align*}
+
+    Since we are given a sequence of iterated integrals to start from, we already know an expression for slices taken perpendicular to the axis of the innermost variable, which is the $x$-axis in this case. The above tells us that for each $x$,
+    
+    \begin{align*}
+        (\text{slice perpendicular to $x$-axis})(x) = C \cap (\{x\} \times A) = \{(x, y) \in \R^2 \mid \sqrt[3]{y} \leq x \leq 2, 0 \leq y \leq 8 \}.
+    \end{align*}
+
+    Thus the above is
+
+    \begin{align*}
+        \int_0^8 \left( \int_{\sqrt[3]{y}}^2 f(x, y) dx \right) dy &= \int_0^8 \left( \int_0^2 \chi(\sqrt[3]{y} \leq x) f(x, y) dx \right) dy \\
+        &= \int_0^2 \left( \int_0^8 \chi(\sqrt[3]{y} \leq x) f(x, y) dy \right) dx \text{ by Fubini's theorem} \\
+        &= \int_0^2 \left( \int_0^8 \chi(y \leq x^3) f(x, y) dy \right) dx \\
+        &= \int_0^2 \int_0^{x^3} f(x, y) dy \spc dx.
+    \end{align*}
+\end{example}
+
+Drawing pictures of the region of integration will help in determining the ``slices'' $C \cap (\{x\} \times B)$ when $x \in A$ and $C \cap (\{y\} \times A)$ when $y \in B$. It's a tricky matter, as for unusual regions some slices may be a union of two disjoint intervals.
+
+I've always wondered if there were a more systematic way, though, to derive formulas for these slices. To better describe my wonderings, let me describe the situation more precisely. Given a volume $V \subseteq \R^n$, we want to compute the integral 
 
 \begin{align*}
     \int_V f \spc dx_{i_1} ... dx_{i_k}
@@ -201,10 +222,10 @@ as the iterated integral
     \cdots
     \left( \int_{\ell_{i_2}(x_{i_3},\dots,x_{i_k})}^{u_{i_2}(x_{i_3},\dots,x_{i_k})}
     \left( \int_{\ell_{i_1}(x_{i_2},\dots,x_{i_k})}^{u_{i_1}(x_{i_2},\dots,x_{i_k})}
-    f \, dx_{i_1} \right) dx_{i_2} \right) \cdots \right) dx_{i_k},
+    f \, dx_{i_1} \right) dx_{i_2} \right) \cdots \right) dx_{i_k}.
 \end{align*}
 
-by determining the correct expressions for the bounds $u_{i_1}, \ell_{i_1}, ..., u_{i_k}, \ell_{i_k}$.
+We have to determine the correct expressions for the bounds $u_{i_1}, \ell_{i_1}, ..., u_{i_k}, \ell_{i_k}$ to do so.
 
 Heuristically, one first considers $x_{i_1}$ to be a function of $x_{i_2}, ..., x_{i_k}$, and projects the region of integration $V$ down into a plane perpendicular to the $x_{i_1}$-axis. (Sometimes, but not always, this projection is the same as taking a cross section of the region of integration perpendicular to the $x_{i_1}$-axis. It is ``not always'' because the most extreme values of every other variables must be captured; it could be the case that one of these variables attains a minimum in one cross section and a maximum in another.)
 
