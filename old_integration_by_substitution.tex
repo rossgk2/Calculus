@@ -1,0 +1,72 @@
+\subsubsection*{Integration by substitution}
+
+\textbf{This section was relevant before the introduction of the notation $\int f(g(x)) dg(x) := \Big(\int f\Big)\Big|_{g(x)}$.}
+
+We now present the method that most people use in practice to apply the change of variables theorem. Suppose we have encountered the integral from the left side of the change of variables theorem, $\int (f \circ u) \frac{du}{dx} dx$.
+
+You are actually probably more likely to encounter the equivalent integral
+
+\begin{align*}
+    \int f(u(x)) \frac{du}{dx} dx.
+\end{align*}
+
+In any case, if we treat the derivative $\frac{du}{dx}$ as an actual fraction, then we have ``$\frac{du}{dx} dx = du$'' and thus ``$dx = \frac{1}{du/dx} du$''. Substituting this expression for $dx$ into the above integral, we obtain
+
+\begin{align*}
+    \text{``}\int f(u(x)) \frac{du}{dx} \underbrace{\frac{1}{du/dx} du}_{dx} = \int f(u(x)) du \text{''}.
+\end{align*}
+
+We've used quotes because the above expressions are mnemonics, and not truly mathematically valid. 
+
+One now ``magically disappears'' the $x$ within $f(u(x))$ (there is no real justification for this- it is a mnemonic after all), to obtain $f(u)$, and thus the above integral becomes $\int f(u) du$. If we also ``magically'' remember to evaluate the integral at $x$ at the end, it becomes
+
+\begin{align*}
+    \Big(\int f(u) du\Big)\Big|_x,
+\end{align*}
+
+which is the right side of the change of variables theorem.
+
+Thus, using the mnemonic of treating $\frac{du}{dx}$ as an actual fraction provides a way to remember the change of variables formula, 
+
+\begin{align*}
+    \int f(u(x)) \frac{du}{dx} dx = \Big( \int f \spc du \Big)\Big|_x,
+\end{align*}
+
+since multiplying the integrand of the left side by the mnemonic expression ``$\frac{1}{du/dx} du$'' produces the right side of the theorem. Utilizing this mnemonic is called \textit{integration by substitution}, or ``$u$-substitution''.
+
+\subsubsection*{Example of integration by substitution}
+
+We give an example of how to use the change of variables in (1) a formal sense and (2) by using the mnemonic described above. In both cases, we will compute
+
+\begin{align*}
+    \int \frac{\ln(x)}{x} dx.
+\end{align*}
+
+
+\begin{enumerate}
+    \item Here's how to use the change of variables theorem in a ``strictly correct'' way. To compute $\int \frac{\ln(x)}{x} dx$, we notice that the integrand is of the form $f(u(x)) \frac{du(x)}{dx}$, where $f(u) = u$, $u(x) = \ln(x)$, and $\frac{du}{dx} = \frac{1}{x}$. Directly applying the change of variables theorem, we have 
+    
+    \begin{align*}
+        \int \frac{\ln(x)}{x} dx = \int f(u(x)) \frac{du(x)}{dx} dx = \int f(u) du = \Big(\Big(\int f\Big) \circ u\Big)\Big|_x.
+    \end{align*}
+    
+    Since the letter $u$ is already in use, we will write $\int f$ as $\int f = \int f(v) dv$. We have:
+    
+    \begin{align*}
+        \Big(\int f\Big) \circ u &= \Big(\int f(v) dv \Big) \circ u = \Big(\int v \spc dv \Big) \circ u = \Big( v \mapsto \Big( \frac{1}{2}v^2 + c \Big) \Big) \circ u \\
+        &= \Big( v \mapsto \Big( \frac{1}{2}v^2 + c \Big) \Big) \circ u = \Big( v \mapsto \Big( \frac{1}{2}u(v)^2 + c \Big) \Big)
+        =  \Big( v \mapsto \Big( \frac{1}{2}\ln^2(v) + c \Big) \Big).
+    \end{align*}
+    
+    Evaluating this function at $v = x$, we have 
+    
+    \begin{align*}
+        \int \frac{\ln(x)}{x} dx = \frac{1}{2} \ln^2(x) + c.
+    \end{align*}
+    
+    \item Here is an example of how to use the mnemonic. If we want to compute $\int \frac{\ln(x)}{x} dx$, then we set $u(x) = \ln(x)$, compute $\frac{du}{dx} = \frac{1}{x}$, and then see ``$dx = x \spc du$''. Substituting this expression for $dx$ into the integral, we have
+    
+    \begin{align*}
+        \int \frac{\ln(x)}{x} dx = \int \frac{u(x)}{x} x \spc du = \int u \spc du = \frac{1}{2} u^2 + c = \frac{1}{2}\ln^2(x) + c.
+    \end{align*}
+\end{enumerate}

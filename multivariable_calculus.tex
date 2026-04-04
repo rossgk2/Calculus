@@ -1,0 +1,376 @@
+\part*{Multivariable calculus}
+
+\subsection*{References}
+
+\begin{itemize}
+    \item \textit{The Calculus of Several Variables} by Robert C Rogers of Nagoya University in Japan: \url{https://www.math.nagoya-u.ac.jp/~richard/teaching/s2016/Ref2.pdf}
+    \item \textit{Vector Calculus, Linear Algebra, and Differential Forms} by Hubbard and Hubbard
+    \item \textit{Calculus on Manifolds} by Michael Spivak
+\end{itemize}
+
+\section*{Differentiation}
+
+\subsection*{Introduction}
+
+Let's compare two approaches to multivariable calculus:
+
+\begin{enumerate}
+    \item (General differentiability first). Some linear algebra is presented. Partial and directional directional derivatives of a function $\R^n \rightarrow \R^m$ is defined and general differentiability of functions $\R^n \rightarrow \R^m$ is discussed. Functions $\R \rightarrow \R^n$ and $\R^n \rightarrow \R$ are treated as special cases, and things such as the gradient $\nabla f$ are discussed.
+    \item (Elementary concepts first). Some linear algebra is presented. Functions $\R \rightarrow \R^n$ and $\R^n \rightarrow \R$ are discussed. The directional derivative of a function $\R^n \rightarrow \R^m$ is defined, and general differentiability of functions $\R^n \rightarrow \R^m$ is discussed.
+\end{enumerate}
+
+I used to think that general differentiability first was the better way, because the difference between general differentiability and the existence of directional derivatives is subtle enough that it should be established early on. I now better understand this difference, and think it's possible to correctly motivate general differentiability even after one has only been dealing with existence of partial derivatives for a long time.
+
+My increased understanding is due to learning that general differentiability is equivalent to having directional derivatives defined in all directions \textit{and} having these directional derivatives vary linearly with the direction vector. When one knows this, the difference between the existence directional derivatives and general differentiability is clear. One could argue, that to understand the generalized directional derivatives invoked in this fact, one should have more prior experience with ``subconcepts'' like directional and partial derivatives of scalar-valued functions and scalar derivatives of vector-valued functions!
+
+After further thought, though, I don't really buy this. The definitions of general directional and partial derivatives for functions $\R^n \rightarrow \R^m$ seem pretty immediately understandable:
+
+\begin{align*}
+    \DD_\vv \ff|_\pp &:= \lim_{h \rightarrow 0} \frac{\ff(\pp + h\vv) - \ff(\pp)}{h} \\
+    \pd_i \ff &:= \DD_{\see_i} \ff.
+\end{align*}
+
+And when one considers that, since knowledge of some linear algebra (linear transformations, dot product, and cross product) is necessary to study planes, then approaches that centralize linear algebra (instead of using it at the beginning and end, but not middle) should probably be preferred, general differentiability again seems much better.
+
+But I think one argument in favor of elementary concepts first is just so powerful it can't be beaten. It's not that elementary concepts help understanding general differentiability so much, it's that they're \textit{so elementary} it feels unnatural to postpone them for so long! I can't imagine telling someone studying physics that they absolutely must understand general differentiability before studying trajectories or partial derivatives, for example. Those concepts are just too basic to not approach right away.
+
+\subsection*{On linear algebra}
+
+Actually, when I remember that integral multivariable calculus requires knowing about the determinant, it seems to me that an introduction to linear algebra should simply be a prerequesite for multivariable calculus. As alluded to before, the syllabus would be:
+
+\begin{itemize}
+    \item $\R^n$
+    \item Subspaces of $\R^n$; span, bases, linear independence
+    \item Linear functions $\R^n \rightarrow \R^m$ and the matrix-vector product (first as a linear combination of columns, then in terms of entries)
+    \begin{itemize}
+        \item Some recognition that $\frac{d}{dx}$ and $\int$ are linear functions (but avoid defining vector space!)
+    \end{itemize}
+    \item Composition of linear functions and the matrix-matrix product (first as a matrix with columns given by matrix vector products, then in terms of entries)
+    \item The dot product
+    \begin{itemize}
+        \item Intuition rather than formal proof should be used to justify facts about rotations and projections used to prove that the algebraic formula implies the geometric formula
+    \end{itemize}
+    \item The determinant
+    \item Intuitive presentation of orientation
+    \item The cross product
+\end{itemize}
+
+\subsection*{Outline}
+
+First, study functions $\R \rightarrow \R^n$.
+
+\begin{itemize}
+    \item Define derivatives and integrals of functions $\R^n \rightarrow \R$. 
+    \item Study space curves and derive the Frenet frame.
+\end{itemize}
+
+Next, study functions $\R^n \rightarrow \R$.
+    
+\begin{itemize}
+    \item Define the directional derivative of $f:\R^n \rightarrow \R$ as $\frac{\pd f}{\pd \vv} \Big|_\pp := \frac{d (f \circ \xx)(t)}{dt}\Big|_{t_0}$, where $\xx$ is a curve satisfying $\xx(t_0) = \pp$ and $\frac{d\xx(t)}{dt}\Big|_{t_0} = \vv$.
+    \begin{itemize}
+        \item Prove that the directional derivative doesn't depend on the curve chosen.
+    \end{itemize}
+    \item Prove that the limit expression, $\frac{\pd f}{\pd \vv}\Big|_\pp = \lim_{h \rightarrow 0} \frac{f(\pp + h\vv) - f(\pp)}{h}$, of the directional derivative, follows.
+    \item For $f:\R^n \rightarrow \R$ and $\xx = (x_1, ..., x_n)^\top$, define $\frac{\pd f(\xx)}{\pd x_i} := \frac{\pd f}{\pd \see_i}\Big|_\xx$ and $\pd_i f := \left(\xx \mapsto \frac{\pd f(\xx)}{\pd x_i}\right)$ where $\xx = (x_1, ..., x_n)$.
+    \begin{itemize}
+        \item Aside: for $\ff = (f_1, ..., f_n)^\top:\R \rightarrow \R^n$ and $\xx = (x_1, ..., x_n)^\top$, define $\frac{\boldsymbol{\pd} \ff(\xx)}{\boldsymbol{\pd} x_i} := (\frac{\pd f_1(\xx)}{\pd x_1}, ..., \frac{\pd f_n(\xx)}{\pd x_n})^\top$ and $\boldsymbol{\pd}_i \ff := \left(\xx \mapsto \frac{\pd \ff(\xx)}{\pd x_i}\right)$.
+    \end{itemize}
+    \item When we have $\xx:\R \rightarrow \R^n$ and $f:\R^n \rightarrow \R$ then we can obtain $f \circ \xx:\R \rightarrow \R$. Prove the multivariable chain rule, $\frac{d (f \circ \xx)(t)}{dt} =\sum_{i = 1}^n \frac{\pd f(\xx)}{\pd x_i} \frac{dx_i(t)}{dt}$.
+    \item Define $\nabla_\xx f(\xx) := (\frac{\pd f(\xx)}{\pd x_1}, ..., \frac{\pd f(\xx)}{\pd x_n})^\top$ and $\nabla f := \left( \xx \mapsto \nabla_\xx f(\xx) \right)$, so that the multivariable chain rule can be restated as $\frac{d(f \circ \xx)(t)}{dt}\Big|_\pp = (\nabla f)|_\pp \cdot \frac{d\xx(t)}{dt}$.
+    \item Prove that the directional derivative is $\frac{\pd f}{\pd \vv} \Big|_\pp = (\nabla f)|_\pp \cdot \frac{d\xx(t)}{dt}\Big|_{t_0}= \nabla f|_\pp \cdot \vv$.
+    \item Remark that $(\vv, f) \mapsto \frac{\pd f}{\pd \vv} \Big|_\pp$ is linear in both arguments.
+    \item Use the fact that $\frac{\pd f}{\pd \vv}\Big|_\pp = \nabla f|_\pp \cdot \vv$ to prove that $\nabla f$ is the direction of greatest increase in $f$, and (somewhat surprisingly) that $-\nabla f$ is the direction of greatest decrease in $f$.
+    \item Lagrange multipliers. See lagrange\_multipliers.tex.
+\end{itemize}
+
+
+
+Use the previous results in differential calculus to generalize to functions $\R^n \rightarrow \R^m$.
+
+\begin{itemize}
+    \item Use the chain rule for partial derivatives to prove a new chain rule: $\frac{d (\ff \circ \xx)(t)}{dt} = \frac{\pd \ff(\xx)}{\pd \xx} \frac{d\xx(t)}{dt}$, where $\frac{\pd \ff(\xx)}{\pd \xx}$ is the matrix whose $i$th row is $\nabla_\xx f_i$. Define $\JJ \ff|_\xx := \frac{\pd \ff(\xx)}{\pd \xx}$.
+    \item Aside on how since the $i$th column of $\frac{\pd \ff(\xx)}{\pd \xx}$ is $\frac{\pd \ff(\xx)}{\pd x_i}$, we have $\frac{d (\ff \circ \xx)(t)}{dt} = \sum_{i = 1}^{n} \frac{\pd \ff(\xx)}{\pd x_i} \frac{d x_i(t)}{dt}$.
+    \item Define the directional derivative of $\ff:\R^n \rightarrow \R^m$ similarly to before, so $\frac{\pd \ff}{\pd \vv} \Big|_\pp := \frac{d (\ff \circ \xx)}{dt}\Big|_{t_0}$, where $\xx$ is a curve satisfying $\xx(t_0) = \pp$ and $\frac{d\xx(t)}{dt}\Big|_{t_0} = \vv$.
+    \item Prove that $\frac{\pd \ff}{\pd \vv}\Big|_\pp$ exists for all $\vv \in \R^n$ iff $\JJ \ff|_\pp$ exists.
+    \item Prove that if $\JJ \ff|_\pp$ exists, then $\frac{\pd \ff}{\pd \vv}\Big|_\pp = \JJ \ff|_\pp \vv$.
+\end{itemize}
+
+Then, talk about local linear approximations. 
+
+\begin{itemize}
+    \item (Theorem from Hubbards). (p. 106). $f: \R \rightarrow \R$ is differentiable at $p \in \R$ iff $(\Delta f)_p(h) := f(p + h) - f(p)$ is approximately a linear function, in the sense that $f$ is differentiable at $p$ iff there is a linear function $h \mapsto hf'(p):\R \rightarrow \R$ such that $\lim_{h \rightarrow 0} \frac{(\Delta f)_p(h) - hf'(p)}{h} = 0$.
+    \item (Defn from Spivak). (p. 16). $\ff$ is \textit{differentiable at $\pp \in \R^n$} iff there exists a linear function $\DD \ff|_\pp:\R^n \rightarrow \R^m$ such that $\lim_{\hh \rightarrow \mathbf{0}} \frac{||\ff(\pp + \hh) - \ff(\pp) - \DD \ff|_\pp(\hh)||}{||\hh||} = 0$. The function $\DD \ff|_\pp$ is called the \textit{total derivative}.
+    \begin{itemize}
+        \item (Original remark). Note that we haven't yet shown $\DD \ff|_\pp$ is unique.
+    \end{itemize}
+    
+    \item Prove that a function $\ff:\R^n \rightarrow \R^m$ is differentiable at $\pp \in \R^n$ iff all directional derivatives at $\pp$ exist and iff $\vv \mapsto \frac{\pd \ff}{\pd \vv}\Big|_\pp$ is linear for all $\vv \in \R^n$.
+    \item (Theorem from Spivak). (p. 30). If $\ff = (f_1, ..., f_n)^\top$ is differentiable at $\pp$, then $\JJ \ff|_\pp$ exists.
+    \begin{itemize}
+        \item (Remark from Hubbard). If $\DD \ff|_\pp$ exists then it is unique, since it's represented by a matrix.
+    \end{itemize}
+\end{itemize}
+
+
+For the discussion on differentiability versus continuous differentiability, use Spivak's clear theorems and the Hubbards' examples.
+
+\begin{itemize}
+    \item (Remark from Spivak). (p. 30). If $\ff$'s first partial derivatives all exist at $\pp$ then it is not necessarily the case that $\ff$ is differentiable at $\pp$.
+    \begin{itemize}
+        \item (Example from Hubbard). (p. 122). $f:\R^2 \rightarrow \R$ defined by $f(x, y) = \frac{x^2 y}{x^2 + y^2}$ when $(x, y) \neq (0, 0)$ and $f(x, y) = (0, 0)$ when $(x, y) = (0, 0)$ is continuous and has partial derivatives but isn't differentiable at $(0, 0)$.
+    \end{itemize}
+    \item (Original). Even if all directional derivatives of $\ff$ exist at $\pp$, it is not necessarily the case that $\ff$ is differentiable at $\pp$.
+    \begin{itemize}
+        \item (Original example). Let $A = \{ (x, y) \mid \exists x \spc y = x^2 \} - \{(0, 0)\}$, and consider the characteristic function $\chi_A:\R^2 \rightarrow \R^2$ of $A$. Then the directional derivative $\frac{\pd \chi_A}{\pd \vv}\Big|_{\mathbf{0}}$ of $\chi_A$ at $\mathbf{0}$ exists for all $\vv \in \R^2$ but $\chi_A$ is not differentiable at $\mathbf{0}$.
+    \end{itemize}
+    \item (Remark from Hubbards). (p. 123). If $\ff$ is differentiable at $\pp$, then $\DD \ff|_\pp$ is not guaranteed to be a good approximation.
+    \begin{itemize}
+        \item (Example from Hubbard). (p. 123). $f:\R \rightarrow \R$ defined by $f(x) = \frac{1}{2}x + x^2 \sin\Big(\frac{1}{x}\Big)$ when $x \neq 0$ and $f(x) = 0$ when $x = 0$ is continuous and differentiable, but its derivative is not a good approximation of it at the origin, since it does not correctly indicate whether $f$ is increasing or decreasing: ``although the derivative at $0$ is positive, the function is not increasing in any neighborhood of $0$ since on any such interval the derivative is negative.''
+    \end{itemize}
+    \item (Defn from Spivak). (p. 31). $\ff = (f_1, ..., f_n)^\top$ is \textit{continuously differentiable at $\pp \in \R^n$} iff all partial derivatives $\pd_i f_j$ are continuous at $\pp$ and every partial derivative $\pd_i f_j$ is defined in some open set  containing $\pp$.
+    \item (Theorem from Spivak). (p. 31). If $\ff$ is continuously differentiable at $\pp$ then $\ff$ is differentiable at $\pp$.
+\end{itemize}   
+
+Now we state rules about $\DD \ff|_\pp$.
+
+\begin{itemize}
+    \item (Theorem from Spivak). (p. 20). Rules about $\DD \ff|_\pp$.
+    \item (Theorem from Spivak). (p. 32). If $\ff = (f_1, ..., f_m)^\top:\R^n \rightarrow \R^m$ is such that each $f_i$ is continuously differentiable at $\pp$ and $f:\R^m \rightarrow \R$ is differentiable at $\ff(\pp)$, then $\pd_i (f \circ \ff)|_\pp = \sum_{j = 1}^m (\pd_j f)|_{\ff(\pp)} \pd_i (f_j)|_\pp$.
+    \begin{itemize}
+        \item (Original). In the situation of the above theorem, define the notation $\frac{\pd f(\ff(\xx))}{\pd f_i(\xx)} := \pd_i f|_{\ff(\xx)}$. With this notation, the above theorem becomes $\frac{\pd(f \circ \ff)(\xx)}{\pd x_i}\Big|_\pp = \sum_{j = 1}^m \frac{\pd f(\ff(\xx))}{\pd f_j(\xx)} \Big|_\pp \frac{\pd f_j(\xx)}{\pd x_i}\Big|_\pp$.
+    \end{itemize}
+\end{itemize}
+
+\section*{Integration}
+
+\begin{theorem}
+    (Fubini's theorem). 
+
+    On page 58 of \textit{Calculus on Manifolds}, Spivak states that if $C \subseteq A \times B$, then
+
+    \begin{align*}
+        \int_C f &= \int_{A \times B} \chi_C f \\
+        &= \int_A \Big( \int_B \chi_C(x, y) f(x, y) dy \Big) dx \\
+        &= \int_B \Big( \int_A \chi_C(x, y) f(x, y) dy \Big) dx.
+    \end{align*}
+
+    On page 61, Spivak notes that to derive an expression for $\int_C f$, one will have to either derive an expression for either the ``slice'' $C \cap (\{x\} \times B)$ when $x \in A$ or the ``slice'' $C \cap (\{y\} \times A)$ when $y \in B$.
+\end{theorem}
+
+We can use Fubini's theorem to change the order of integration of integrals over nonrectangular regions by interpreting such integrals to be integrals over rectangular regions. In the below, we use the convention that when $S = \{\xx \in \R^n \mid P(\xx)\}$ we use $\chi(P(\xx))$ to denote $\chi_S$.
+
+\begin{example}
+    Consider the iterated integral
+
+    \begin{align*}
+        \int_{-1}^0 \left( \int_{-1}^y f(x, y) dx \right) dy.
+    \end{align*}
+
+    Since we are given a sequence of iterated integrals to start from, we already know an expression for slices taken perpendicular to the axis of the innermost variable, which is the $x$-axis in this case. The above tells us that for each $x$,
+    
+    \begin{align*}
+        (\text{slice perpendicular to $x$-axis})(x) = C \cap (\{x\} \times A) = \{(x, y) \in \R^2 \mid -1 \leq x \leq y \leq 1 \}.
+    \end{align*}
+
+    Thus the above is
+
+    \begin{align*}
+        \int_{-1}^0 \left( \int_{-1}^0 \chi(-1 \leq x \leq y \leq 0) f(x, y) dx \right) dy &= \int_{-1}^0 \left( \int_{-1}^0 \chi(x \leq y) f(x, y) dx \right) dy \\
+        &= \int_{-1}^0 \left( \int_{-1}^0 \chi(x \leq y) f(x, y) dy \right) dx \text{ by Fubini's theorem} \\
+        &= \int_{-1}^0 \left( \int_{-1}^0 \chi(y \geq x) f(x, y) dy \right) dx \\
+        &= \int_{-1}^0 \int_x^0 f(x, y) dy \spc dx.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Consider the iterated integral
+
+    \begin{align*}
+        \int_0^8 \left( \int_{\sqrt[3]{y}}^2 f(x, y) dx \right) dy.
+    \end{align*}
+
+    Since we are given a sequence of iterated integrals to start from, we already know an expression for slices taken perpendicular to the axis of the innermost variable, which is the $x$-axis in this case. The above tells us that for each $x$,
+    
+    \begin{align*}
+        (\text{slice perpendicular to $x$-axis})(x) = C \cap (\{x\} \times A) = \{(x, y) \in \R^2 \mid \sqrt[3]{y} \leq x \leq 2, 0 \leq y \leq 8 \}.
+    \end{align*}
+
+    Thus the above is
+
+    \begin{align*}
+        \int_0^8 \left( \int_{\sqrt[3]{y}}^2 f(x, y) dx \right) dy &= \int_0^8 \left( \int_0^2 \chi(\sqrt[3]{y} \leq x) f(x, y) dx \right) dy \\
+        &= \int_0^2 \left( \int_0^8 \chi(\sqrt[3]{y} \leq x) f(x, y) dy \right) dx \text{ by Fubini's theorem} \\
+        &= \int_0^2 \left( \int_0^8 \chi(y \leq x^3) f(x, y) dy \right) dx \\
+        &= \int_0^2 \int_0^{x^3} f(x, y) dy \spc dx.
+    \end{align*}
+\end{example}
+
+Drawing pictures of the region of integration will help in determining the ``slices'' $C \cap (\{x\} \times B)$ when $x \in A$ and $C \cap (\{y\} \times A)$ when $y \in B$. It's a tricky matter, as for unusual regions some slices may be a union of two disjoint intervals.
+
+I've always wondered if there were a more systematic way, though, to derive formulas for these slices. To better describe my wonderings, let me describe the situation more precisely. Given a volume $V \subseteq \R^n$, we want to compute the integral 
+
+\begin{align*}
+    \int_V f \spc dx_{i_1} ... dx_{i_k}
+\end{align*}
+
+as the iterated integral
+
+\begin{align*}
+    \int_{\ell_{i_k}}^{u_{i_k}}
+    \left( \int_{\ell_{i_{k-1}}(x_{i_k})}^{u_{i_{k-1}}(x_{i_k})}
+    \cdots
+    \left( \int_{\ell_{i_2}(x_{i_3},\dots,x_{i_k})}^{u_{i_2}(x_{i_3},\dots,x_{i_k})}
+    \left( \int_{\ell_{i_1}(x_{i_2},\dots,x_{i_k})}^{u_{i_1}(x_{i_2},\dots,x_{i_k})}
+    f \, dx_{i_1} \right) dx_{i_2} \right) \cdots \right) dx_{i_k}.
+\end{align*}
+
+We have to determine the correct expressions for the bounds $u_{i_1}, \ell_{i_1}, ..., u_{i_k}, \ell_{i_k}$ to do so.
+
+Heuristically, one first considers $x_{i_1}$ to be a function of $x_{i_2}, ..., x_{i_k}$, and projects the region of integration $V$ down into a plane perpendicular to the $x_{i_1}$-axis. (Sometimes, but not always, this projection is the same as taking a cross section of the region of integration perpendicular to the $x_{i_1}$-axis. It is ``not always'' because the most extreme values of every other variables must be captured; it could be the case that one of these variables attains a minimum in one cross section and a maximum in another.)
+
+Here is a more precise statement of my wonderings. I've always wondered if, if we consider volumes with sufficiently nice properties, we might be able to derive a useful theorem that formalizes  how to perform this projection. I imagine this projection is complicated in general, but I also imagine that most examples seen in a multivariable calculus class, and even in physics, fall into very common special cases in which the projection greatly simplifies.
+
+The following links might be helpful in investigating this:
+
+\begin{itemize}
+    \item  \url{https://en.wikipedia.org/wiki/Cylindrical_algebraic_decomposition}
+    \item \url{https://en.wikipedia.org/wiki/Tarski%E2%80%93Seidenberg_theorem}
+\end{itemize}
+
+\newpage
+
+\subsection*{Change of variables}
+
+\begin{deriv}
+    (Change of variables).
+    
+    Let $U, V \subseteq \R^n$ be open balls in $\R^n$ and let $\FF:U \subseteq \R^n \rightarrow V \subseteq \R^n$ be a sufficiently differentiable invertible function. Consider the integral
+
+    \begin{align*}
+        \int_V f \spc d\text{vol},
+    \end{align*}
+
+    where $f:V \subseteq \R^n \rightarrow \R$ is also sufficiently differentiable.
+
+    Now partition $V$ into subsets $\{V_i\}_{i = 1}^n$ and select a point $\yy_i$ from each $V_i$. We have
+
+    \begin{align*}
+        \int_V f \spc d\text{vol} \approx \sum_{i = 1}^n f(\yy_i) \text{vol}(V_i).
+    \end{align*}
+
+    Since $\FF$ is invertible, there are $\xx_i$ and subsets $\{U_i\}_{i = 1}^n$, with $\xx_i \in U_i$, partitioning $U$ for which $\yy_i = \FF(\xx_i)$ and $V_i = \FF(U_i)$. The thus above becomes
+
+    \begin{align*}
+        \sum_i f(\FF(\xx_i)) \text{vol}(\FF(U_i)).
+    \end{align*}
+
+    Since the Jacobian is the best linear approximation to $\FF$, when $\xx$ is close to $\xx_i$, we have $\FF(\xx) \approx \FF(\xx_i) + \frac{\pd \FF}{\pd \xx_i}(\xx - \xx_i)$. Since translating a region preserves its volume, the image of each $U_i$ under this approximation has\footnote{$\text{vol}(\FF(\xx_i) + \frac{\pd \FF}{\pd \xx_i}\Big|_{U_i - \xx_i}) = \text{vol}(\FF(\xx_i) + \frac{\pd \FF}{\pd \xx_i}\Big|_{U_i}) = \text{vol}(\frac{\pd \FF}{\pd \xx_i}\Big|_{U_i})$.} the volume $\text{vol}(\frac{\pd \FF}{\pd \xx_i}\Big|_{U_i})$, and so the above is approximately equal to
+
+    \begin{align*}
+        \sum_i f(\FF(\xx_i)) \text{vol}\Big(\frac{\pd \FF}{\pd \xx_i}\Big|_{U_i}\Big)
+        =
+        \sum_i f(\FF(\xx_i)) \det\Big( \frac{\pd \FF}{\pd \xx_i} \Big) \text{vol}(U_i)
+        \approx 
+        \int_U f(\FF(\xx)) \det\Big( \frac{\pd \FF}{\pd \xx} \Big) d\text{vol}.
+    \end{align*}
+
+    Thus
+
+    \begin{align*}
+        \int_V f \spc d\text{vol} = \int_U f(\FF(\xx)) \det\Big( \frac{\pd \FF}{\pd \xx} \Big) d \text{vol}
+    \end{align*}
+\end{deriv}
+
+\newpage
+
+\section*{Vector calculus}
+
+\begin{defn}
+    (Divergence).
+
+    Let $S$ be a closed $3$-dimensional surface containing $\pp \in \R^3$.
+
+    \begin{align*}
+        \div(\FF)|_\pp := \lim_{\text{vol}(S) \rightarrow 0} \frac{\int_{\pd S} \FF \cdot \nn dA}{\text{vol}(S)}.
+    \end{align*}
+\end{defn}
+
+\begin{defn}
+    (Curl).
+
+    Let $S$ be a closed $2$-dimensional surface containing $\pp \in \R^3$.
+
+    \begin{align*}
+        \text{curl}(\FF)|_\pp := \lim_{\text{vol}(S) \rightarrow 0} \frac{\int_{\pd S}\FF \cdot d\rr}{\text{vol}(S)}.
+    \end{align*}
+\end{defn}
+
+\begin{theorem}
+    (Divergence formula).
+
+    \begin{align*}
+        \text{div}(\FF) = \nabla \cdot \FF.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    \url{http://www.supermath.info/CalculusIIIvectorcalculus2011.pdf}
+
+    Proof of $2$-dimensional case.
+\end{proof}
+
+\begin{theorem}
+    (Curl formula).
+
+    \begin{align*}
+        \text{curl}(\FF) = \nabla \times \FF.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    \url{http://www.supermath.info/CalculusIIIvectorcalculus2011.pdf}
+\end{proof}
+
+\begin{defn}
+    (Irrotaional vector field).
+    
+    A vector field $\FF$ is called \textit{irrotational} iff $\nabla \times \FF = \mathbf{0}$.
+\end{defn}
+
+\begin{theorem}
+    (Irrotational vector field).
+
+    A vector field $\FF$ is irrotational iff the following equivalent conditions hold:
+    
+    \begin{enumerate}
+        \item $\int_C \FF \cdot d\rr$ is independent of $C$
+        \item If $C$ is a closed curve then $\int_C \FF \cdot d\rr = 0$.
+        \item There exists $V$ such that $\FF = -\nabla V$
+    \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+    (Irrotational equals conservative).
+
+    A vector field is called \textit{conservative} iff for all closed curves $C$ we have $\int_C \FF \cdot d\rr = 0$. The above theorem shows that the set of irrotational vector fields is equal to the set of conservative vector fields.
+\end{remark}
+
+\begin{defn}
+    (Solenoidal vector field).
+
+    A vector field $\FF$ is called \textit{solenoidal} iff $\nabla \cdot \FF = \mathbf{0}$.
+\end{defn}
+
+\begin{theorem}
+    (Solenoidal vector field).
+
+    A vector field $\FF$ is solenoidal iff the following equivalent conditions hold:
+
+    \begin{enumerate}
+        \item $\int_S \FF \cdot \hat{\nn} dA$ is independent of $S$ if $\pd S$ is fixed
+        \item If $S$ is a closed surface then $\int_S \FF \cdot \hat{\nn} dA = 0$.
+        \item There exists $\AA$ such that $\FF = \nabla \times \AA$
+    \end{enumerate}
+\end{theorem}
+
