@@ -1077,7 +1077,7 @@ Given a real number $b > 0$, let's take the derivative of $b^x$ with respect to 
 \begin{align*}
     \frac{d}{dx} b^x = \lim_{h \rightarrow 0} \frac{b^{x + h} - b^x}{h}
     = \lim_{h \rightarrow 0} \frac{b^x (b^h - 1)}{h}
-    = \Big( \lim_{h \rightarrow 0} \frac{b^h - 1}{h} \Big) b^x
+    = \Big( \lim_{h \rightarrow 0} \frac{b^h - 1}{h} \Big) b^x.
 \end{align*}
 
 Notice that the limit in this last expression can be rewritten:
@@ -1092,15 +1092,17 @@ Thus, the derivative of $b^x$ with respect to $x$ is
    \frac{d}{dx} b^x = \Big( \frac{d}{dx} b^x \Big)\Big|_0 b^x = f(b) b^x, \text{ where $f(b) = \Big( \frac{d}{dx} b^x \Big)\Big|_0$}.
 \end{align*}
 
-That is, the derivative of $b^x$ with respect to $x$ is the evaluation of some function at $b$, times $b^x$. In order to obtain a more useful expression for $\frac{d}{dx} b^x$, we must evaluate the expression $f(b)$. A natural way to do so is to first consider the $b$ for which\footnote{Does such a $b$ even exist? Does $\Big( \frac{d}{dx} b^x \Big)\Big|_0 = \lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ even converge for all $b$? The answer to both questions is yes, but showing so is quite technical.} we have $f(b) = 1$.
+That is, the derivative of $b^x$ with respect to $x$ is the evaluation of some function at $b$, times $b^x$. In order to obtain a more useful expression for $\frac{d}{dx} b^x$, we must evaluate the expression $f(b)$. 
 
-For the sake of having concrete notation, we will \textit{define} $e$ to be the real number such that $f(e) = 1$. Then
+First, let us consider the possible values that $f(b)$, which is the velocity of an exponential function at a particular point, can take on. Intuition tells us that we can adjust the base of the exponential function to make its velocity at any particular point as large as we want. The only we cannot do is make the velocity at any point zero, or negative; since $b > 0$, at least some exponential growth will be always be occurring at every input, and thus the velocity will be positive at every input. Thus, we can conclude $f(b) \in (0, \infty)$. But not only that. Since exponential functions are continuous, $f(b)$ must\footnote{See the appendix.} attain every value in $(0, \infty)$.
+
+Now, the natural thing to do (and the key step) is to consider the $b$ for which\footnote{Does such a $b$ even exist? Does $\Big( \frac{d}{dx} b^x \Big)\Big|_0 = \lim_{h \rightarrow 0} \frac{b^h - 1}{h}$ even converge for all $b$? The answer to both questions is yes, but showing so is quite technical. See the appendix.} we have $f(b) = 1$. For the sake of having concrete notation, we will \textit{define} $e$ to be the real number such that $f(e) = 1$. Then
 
 \begin{align*}
     \frac{d}{dx} e^x = f(e) e^x = 1 \cdot e^x = e^x.
 \end{align*}
 
-Now, we use change of base for exponential functions in order to determine $\frac{d}{dx} b^x$ by making use of the fact that we know the derivative of $e^x$. We have
+Now, we use change of base for exponential functions in order to determine $\frac{d}{dx} b^x$ for arbitrary $b$ by making use of the fact that we know $\frac{d}{dx} e^x$. We have
 
 \begin{align*}
     \frac{d}{dx} b^x = \frac{d}{dx} e^{\log_e(b^x)} = \frac{d}{dx} e^{\log_e(b) x} = \log_e(b) e^{\log_e(b^x)} = \log_e(b) b^x.
@@ -1112,7 +1114,7 @@ In all,
     \frac{d}{dx} b^x = \log_e(b) b^x.
 \end{align*}
 
-In some sense, $e$ is the ``most natural exponent'' because it is the one for which $\frac{d}{dx} e^x = 1 \cdot e^x$. For this reason, the logarithm of base $e$ is called the \textit{natural logarithm}, and is denoted by $\ln$ (for ``logarithmus naturali''). Formally, we define $\ln := \log_e$. So the above is restated as
+In some sense, $e$ is the ``most natural base'' because it is the one for which $\frac{d}{dx} e^x = 1 \cdot e^x$. For this reason, the logarithm of base $e$ is called the \textit{natural logarithm}, and is denoted by $\ln$ (for ``logarithmus naturali''). Formally, we define $\ln := \log_e$. So the above is restated as
 
 \begin{align*}
     \boxed

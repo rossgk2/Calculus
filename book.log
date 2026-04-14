@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.8.27)  3 APR 2026 20:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.8.27)  14 APR 2026 08:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1157,7 +1157,8 @@ LaTeX Font Info:    Trying to load font information for T1+lmr on input line 12
 .
 (c:/texlive/2025/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (./book.aux)
+) (./book.aux (./single_variable_calculus.aux) (./multivariable_calculus.aux) (
+./appendix.aux))
 \openout1 = `book.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -1186,6 +1187,7 @@ LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 Package hyperref Info: Link coloring OFF on input line 12.
+(./book.out) (./book.out)
 \@outlinefile=\write5
 \openout5 = `book.out'.
 
@@ -1419,13 +1421,6 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 
 [40]
 
-LaTeX Warning: Reference `ineq2' on page 41 undefined on input line 329.
-
-
-LaTeX Warning: Reference `ineq11' on page 41 undefined on input line 330.
-
-
-
 [41]
 Overfull \hbox (3.99254pt too wide) in paragraph at lines 362--363
 []\T1/lmr/m/n/10 Now, we will use the fact that $\OML/lmm/m/it/10 f\OT1/lmr/m/n
@@ -1437,9 +1432,6 @@ Overfull \hbox (3.99254pt too wide) in paragraph at lines 362--363
  []
 
 
-LaTeX Warning: Reference `ineq11' on page 42 undefined on input line 375.
-
-
 Overfull \hbox (32.76581pt too wide) in paragraph at lines 380--381
 []\T1/lmr/m/n/10 Let $\OML/lmm/m/it/10 a > \OT1/lmr/m/n/10 1$ \T1/lmr/m/n/10 be
  a real num-ber and let $\OML/lmm/m/it/10 r > \OT1/lmr/m/n/10 0$ \T1/lmr/m/n/10
@@ -1448,36 +1440,8 @@ OML/lmm/m/it/10 i$\T1/lmr/m/n/10 , we have $[]$.
  []
 
 
-LaTeX Warning: Reference `ineq2' on page 42 undefined on input line 400.
 
-
-LaTeX Warning: Reference `ineq2' on page 42 undefined on input line 400.
-
-
-LaTeX Warning: Reference `ineq3' on page 42 undefined on input line 420.
-
-
-LaTeX Warning: Reference `ineq4' on page 42 undefined on input line 420.
-
-
-LaTeX Warning: Reference `ineq5' on page 42 undefined on input line 420.
-
-
-LaTeX Warning: Reference `ineq6' on page 42 undefined on input line 420.
-
-
-LaTeX Warning: Reference `ineq3' on page 42 undefined on input line 420.
-
-
-LaTeX Warning: Reference `ineq5' on page 42 undefined on input line 420.
-
-
-
-[42]
-
-LaTeX Warning: Reference `ineq10' on page 43 undefined on input line 442.
-
-)
+[42])
 
 [43] (./book.aux (./single_variable_calculus.aux) (./multivariable_calculus.aux
 ) (./appendix.aux))
@@ -1485,26 +1449,14 @@ LaTeX Warning: Reference `ineq10' on page 43 undefined on input line 442.
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
  ***********
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `book.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `book.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `book.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 38052 strings out of 467800
- 866704 string characters out of 5436061
- 1851646 words of memory out of 5000000
- 65793 multiletter control sequences out of 15000+600000
+ 38067 strings out of 467800
+ 866974 string characters out of 5436061
+ 1853568 words of memory out of 5000000
+ 65797 multiletter control sequences out of 15000+600000
  738854 words of font info for 114 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  138i,17n,135p,1143b,2295s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1533,10 +1485,10 @@ texmf-dist/fonts/type1/public/lm/lmsy7.pfb><c:/texlive/2025/texmf-dist/fonts/ty
 pe1/public/lm/lmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt1
 0.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt8.pfb><c:/texlive/2
 025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on book.pdf (43 pages, 682034 bytes).
+Output written on book.pdf (43 pages, 683711 bytes).
 PDF statistics:
- 619 PDF objects out of 1000 (max. 8388607)
- 499 compressed objects within 5 object streams
- 207 named destinations out of 1000 (max. 500000)
+ 634 PDF objects out of 1000 (max. 8388607)
+ 513 compressed objects within 6 object streams
+ 208 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
