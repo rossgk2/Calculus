@@ -1,0 +1,39 @@
+Developing a good understanding of calculus comes down to developing an understanding of two key notions:
+
+1. Infinitesimals
+2. Deriving antiderivative formulas from derivative formulas
+
+## A dream that almost came true
+
+There are two ways to achieve (1) and understand infinitesimals. The first and most prevalent way is to treat infinitesimals as a helpful heuristic, but not as something that is really formally valid. When students learn this approach, they may be emphatically told that infinitesimals have no meaning, and that limits are "the only valid way". Teachers can be dogmatic and utterly lack creativity, sometimes.
+
+The second, much less well known way is to make the assumptions of nonstandard analysis, which actually succeed in setting up a formal notion of infinitesimals. Unfortunately, nonstandard analysis requires doing away with the assumption that not(not(true)) is always true, which, while invalid to do, exactly- as mathematicians derive conclusions about hypothetical worlds with crazy assumptions like this all the time- seems to me like an unwarranted departure from logic underpinning the *actual* universe we live in. Thus, for me, nonstandard analysis is ultimately disqualified- a dream that almost came true.
+
+## Making the best of it
+
+So, in standard calculus, 
+
+(1) turns into
+
+1. understanding how to justify intuitive heuristic arguments made with infinitesimals by using limits. 
+
+ex. lim_{h -> 0} (x^2 + 2xh + h^2 - x^2)/h instead of (dx^2 + 2x dx + dx^2)/dx
+
+standard texts cover this well.
+
+2. carefully setting up the notation of the chain rule, so that it looks intuitive and is hard to mess up. 
+
+--
+
+standard texts don't do this.
+
+
+3. doing the same for inverse chain rule.
+
+--
+
+**standard texts don't do this. they don't explain why du/dx dx = du**
+
+## Deriving antiderivative formulas from derivative formulas
+
+Standard textbooks fail this completely and present it in a very ad-hoc manner
