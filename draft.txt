@@ -5,9 +5,9 @@ Developing a good understanding of calculus comes down to developing an understa
 
 ## A dream that almost came true
 
-There are two ways to achieve (1) and understand infinitesimals. The first and most prevalent way is to treat infinitesimals as a helpful heuristic, but not as something that is really formally valid. When students learn this approach, they may be emphatically told that infinitesimals have no meaning, and that limits are "the only valid way". Teachers can be dogmatic and utterly lack creativity, sometimes.
+There are a couple possible ways to achieve (1) and understand infinitesimals. The first and most prevalent way is to treat infinitesimals as a helpful heuristic, but not as something that is really formally valid. When students learn this approach, they may be emphatically told that infinitesimals have no meaning, and that limits are "the only valid way". Teachers can be dogmatic and utterly lack creativity, sometimes.
 
-The second, much less well known way is to make the assumptions of nonstandard analysis, which actually succeed in setting up a formal notion of infinitesimals. Unfortunately, nonstandard analysis requires doing away with the assumption that not(not(true)) is always true, which, while invalid to do, exactly- as mathematicians derive conclusions about hypothetical worlds with crazy assumptions like this all the time- seems to me like an unwarranted departure from logic underpinning the *actual* universe we live in. Thus, for me, nonstandard analysis is ultimately disqualified- a dream that almost came true.
+
 
 ## Making the best of it
 
