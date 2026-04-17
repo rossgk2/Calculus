@@ -6,23 +6,20 @@ In *differential calculus*, we use infinitesimals to measure the speed at which 
 
 In *integral calculus*, we use infinitesimals to compute how much total change is caused by a given rate of change. If we want to determine how much total change has been caused by a rate of change that itself changes over time, we can think of the rate of change as being the aggregation of many rates of change that *don't* change over time, where each of these rates occurs over an "infinitely small" window of input values, and then add up all of the little changes that result. Since the rate $f(x)$ occurs over an input window with infinitesimal width $dx$, the infinitesimal change contributed by each input window is $f(x) dx$. Using an elongated S to denote "sum", the total change is the sum of all infinitesimal changes, $\int f(x) dx$.
 
-# ...
+## Some history
 
-While calculus was founded on these infinitesimal notions a long time ago (in the late 1600s) it was only quite recently (three hundred years later, in the late 1900s) when mathematicians figured out formally valid definitions for infinitesimals[^1].
+In the late 1600s, this calculus of infinitesimals revolutionized humanity's understanding of the world. Infinitesimals were also an elusive concept, and, in these early days, too difficult to fully explain. One confoundingly often had to claim that the same infinitesimal quantity was somehow nonzero at some times and equal to zero at others, with the distinction between the two being decided for no reason other than convenience.
 
-[^1]: Formal definitions of infinitesimals are given in [nonstandard analysis](https://people.math.wisc.edu/~hkeisler/calc.html), which can be derived from standard logic (i.e. ZFC), and [smooth infinitesimal analysis](https://publish.uwo.ca/~jbell/invitation%20to%20SIA.pdf), which is "synthetically" imposed.
+A completely valid theory of calculus was only first established in the 1800s, *after* the ideas of calculus had been in use for one hundred years! The solution was to replace each "infinitely small number" with a sequence of actual numbers that converge to a *limit* of zero.
 
+This limit formalism for calculus took root... and is what's used today!
 
+And then, an approach to formally defining infinitesimals, called [nonstandard analysis](https://people.math.wisc.edu/~hkeisler/calc.html), was at last discovered in the late 1900s. Unfortunately for students who are dogmatically told by unimaginative teachers that "limits are the only way", it didn't catch on[^1]. 
 
-========
+[^1]: This is because the concepts underlying infinitesimals in nonstandard analysis are extremely difficult, and are used almost nowhere other else by most mathematicians, while the notion of "limit" is comparatively easy, and are used in plenty of places in mathematics.
 
+## The spirit of calculus
 
+While they may not be formally valid in limit-based calculus, infinitesimals will always remain the spirit of calculus. Thus, one of the keys to understanding calculus is understanding infinitesimals.
 
-Infinitesimals have always been a complicated concept. On the surface level, they are extremely intuitive, and are probably why early calculus spread across the world in the first place. But after their inception, it seemed that infinitesimals were logically inconsistent. To derive results, one commonly had to claim that the same infinitesimal quantity was somehow both nonzero at some times and equal to zero at other times, with the distinction between the two being decided for no reason other than convenience.
-
-The historical resolution to this issue was to replace each infinitesimal, a "sort-of number" thought of as being extremely close to  zero, with a *sequence* of *actual* numbers that converge to the *limit* of 0. In this *limit formalism*, we replace expressions involving $dx$ with expressions involving $\Delta x$, where $\Delta x \rightarrow 0$. Unlike infinitesimals (so far), limits have a clear definition, so the limit formalism allows us to confidently establish facts suggested by the intuition of infinitesimals, without the logical contradictions.
-
-
-
-It turns out that it is also possible to give infinitesimals a clear definition... it's just very difficult, which is why how to do so wasn't discovered until [....]!
-
+We still use the classical notation $\frac{df(x)}{dx}$, just with the understanding that there is no formal meaning of $df(x)$ on its own, and no formal meaning of $dx$ on its own. And we use the classical notation $\int f(x) dx$, with the understanding that there is no formal meaning of $f(x) dx$ on its own.
