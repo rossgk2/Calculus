@@ -2,27 +2,23 @@
 
 Calculus is about *measuring change* by thinking about the infinitely small. All of calculus relies on intuition about "infinitely small numbers", or *infinitesimals*.
 
-**The first half of calculus is about using infinitesimals to measure the speed at which change occurs.** If we want to measure the speed at which the output of a function $f$ is changing in response to a changing input, we can consider the rate of change of $f$ at the input $x$ to be the slope of the line that the curvy $f$ vs. $x$ graph "becomes" as we "zoom in infinitely close" to the point $(x, f(x))$. From this zoomed in perspective, an infinitesimal horizontal change input of $dx$ leads to infinitesimal vertical change of $df(x)$, so the slope is $\frac{df(x)}{dx}$. This slope is called the *derivative* of $f$ at $x$. Also, the operation which sends a function to its derivative is called *differentiation*. Thus, the calculus of measuring the speed at which change occurs is called *differential calculus*.
+**The first half of calculus, called *differential calculus*, is about using infinitesimals to measure the speed at which change occurs.** If we want to measure the rate at which the output of a function $f$ is changing in response to a changing input, *instantaneously* at a particular input $x$, we compute the ratio of an infinitesimal change in output to the infinitesimal change in input that caused it. Geometrically, this ratio is the slope of the line passing through $(x, f(x))$. 
 
-**The second half of calculus is about using infinitesimals to compute how much total change is caused by a given rate of change.** If we want to determine how much total change has been caused by a rate of change that itself changes over a time interval $[a, b]$, we can think of the rate of change as being the aggregation of many rates of change that *don't* change over time, where each of these rates occurs over an "infinitely small" window of input values, and then add up all of the little changes that result. Since the rate $\frac{df(x)}{dx}$ occurs over an input window with infinitesimal width $dx$, the infinitesimal change contributed by each input window is $\frac{df(x)}{dx} dx$. Using an elongated S to denote "sum", the total change is the sum of all infinitesimal changes, $\int^b_a \frac{df(x)}{dx} dx$ .
+**The second half of calculus, called *integral calculus*, is about using infinitesimals to compute how much total change is caused by a given rate of change.** If we want to determine how much total change has been caused by a rate of change that itself changes over an input window $[a, b]$, we apply the *fundamental theorem of calculus*. That is, we think of the rate of change as being the aggregation of many rates of change that *don't* change over time, where each of these rates occurs over an infinitesimally wide window of inputs, and then add up all of the little changes that result. Geometrically, this sum is the area between $f$ and the $x$-axis, and between the lines $x = a$ and $x = b$.
 
-And the **fundamental theorem of calculus** is simply the statement that the second half of calculus (computing quantity from change) is the inverse of the first half of calculus (converting change from quantity):
-$$
-f(b) - f(a) = \int^b_a \frac{df(x)}{dx} dx 
-$$
-It is the statement "quantity is the sum of all changes".
+In addition to giving concrete definitions for what rates of change and total change even are, **the true power of infinitesimals is that they provides a means to derive convenient formulas for these quantities of change, so that it is not necessary to tediously compute ratios or sums.** If there were no such formulas, then the fundamental theorem of calculus would be basically useless! But, if one knows the formulas, they merely "calculate", and apply the formulas. Thus the name *calculus*.
 
 ## Some history
 
-In the late 1600s, this calculus of infinitesimals revolutionized humanity's understanding of the world. Infinitesimals were also an elusive concept, and, in these early days, too difficult to fully explain. One confoundingly often had to claim that the same infinitesimal quantity was somehow nonzero at some times and equal to zero at others, with the distinction between the two being decided for no reason other than convenience.
+In the late 1600s, even as the calculus of infinitesimals transformed humanity's understanding of the world, a fully satisfactory understanding of the revolutionary new infinitesimals was elusive. One confoundingly often had to claim that the same infinitesimal quantity was somehow nonzero at some times and equal to zero at others, with the distinction between the two being decided for no reason other than convenience.
 
-A completely valid theory of calculus was only first established in the 1800s, *after* the ideas of calculus had been in use for one hundred years! The solution was to replace each "infinitely small number" with a sequence of actual numbers that converge to a *limit* of zero.
+A completely valid theory of calculus was only first established in the 1800s, *after* the ideas of calculus had been in use for more than a hundred years! The solution was to replace each infinitesimal, which was an "infinitely small number", with a sequence of *actual* numbers that converge to a *limit* of zero.
 
 This limit formalism for calculus took root... and is what's used today!
 
 (And then, an approach to formally defining infinitesimals, called [nonstandard analysis](https://people.math.wisc.edu/~hkeisler/calc.html), was at last discovered in the late 1900s. Unfortunately for students who are dogmatically told by unimaginative teachers that "limits are the only way", it didn't catch on[^1].)
 
-[^1]: This is because the concepts underlying infinitesimals in nonstandard analysis are extremely difficult, and are used almost nowhere other else by most mathematicians, while the notion of "limit" is comparatively easy, and are used in plenty of places in mathematics.
+[^1]: This is because the concepts underlying infinitesimals in nonstandard analysis are extremely difficult, and are used almost nowhere other in mainstream math and physics, while the notion of "limit" is comparatively easy, and is used in plenty of places in math and physics.
 
 # Keys to calculus
 
