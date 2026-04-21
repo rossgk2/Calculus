@@ -85,6 +85,8 @@ is proved to be a logical consequence of the "end result". In this text, we pres
 
 ## Key #3: the fundamental theorem of calculus
 
+### The two parts of the theorem
+
 The fundamental theorem of calculus expresses precisely in what sense the operations of differentiation and integration are inverses. Since there are two orders in which one could perform the two operations, there are two parts to the theorem:
 
 * Part I describes the sense in which one is allowed to integrate and then differentiate.
@@ -94,7 +96,11 @@ Unfortunately, whoever decided the ordering of the two parts made a mistake. The
 
 Standard textbooks naively follow the ordering of the two parts. With little motivation, they establish Part I, and use it to prove Part II.
 
-This book takes the more natural approach. We notice Part II. Part I follows as an easy corollary afterwards. 
+This book takes the more natural approach. We notice Part II. Part I follows as an easy corollary afterwards.
+
+### Indefinite integrals
+
+Only after one knows that every antiderivative is a definite integral does it make sense to denote antiderivatives with a symbol suggestive of definite integrals. Thus, unlike standard texts, which often muddle this detail and thus trick students into thinking that $\int^b_a f(x) dx = \Big( \int f(x) dx \Big)\Big|^b_a$ is "obvious" when they don't really understand it, we take care to only define the notion of an indefinite integral *after* Part I of the fundamental theorem.
 
 ## Key #4: the inverse chain rule
 
