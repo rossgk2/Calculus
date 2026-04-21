@@ -8,7 +8,7 @@ Calculus is about *measuring change* by thinking about the infinitely small. All
 
 **The second half of calculus is about using infinitesimals to compute quantity from change.** If we want to determine how much total change has been caused by a rate of change $f'$ that itself changes over an input window $[a, b]$, we apply the *fundamental theorem of calculus*. That is, we think of the rate of change as being the aggregation of many rates of change that *don't* change over time, where each of these rates occurs over an infinitesimally wide window of inputs, and then compute the sum of all the little changes $df(x_1), ..., df(x_i), ...$ that result. Geometrically, this sum is the area between $f$ and the $x$-axis, and between the lines $x = a$ and $x = b$.
 
-(The mentioned sum is denoted by $\int^b_a df(x)$, is equal to $\int^b_a \frac{df(x)}{dx} dx = \int^b_a f'(x) dx$, and is called the *integral* of $f'$ over $[a, b]$. Computing the integral of $f'$ is called *integrating* $f'$. Thus, the second half of calculus is known as *integral calculus*.)
+(The mentioned sum is denoted by $\int^b_a df(x)$. It is equal to $\int^b_a \frac{df(x)}{dx} dx = \int^b_a f'(x) dx$, and is called the *integral* of $f'$ over $[a, b]$. Computing the integral of $f'$ is called *integrating* $f'$. Thus, the second half of calculus is known as *integral calculus*.)
 
 **The true power of infinitesimals is that they provides a means to derive convenient formulas for these calculations, so that it is not necessary to tediously compute ratios or sums.** If there were no such formulas, then the fundamental theorem of calculus would be basically useless! But, if one knows the formulas, they merely "calculate", and apply the formulas. Thus the name *calculus*.
 
