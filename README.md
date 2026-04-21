@@ -120,3 +120,5 @@ $$
 Typically, integral theorems like integration by substitution, and *especially* integration by parts, are explained to be the counterparts to derivative rules- which is good- but then the actual form of the rules is conjectured to out of the blue before being proven. 
 
 This book straightforwardly *derives* the integral rules from the derivative rules in a memorable way, so that the actual form of a new rule is discovered in the same breath as its existence is discovered. This leads to a deep understanding of why integral rules are true and eliminates the need for memorization. If one forgets the integral formula, they can easily re-derive it.
+
+# make sure explanation of "$df(x)$ on its own isn't formally valid" explained for derivatives and integrals in book
