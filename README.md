@@ -42,7 +42,7 @@ $$
 \text{``If $y = g(u)$ and $u = f(x)$ are differentiable functions, then } \frac{dy}{dx} = \frac{dy}{du} \frac{du}{dx}\text{''}
 $$
 
-There are several contradictions inherent in this, the most striking being that the expression $\frac{dg(f(x))}{f(x)}$ is not given any formal meaning elsewhere in a standard text even though it is a concept that clearly follows from the premises (by substituting $y = g(u)$ and $u = f(x)$ into the expression $\frac{dy}{dx}$).
+There are several contradictions inherent in this, the most striking being that the expression $\frac{dg(f(x))}{df(x)}$ is not given any formal meaning elsewhere in a standard text even though it is a concept that clearly follows from the premises (by substituting $y = g(u)$ and $u = f(x)$ into the expression $\frac{dy}{dx}$).
 
 In this book, we actually give concrete meaning to this notion, defining
 
