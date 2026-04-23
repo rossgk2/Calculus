@@ -98,8 +98,8 @@ is proved to be a logical consequence of the "end result". In this text, we pres
 
 The fundamental theorem of calculus expresses precisely in what sense the operations of differentiation and integration are inverses. Since there are two orders in which one could perform the two operations, there are two parts to the theorem:
 
-* Part I describes the sense in which one is allowed to integrate and then differentiate.
-* Part II describes the sense in which one is allowed to differentiate and then integrate.
+* Part I describes the sense in which we can integrate and then differentiate.
+* Part II describes the sense in which we can differentiate and then integrate.
 
 Unfortunately, whoever decided the ordering of the two parts made a mistake. They should swapped the labels, so that Part II is Part I and Part II is Part II! This is because it is much more intuitive to think about computing quantity from change, which is what Part II is about, than it is to think about "computing change in quantity, where that quantity is accumulated change", which is what Part I is about.
 
