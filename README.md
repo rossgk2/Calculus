@@ -36,21 +36,21 @@ Thus, understanding calculus requires understanding infinitesimals. And in limit
 
 Because the chain rule underpins the understanding of infinitesimals, one could argue that it is even more fundamental than the fundamental theorem of calculus! 
 
-Standard texts do just fine in stating the "explicit, but less intuitive" version of the chain rule. But when it comes to the "more intuitive, but less explicit" version, the totally botch things, giving this unintelligible presentation:
+Standard texts do just fine in stating the "explicit, but less intuitive" version of the chain rule. But when it comes to the "intuitive, but less explicit" version, the totally botch things, giving this unintelligible presentation:
 
 $$
 \text{``If $y = g(u)$ and $u = f(x)$ are differentiable functions, then } \frac{dy}{dx} = \frac{dy}{du} \frac{du}{dx}\text{''}
 $$
 
-There are several contradictions inherent in this presentation, the most striking being that the traditional notation does not directly define what $\frac{dg(f(x))}{f(x)}$ means, even though it is an expression that can be pretty obviously derived (by substituting $y = g(u)$ and $u = f(x)$ into the expression $\frac{dy}{dx}$).
+There are several contradictions inherent in this, the most striking being that the expression $\frac{dg(f(x))}{f(x)}$ is not given any formal meaning elsewhere in a standard text even though it is a concept that clearly follows from the premises (by substituting $y = g(u)$ and $u = f(x)$ into the expression $\frac{dy}{dx}$).
 
-We actually give concrete meaning to this notion in the book, defining
+In this book, we actually give concrete meaning to this notion, defining
 
 $$
 \frac{dg(f(x))}{df(x)} := g\prime(f(x))
 $$
 
-This definition leads to a much clearer statement of the chain rule that avoids all of the problems with the standard presentation:
+This leads to a much clearer statement of the "intuitive, but less explicit" version of the chain rule that avoids all of the problems with the standard presentation:
 
 $$
 \frac{dg(f(x))}{dx} = \frac{dg(f(x))}{df(x)} \frac{df(x)}{dx}
@@ -111,25 +111,25 @@ Only after one knows that every antiderivative is a definite integral does it ma
 
 Similarly to how understanding infinitesimals in limit-based *differential* calculus requires understanding the *chain rule*, understanding infinitesimals in limit-base *integral* calculus requires understanding the *inverse chain rule*. 
 
-The presentation of the inverse chain rule in standard texts is even worse than the situation with the chain rule. 
-
-Standard texts say something unintelligble, like
+The presentation of the inverse chain rule in standard texts is even worse than the situation with the chain rule. At least with the chain rule, standard texts give an "explicit, but less intuitive" presentation for students to fall back upon when the botched "intuitive, but less explicit" version doesn't make any sense. With the inverse chain rule, *no* "explicit, but less intuitive" version is given. Students are left to rely on the "intuitive, but less explicit" version of the inverse chain rule, botched in an analagous way to the "intuitive, but less explicit" version of the chain rule:
 
 $$
 \text{``If $y = g(u)$ and $u = f(x)$ are differentiable functions, then } \int g'(f(x)) f'(x) dx = \int g(u) du \text{''}
 $$
 
+This book remedies this problem. First, we give the "explicit, but less intuitive" version: 
 
+$$
+\int (g \circ f) f' = \Big(\int g \Big) \circ f
+$$
 
-to state the rule in clear but not intuitive notation, and say something intelligible like $\int (g \circ f) f' = \Big(\int g \Big) \circ f$, but botch things, and end up stating $\int g(f(x)) f'(x) dx = \int g(f(x)) df(x)$, which doesn't make sense 
-
-but demonstrate it intuitive but not clear notation, and don't take any time to explain how the two notations match up to one another. This book does take that time, and further remedies the problem by introducing notation for integrals, designed to balance intuition and clarity, analogous to that introduced for derivatives. The convention is
+Then we introduce notation for integrals analogous to that introduced for derivatives.
 
 $$
 \int g(f(x)) df(x) := \Big(\int g \Big) \circ f
 $$
 
-With it, the inverse chain rule is
+Just as was the case with derivatives, this notation leads to a much clearer "intuitive, but less explicit" version of the inverse chain rule:
 
 $$
 \int g(f(x)) \frac{df(x)}{dx} dx = \int g(f(x)) df(x)
@@ -140,24 +140,3 @@ $$
 Typically, integral theorems like integration by substitution, and *especially* integration by parts, are explained to be the counterparts to derivative rules- which is good- but then the actual form of each rules is conjectured from out of the blue before being proven	. 
 
 This book straightforwardly *derives* the integral rules from the derivative rules in a memorable way, so that the actual form of a new rule is discovered in the same breath as its existence is discovered. This leads to a deep understanding of why integral rules are true and eliminates the need for memorization, so that if an integral formula is forgotten, it can easily be derived in a minute or two.
-
-# edits to make
-
-- copy-paste above intro into book
-- "Additionally, both two-sided and one-sided" -> "Additionally, each one-sided"
-- "An example of a function that satisfies this later condition is" -> "''the function $g$ defined by"
-- make sure explanation of "$df(x)$ on its own isn't formally valid" explained for derivatives and integrals in book
-- add 
-
-$$
-\lim_{\Delta x \rightarrow 0} \frac{\Delta f(\Delta x)}{\Delta x}
-$$
-
-​	as restatement of defn of derivative; add more explicit talk about infinitesimals
-
-* "This notation aids intuition": this shouldn't be the first time a ratio of infinitesimals is getting mentioned!
-* get rid of so much formalism around definition of Riemann sum
-* change FTC derivation to be about going from $f(b) - f(a) = \int^b_a \frac{df(x)}{dx} dx$ to $g(b) - g(a) = \int^b_a \frac{df(x)}{dx}$ whenever $g' = f'$
-
-- add $\int^b_a f(x) dx = \Big( \int f(x) dx \Big)\Big|^b_a$
-- "Note that the meanings of df(x) and dg(x) in the above are not the same as the meanings that make most sense" - this isn't true. Just say "It is more work to memorize" than "''. Additionally, it is more work to memorize"
