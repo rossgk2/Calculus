@@ -62,7 +62,7 @@ $$
 
 ## Key #2: exponential functions 
 
-Every single calculus text[^3] I have ever seen uses the [dreaded efficiency pedagogy]() to derive the core facts about exponential and logarithmic functions. This results in facts being presented in the exact opposite order of the one that makes sense. Facts that should be presented as "end results", like the following, are assumed without any good reason first...
+Every single calculus text[^3] I have ever seen uses the [dreaded efficiency pedagogy]([https://github.com/rossgk2/Calculus/edit/main/README.md](https://github.com/rossgk2/naturalphilosophy/blob/main/On%20good%20explanations.md#the-dreaded-efficency-pedagogy)) to derive the core facts about exponential and logarithmic functions. This results in facts being presented in the exact opposite order of the one that makes sense. Facts that should be presented as "end results", like the following, are assumed without any good reason first...
 
 $$
 \exp = \ln^{-1}, \text{ where } \ln(x) = \int_1^x \frac{1}{x} dx
