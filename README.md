@@ -2,7 +2,7 @@
 
 Calculus is about *measuring change* by thinking about the infinitely small. All of calculus relies on intuition about "infinitely small numbers", or *infinitesimals*.
 
-**The first half of calculus is about using infinitesimals to compute *change* from *quantity*.** If we want to measure the rate at which the output of a function $f$ is changing in response to a changing input, *instantaneously* at a particular input $x$, we compare the ratio of an infinitesimal change in output, $df(x)$, to the infinitesimal change in input, $dx$, that caused it, and compute the ratio $\frac{df(x)}{dx}$. Geometrically, this ratio is the slope of the line passing through $(x, f(x))$.
+**The first half of calculus is about using infinitesimals to compute *change* from *quantity*.** If we want to measure the rate at which the output of a function $f$ is changing in response to a changing input, *instantaneously* at a particular input $x$, we compare the ratio of an infinitesimal change in output, $df(x)$, to the infinitesimal change in input, $dx$, that caused it, and compute the ratio $\frac{df(x)}{dx}$. Geometrically, this ratio is the slope of the tangent line passing through $(x, f(x))$.
 
 (The ratio $\frac{df(x)}{dx}$ is called the *derivative* of $f$ at $x$. Sometimes, it is denoted as $f'$. Computing the derivative of $f$ is called *differentiating $f$*. Thus, the first half of calculus is known as *differential calculus*.)
 
@@ -123,5 +123,21 @@ This book straightforwardly *derives* the integral rules from the derivative rul
 
 # edits to make
 
+- copy-paste above intro into book
+- "Additionally, both two-sided and one-sided" -> "Additionally, each one-sided"
+- "An example of a function that satisfies this later condition is" -> "''the function $g$ defined by"
 - make sure explanation of "$df(x)$ on its own isn't formally valid" explained for derivatives and integrals in book
-- 
+- add 
+
+$$
+\lim_{\Delta x \rightarrow 0} \frac{\Delta f(\Delta x)}{\Delta x}
+$$
+
+​	as restatement of defn of derivative; add more explicit talk about infinitesimals
+
+* "This notation aids intuition": this shouldn't be the first time a ratio of infinitesimals is getting mentioned!
+* get rid of so much formalism around definition of Riemann sum
+* change FTC derivation to be about going from $f(b) - f(a) = \int^b_a \frac{df(x)}{dx} dx$ to $g(b) - g(a) = \int^b_a \frac{df(x)}{dx}$ whenever $g' = f'$
+
+- add $\int^b_a f(x) dx = \Big( \int f(x) dx \Big)\Big|^b_a$
+- "Note that the meanings of df(x) and dg(x) in the above are not the same as the meanings that make most sense" - this isn't true. Just say "It is more work to memorize" than "''. Additionally, it is more work to memorize"
