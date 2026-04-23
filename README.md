@@ -4,11 +4,11 @@ Calculus is about *measuring change* by thinking about the infinitely small. All
 
 **The first half of calculus is about using infinitesimals to compute *change* from *quantity*.** If we want to measure the rate at which the output of a function $f$ is changing in response to a changing input, *instantaneously* at a particular input $x$, we compare the ratio of an infinitesimal change in output, $df(x)$, to the infinitesimal change in input, $dx$, that caused it, and compute the ratio $\frac{df(x)}{dx}$. Geometrically, this ratio is the slope of the tangent line passing through $(x, f(x))$.
 
-(The ratio $\frac{df(x)}{dx}$ is called the *derivative* of $f$ at $x$. Sometimes, it is denoted as $f'$. Computing the derivative of $f$ is called *differentiating $f$*. Thus, the first half of calculus is known as *differential calculus*.)
+(The ratio $\frac{df(x)}{dx}$ is called the *derivative* of $f$ at $x$. Sometimes, it is denoted as $f\prime$. Computing the derivative of $f$ is called *differentiating* $f$. Thus, the first half of calculus is known as *differential calculus*.)
 
 **The second half of calculus is about using infinitesimals to compute *quantity* from *change*.** If we want to determine how much total change has been caused by a rate of change $f'$ that itself changes over an input window $[a, b]$, we apply the *fundamental theorem of calculus*. That is, we think of the rate of change as being the aggregation of many rates of change that *don't* change over time, where each of these rates occurs over an infinitesimally wide window of inputs, and then compute the sum of all the little changes $df(x_1), ..., df(x_i), ...$ that result. Geometrically, this sum is the area between $f$ and the $x$-axis, and between the lines $x = a$ and $x = b$.
 
-(The mentioned sum is denoted by $\int^b_a df(x)$. It is equal to $\int^b_a \frac{df(x)}{dx} dx = \int^b_a f'(x) dx$, and is called the *integral* of $f'$ over $[a, b]$. Computing the integral of $f'$ is called *integrating* $f'$. Thus, the second half of calculus is known as *integral calculus*.)
+(The mentioned sum is denoted by $\int^b_a df(x)$. It is equal to $\int^b_a \frac{df(x)}{dx} dx = \int^b_a f\prime(x) dx$, and is called the *integral* of $f\prime$ over $[a, b]$. Computing the integral of $f\prime$ is called *integrating* $f\prime$. Thus, the second half of calculus is known as *integral calculus*.)
 
 **The true power of infinitesimals is that they provide a means to derive convenient formulas for these calculations, so that it is not necessary to tediously compute ratios or sums.** If there were no such formulas, then the fundamental theorem of calculus would be basically useless! But, if one knows the formulas, they merely "calculate", and apply the formulas. Thus the name *calculus*.
 
@@ -36,25 +36,30 @@ Thus, understanding calculus requires understanding infinitesimals. And in limit
 
 Because the chain rule underpins the understanding of infinitesimals, one could argue that it is even more fundamental than the fundamental theorem of calculus! 
 
-Unfortunately, standard texts state the chain rule with notation that is either intuitive but not clear ($\frac{df}{dx} = \frac{df}{dg} \frac{dg}{dx}$) or clear but not intuitive ($(f \circ g)’(x) = f’(g(x)) g’(x)$). Clear but not intuitive notation is useful, but only for the purpose of defining more intuitive notation.
+Standard texts do just fine in stating the "explicit, but less intuitive" version of the chain rule. But when it comes to the "more intuitive, but less explicit" version, the totally botch things, giving this unintelligible presentation:
 
-In this book we phrase the chain rule with a notational convention designed to balance intuition and clarity. The convention is 
 $$
-\frac{dg(f(x))}{df(x)} := g'(f(x))
+\text{``If $y = g(u)$ and $u = f(x)$ are differentiable functions, then } \frac{dy}{dx} = \frac{dy}{du} \frac{du}{dx}\text{''}
 $$
 
+There are several contradictions inherent in this presentation, the most striking being that the traditional notation does not directly define what $\frac{dg(f(x))}{f(x)}$ means, even though it is an expression that can be pretty obviously derived (by substituting $y = g(u)$ and $u = f(x)$ into the expression $\frac{dy}{dx}$).
 
-With it, the chain rule is 
+We actually give concrete meaning to this notion in the book, defining
+
+$$
+\frac{dg(f(x))}{df(x)} := g\prime(f(x))
+$$
+
+This definition leads to a much clearer statement of the chain rule that avoids all of the problems with the standard presentation:
+
 $$
 \frac{dg(f(x))}{dx} = \frac{dg(f(x))}{df(x)} \frac{df(x)}{dx}
 $$
 
-
-The fractional nature of the notation gives intuition; the explicit specification of the inputs where $f’$ gets evaluated gives clarity.
-
 ## Key #2: exponential functions 
 
-Every single calculus text[^2] I have ever seen uses the [dreaded efficiency pedagogy]() to derive the core facts about exponential and logarithmic functions. This results in facts being presented in the exact opposite order of the one that makes sense. Facts that should be presented as "end results", like the following, are assumed without any good reason first....
+Every single calculus text[^2] I have ever seen uses the [dreaded efficiency pedagogy]() to derive the core facts about exponential and logarithmic functions. This results in facts being presented in the exact opposite order of the one that makes sense. Facts that should be presented as "end results", like the following, are assumed without any good reason first...
+
 $$
 \exp = \ln^{-1}, \text{ where } \ln(x) = \int_1^x \frac{1}{x} dx
 $$
@@ -106,11 +111,26 @@ Only after one knows that every antiderivative is a definite integral does it ma
 
 Similarly to how understanding infinitesimals in limit-based *differential* calculus requires understanding the *chain rule*, understanding infinitesimals in limit-base *integral* calculus requires understanding the *inverse chain rule*. 
 
-Unfortunately, the presentation of the inverse chain rule in standard texts is even worse than than the situation with the chain rule. Standard texts state the rule in clear but not intuitive notation, but demonstrate it intuitive but not clear notation, and don't take any time to explain how the two notations match up to one another. This book does take that time, and further remedies the problem by introducing notation for integrals, designed to balance intuition and clarity, analogous to that introduced for derivatives. The convention is
+The presentation of the inverse chain rule in standard texts is even worse than the situation with the chain rule. 
+
+Standard texts say something unintelligble, like
+
+$$
+\text{``If $y = g(u)$ and $u = f(x)$ are differentiable functions, then } \int g'(f(x)) f'(x) dx = \int g(u) du \text{''}
+$$
+
+
+
+to state the rule in clear but not intuitive notation, and say something intelligible like $\int (g \circ f) f' = \Big(\int g \Big) \circ f$, but botch things, and end up stating $\int g(f(x)) f'(x) dx = \int g(f(x)) df(x)$, which doesn't make sense 
+
+but demonstrate it intuitive but not clear notation, and don't take any time to explain how the two notations match up to one another. This book does take that time, and further remedies the problem by introducing notation for integrals, designed to balance intuition and clarity, analogous to that introduced for derivatives. The convention is
+
 $$
 \int g(f(x)) df(x) := \Big(\int g \Big) \circ f
 $$
+
 With it, the inverse chain rule is
+
 $$
 \int g(f(x)) \frac{df(x)}{dx} dx = \int g(f(x)) df(x)
 $$
