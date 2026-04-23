@@ -12,6 +12,7 @@ $$
 
 ​	as restatement of defn of derivative; add more explicit talk about infinitesimals
 
+* make sure in chain rule and inverse chain rule, always using $g \circ f$, even in explanation of bad standard presentation
 * "This notation aids intuition": this shouldn't be the first time a ratio of infinitesimals is getting mentioned!
 * get rid of so much formalism around definition of Riemann sum
 * change FTC derivation to be about going from $f(b) - f(a) = \int^b_a \frac{df(x)}{dx} dx$ to $g(b) - g(a) = \int^b_a \frac{df(x)}{dx}$ whenever $g' = f'$
