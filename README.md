@@ -12,7 +12,7 @@ Calculus is about *measuring change* by thinking about the infinitely small. All
 
 **The true power of infinitesimals is that they provide a means to derive convenient formulas for these calculations, so that it is not necessary to tediously compute ratios or sums.** If there were no such formulas, then the fundamental theorem of calculus would be basically useless! But, if one knows the formulas, they merely "calculate", and apply the formulas. Thus the name *calculus*.
 
-## Some history
+## Infinitesimals and limits
 
 In the late 1600s, even as this calculus transformed humanity's understanding of the world, a fully satisfactory understanding of the infinitesimals underpinning it was elusive. In order to derive results, one confoundingly often had to claim that the same infinitesimal quantity was somehow nonzero at some times and equal to zero at others, with the distinction between the two being decided for no reason other than convenience.
 
