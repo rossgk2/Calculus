@@ -113,7 +113,7 @@ Only after one knows that every antiderivative is a definite integral does it ma
 
 Similarly to how understanding infinitesimals in limit-based *differential* calculus requires understanding the *chain rule*, understanding infinitesimals in limit-base *integral* calculus requires understanding the *inverse chain rule*. 
 
-The presentation of the inverse chain rule in standard texts is even worse than the situation with the chain rule. At least with the chain rule, standard texts give an "explicit, but less intuitive" presentation for students to fall back upon when the botched "intuitive, but less explicit" version doesn't make any sense. With the inverse chain rule, *no* "explicit, but less intuitive" version is given. Students are left to rely on the "intuitive, but less explicit" version of the inverse chain rule, botched in an analagous way to the "intuitive, but less explicit" version of the chain rule:
+The presentation of the inverse chain rule in standard texts is even worse than the situation with the chain rule. At least with the chain rule, standard texts give an "explicit, but less intuitive" presentation for students to fall back upon when the botched "intuitive, but less explicit" version doesn't make any sense. With the inverse chain rule, *no* "explicit, but less intuitive" version is given. Students are left to rely on the "intuitive, but less explicit" version of the inverse chain rule, which is botched in an analagous way to the "intuitive, but less explicit" version of the chain rule:
 
 $$
 \text{``If $y = g(u)$ and $u = f(x)$ are differentiable functions, then } \int g\prime(f(x)) f\prime(x) dx = \int g(u) du \text{''}
