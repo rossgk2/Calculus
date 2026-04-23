@@ -28,6 +28,8 @@ This limit formalism for calculus took root... and is what's used today!
 
 While standard textbooks explain a good amount of modern calculus[^2] quite well, there are also several keys to comprehensively understanding it that are underemphasized... and, at times, totally butchered. This book is devoted to explaining those keys in-depth. 
 
+[^2]: Things that are typically explained well include the definition of the derivative, the derivation of derivative formulas, the definite integral, and applications of derivatives and integrals.
+
 ## Key #1: infinitesimals in limit-based differential calculus
 
 Infinitesimals may not be valid in limit-based calculus, but it is still extremely common to informally *think* about them. Infinitesimals will always remain the spirit of calculus.
@@ -58,7 +60,7 @@ $$
 
 ## Key #2: exponential functions 
 
-Every single calculus text[^2] I have ever seen uses the [dreaded efficiency pedagogy]() to derive the core facts about exponential and logarithmic functions. This results in facts being presented in the exact opposite order of the one that makes sense. Facts that should be presented as "end results", like the following, are assumed without any good reason first...
+Every single calculus text[^3] I have ever seen uses the [dreaded efficiency pedagogy]() to derive the core facts about exponential and logarithmic functions. This results in facts being presented in the exact opposite order of the one that makes sense. Facts that should be presented as "end results", like the following, are assumed without any good reason first...
 
 $$
 \exp = \ln^{-1}, \text{ where } \ln(x) = \int_1^x \frac{1}{x} dx
@@ -88,7 +90,7 @@ $$
 
 is proved to be a logical consequence of the "end result". In this text, we present the correct approach, actually deriving what should come first, first. Notably, we also give the full limit-based proof for this approach in the appendix by adapting [a proof of Paramanand Singh](https://paramanands.blogspot.com/2014/05/theories-of-exponential-and-logarithmic-functions-part-3.html?m=0) for those who want to see the complete justification.
 
-[^2]: And even every single real analysis text. "Real analysis" just means "limit-based calculus, but where absolutely everything is proved".
+[^3]: And even every single real analysis text. "Real analysis" just means "limit-based calculus, but where absolutely everything is proved".
 
 ## Key #3: the fundamental theorem of calculus
 
