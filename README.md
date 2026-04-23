@@ -26,7 +26,9 @@ This limit formalism for calculus took root... and is what's used today!
 
 # Keys to calculus
 
-While standard textbooks explain a good amount of modern calculus[^2] quite well, there are also several keys to comprehensively understanding it that are underemphasized... and, at times, totally butchered. This book is devoted to explaining those keys in-depth. 
+While standard textbooks explain a good amount of modern calculus[^2] quite well, there are also several keys to comprehensively understanding it that are underemphasized... and, at times, totally butchered. Two of those keys arise from how one has to "translate" in-between intuition that uses infinitesimals and formal justification that uses limits, and are unique to the limit-based formalism that is modern calculus. The other keys discussed here are missing in all calculus, even the nonstandard ones.
+
+This book gives an introduction to calculus that does these keys justice.
 
 [^2]: Things that are typically explained well include the definition of the derivative, the derivation of derivative formulas, the definite integral, and applications of derivatives and integrals.
 
