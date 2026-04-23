@@ -42,7 +42,7 @@ $$
 \text{``If $y = g(u)$ and $u = f(x)$ are differentiable functions, then } \frac{dy}{dx} = \frac{dy}{du} \frac{du}{dx}\text{''}
 $$
 
-There are several contradictions inherent in this, the most striking being that the expression $\frac{dg(f(x))}{df(x)}$ is not given any formal meaning elsewhere in a standard text even though it is a concept that clearly follows from the premises (by substituting $y = g(u)$ and $u = f(x)$ into the expression $\frac{dy}{dx}$).
+There are several contradictions inherent in this, the most striking being that the expression $\frac{dg(f(x))}{df(x)}$ is not given any formal meaning elsewhere in a standard text, even though it is a concept that clearly follows from the premises (by substituting $y = g(u)$ and $u = f(x)$ into the expression $\frac{dy}{dx}$).
 
 In this book, we actually give concrete meaning to this notion, defining
 
@@ -81,9 +81,11 @@ e^x = \sum_{n = 0}^\infty \frac{x^n}{n!}
 $$
 
 And then the fact that should've been derived first,
+
 $$
 \frac{d}{dx} e^x = e^x
 $$
+
 is proved to be a logical consequence of the "end result". In this text, we present the correct approach, actually deriving what should come first, first. Notably, we also give the full limit-based proof for this approach in the appendix by adapting [a proof of Paramanand Singh](https://paramanands.blogspot.com/2014/05/theories-of-exponential-and-logarithmic-functions-part-3.html?m=0) for those who want to see the complete justification.
 
 [^2]: And even every single real analysis text. "Real analysis" just means "limit-based calculus, but where absolutely everything is proved".
@@ -114,13 +116,13 @@ Similarly to how understanding infinitesimals in limit-based *differential* calc
 The presentation of the inverse chain rule in standard texts is even worse than the situation with the chain rule. At least with the chain rule, standard texts give an "explicit, but less intuitive" presentation for students to fall back upon when the botched "intuitive, but less explicit" version doesn't make any sense. With the inverse chain rule, *no* "explicit, but less intuitive" version is given. Students are left to rely on the "intuitive, but less explicit" version of the inverse chain rule, botched in an analagous way to the "intuitive, but less explicit" version of the chain rule:
 
 $$
-\text{``If $y = g(u)$ and $u = f(x)$ are differentiable functions, then } \int g'(f(x)) f'(x) dx = \int g(u) du \text{''}
+\text{``If $y = g(u)$ and $u = f(x)$ are differentiable functions, then } \int g\prime(f(x)) f\prime(x) dx = \int g(u) du \text{''}
 $$
 
 This book remedies this problem. First, we give the "explicit, but less intuitive" version: 
 
 $$
-\int (g \circ f) f' = \Big(\int g \Big) \circ f
+\int (g \circ f) f\prime = \Big(\int g \Big) \circ f
 $$
 
 Then we introduce notation for integrals analogous to that introduced for derivatives.
