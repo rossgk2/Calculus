@@ -140,9 +140,3 @@ Just as was the case with derivatives, this notation leads to a much clearer "in
 $$
 \int g(f(x)) \frac{df(x)}{dx} dx = \int g(f(x)) df(x)
 $$
-
-## Key #5: deriving integral formulas
-
-Typically, integral theorems like integration by substitution, and *especially* integration by parts, are explained to be the counterparts to derivative rules- which is good- but then the actual form of each rules is conjectured from out of the blue before being proven	. 
-
-This book straightforwardly *derives* the integral rules from the derivative rules in a memorable way, so that the actual form of a new rule is discovered in the same breath as its existence is discovered. This leads to a deep understanding of why integral rules are true and eliminates the need for memorization, so that if an integral formula is forgotten, it can easily be derived in a minute or two.
