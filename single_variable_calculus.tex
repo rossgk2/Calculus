@@ -6,9 +6,15 @@
 
 Calculus is about \textit{measuring change} by thinking about the infinitely small. All of calculus relies on intuition about ``infinitely small numbers'', or \textit{infinitesimals}.
 
-In \textit{differential calculus}, the concept of infinitesimals is invoked in order to measure the speed at which change occurs. If we want to measure the speed at which the output of a function $f$ is changing in response to a changing input, we can consider the rate of change of $f$ at the input $x$ to be the slope of the line that the curvy $f$ vs. $x$ graph ``becomes'' as we ``zoom in infinitely close'' to the point $(x, f(x))$.
+\textbf{The first half of calculus is about using infinitesimals to compute \textit{change} from \textit{quantity}.} If we want to measure the rate at which the output of a function $f$ is changing in response to a changing input, \textit{instantaneously} at a particular input $x$, we compare the ratio of an infinitesimal change in output, $df(x)$, to the infinitesimal change in input that caused it, $dx$, and compute the ratio $\frac{df(x)}{dx}$. Geometrically, this ratio is the slope of the tangent line passing through $(x, f(x))$.
 
-In \textit{integral calculus}, we use infinitesimals to compute how much total change is caused by a given rate of change. If we want to determine how much total change has been caused by a rate of change that itself changes over time, we can think of the rate of change as being the aggregation of many rates of change that \textit{don't} change over time, where each of these rates occurs over an ``infinitely small'' window of input values, and then add up all of the little changes that result.
+(The ratio $\frac{df(x)}{dx}$ is called the \textit{derivative} of $f$ at $x$. Sometimes, it is denoted as $f'$. Computing the derivative of $f$ is called \textit{differentiating} $f$. Thus, the first half of calculus is known as \textit{differential calculus}.)
+
+\textbf{The second half of calculus is about using infinitesimals to compute \textit{quantity} from \textit{change}.} If we want to determine how much total change has been caused by a rate of change $f'$ that itself changes over an input window $[a, b]$, we apply the \textit{fundamental theorem of calculus}. That is, we think of the rate of change as being the aggregation of many rates of change that \textit{don't} change over time, where each of these rates occurs over an infinitesimally wide window of inputs, and then compute the sum of all the little changes $df(x_1), ..., df(x_i), ...$ that result. Geometrically, this sum is the area between $f$ and the $x$-axis, and between the lines $x = a$ and $x = b$.
+
+(The mentioned sum is denoted by $\int^b_a df(x)$. It is equal to $\int^b_a \frac{df(x)}{dx}\, dx = \int^b_a f'(x)\, dx$, and is called the \textit{integral} of $f'$ over $[a, b]$. Computing the integral of $f'$ is called \textit{integrating} $f'$. Thus, the second half of calculus is known as \textit{integral calculus}.)
+
+\textbf{The true power of infinitesimals is that they provide a means to derive convenient formulas for these calculations, so that it is not necessary to tediously compute ratios or sums.} If there were no such formulas, then the fundamental theorem of calculus would be basically useless! But, if one knows the formulas, they merely ``calculate'', and apply the formulas. Thus the name \textit{calculus}.
 
 \subsection*{Limits}
 
@@ -1528,17 +1534,15 @@ People often write $\ln(|x|)$ as simply $\ln|x|$.
 
 $\int_a^b = -\int_b^a$
 
-\section*{The inverse chain rule}
-    
-[change below text to introduce the idea of the ``inverse'' chain rule]
+\section*{Integral formulas}
     
 In this section, we derive several integration formulas. We often do so by starting with a differentiation formula, taking the antiderivative of both sides, and interpreting some derivative that appears in the resulting expression to be ``just a regular function''. Such interpretations are valid because FTC 1 tells us that every continuous function has an antiderivative. Because integral formulas make use of this interpretation in their derivations, they all require that certain derivatives are continuous; i.e., they all require that certain functions are ``continuously differentiable''. 
 
 In spite of the above note about ``continuous differentibility'', I will not be a stickler about stating the conditions that must be satisfied for a fact about integrals to be applicable, just as was the case when deriving derivative formulas. I will make note of conditions when doing derivations, but will not restate them in final ``boxed'' formulas. Conditions for integral formulas are in general less self-evident than those for derivative formulas, but you can still determine good guesses as to what the conditions are by starting with the corresponding derivative formula and integrating both sides.
 
-\subsection*{Change of variables theorem}
+\subsection*{The inverse chain rule}
 
-First, we will derive the fact for integrals that corresponds to the chain rule for derivatives. Recall that the chain rule can be stated as
+Recall that the chain rule for derivatives can be stated as
 
 \begin{align*}
     (g \circ f)' = (g' \circ f) \circ f'.
@@ -1550,7 +1554,7 @@ Integrate both sides to obtain
     g \circ f = \int (g' \circ f) \circ f'.
 \end{align*}
 
-Now, we will think of $g'$ as being ``just a regular function''. To formalize this, substitute $h := g'$. This implies\footnote{We need to justify that $h$ has an antiderivative here. In order for this to be guaranteed, we actually needed to assume at the beginning that $g$ is \textit{continuously differentiable}, i.e., that $g'$ is continuous. This is a pretty technical detail, so we don't mention it outside this footnote.} $g = \int h$, and we have
+Now, we will think of $g'$ as being ``just a regular function'', and ``not a derivative''. To formalize this, substitute $h := g'$. This implies\footnote{We need to justify that $h$ has an antiderivative here. In order for this to be guaranteed, we actually needed to assume at the beginning that $g$ is \textit{continuously differentiable}, i.e., that $g'$ is continuous. This is a pretty technical detail, so we don't mention it outside this footnote.} $g = \int h$, and we have
 
 \begin{align*}
     \Big( \int h \Big) \circ f = \int (h \circ f) f'.
@@ -1631,63 +1635,82 @@ Now we ``integrate both sides'' of the above mnemonic expression to obtain
 
 exactly as before.
 
-\section*{More integration formulas}
-
 \subsection*{Integration by parts}
 
-\begin{itemize}
-    \item Is the ``reverse product rule''.
-    \item $(fg)' = f'g + g'f$. Integrate both sides to obtain $fg = \int (f'g + g'f) = \int f'g + \int g'f$. Now subtract one of the integrals on the right side to obtain either
-    
-    \begin{align*}
-        \int f'g = fg - \int fg'
-    \end{align*}
-    
-    or
-    
-    \begin{align*}
-        \int fg' = fg - \int f'g.
-    \end{align*}
-    
-    It doesn't matter which of the above equations you use, as swapping $f$ and $g$ in one of the equations yields the other. We will consider the second equation,
-    
-    \begin{align*}
-        \int fg' = fg - \int f'g.
-    \end{align*}
-    
-    Substitute $h = g'$, so $g = \int h$. Then
-    
-    \begin{align*}
-        \int fh = fH - \int f'H, \text{ where } H = \int h.
-    \end{align*}
-    
-    Rewriting the above with the letters $f, g$, and $G$, we have
-    
-    \begin{align*}
-        \boxed
-        {
-            \int fg = fG - \int f'G, \text{ where } G = \int g
-        }
-    \end{align*}
-    
-    When using the above formula, pick $f$ to be a function whose derivative is computable, and pick $G$ to be a function whose integral is computable.
-    
-    [insert spaces in integrals]
-    
-    \item We now present the most popular way to state the integration by parts formula. Above, we showed that
+Now we derive the inverse product rule. It's most commonly referred to as ``integration by parts'' in reference to the fact that it converts the problem of integrating a product into the problem of computing two integrals, where the second depends on the first. One has to do the first ``part'', and then the second.
 
-    \begin{align*}
-        \int f(x) g'(x) \spc dx = f(x) g(x) - \int g(x) f'(x) \spc dx \text{ for all $x$}
-    \end{align*}
+We start with the product rule,
 
-    If we use the mnemonics ``$df(x) = f'(x) dx$'' and ``$dg(x) = g'(x) dx$'', we can write this formula as:
+\begin{align*}
+	(fg)' = f'g + fg'.
+\end{align*}
 
-    \begin{align*}
-        &\int f(x) dg(x) = f(x) g(x) - \int g(x) df(x), \\
-        &\text{ where ``$dg(x) = g'(x) dx$'' and ``$df(x) = f'(x) dx$''}
-    \end{align*}
+Integrate both sides to obtain
 
-    Note that the meanings of $df(x)$ and $dg(x)$ in the above are \textit{not} the same as the meanings that make most sense\footnote{The definition $\int f(g(x)) dg(x) := (\int f)|_{g(x)}$, which was given earlier, is what makes most sense.} Additionally, it is more work to memorize the above formula and the associated meanings of $df(x)$ and $dg(x)$ than it is to derive the above boxed formula from the product rule. Therefore, \textit{please ignore this formula.} It is included only for completeness.
+\begin{align*}
+	fg = \int (f'g + g'f) = \int f'g + \int g'f
+\end{align*}
 
-    Unfortunately, the above formula is most commonly written with $u := f$ and $v := g$, in the even more sloppy notation ``${\int u \spc dv = uv - \int v \spc du}$''.
-\end{itemize}
+Now subtract one of the integrals on the right side to obtain either
+
+\begin{align*}
+	\int f'g = fg - \int fg'
+\end{align*}
+   
+or
+    
+\begin{align*}
+	\int fg' = fg - \int f'g.
+\end{align*}
+    
+It doesn't matter which of the above equations you use, as swapping $f$ and $g$ in one of the equations yields the other. We will consider the second equation,
+    
+\begin{align*}
+    \int fg' = fg - \int f'g.
+\end{align*}
+    
+Rewriting this in Leibniz notation, we have
+
+\begin{align*}
+	\int f(x) \frac{dg(x)}{dx} dx &= f(x) g(x) - \int \frac{df(x)}{dx} g(x) dx.
+\end{align*}
+
+And then applying the inverse chain rule yields the integration by parts formula
+
+\begin{align*}
+	\boxed
+	{
+		\int f(x) dg(x) = f(x) g(x) - \int g(x) df(x)
+	}
+\end{align*}
+
+For some reason it is traditional to state the formula with the letters $u$ and $v$ instead of $f$ and $g$, like this:
+
+\begin{align*}
+	\text{``}\int u \spc dv = uv - \int v \spc du\text{''}.
+\end{align*}
+
+While the above two formulas \textit{may} be memorable, they slightly obscure how to actually apply the rule, mostly because it is not obvious, when one has functions $h$ and $k$, that they are supposed to interpret integrals like $\int h(x) k(x) dx$ to be of the form $\int f(x) dg(x)$.
+
+For the most straightforward presentation of the idea, again consider the equation we derived above,
+
+\begin{align*}
+	\int fg' = fg - \int f'g.
+\end{align*}
+
+Substitute $h = g'$, so $g = \int h$. Then
+
+\begin{align*}
+	\int fh = fH - \int f'H, \text{ where } H = \int h.
+\end{align*}
+    
+Rewriting the above with the letters $f, g$, and $G$, we have
+
+\begin{align*}
+	\boxed
+	{
+    	\int fg = fG - \int f'G, \text{ where } G = \int g
+    }
+\end{align*}
+    
+This presentation is very clearly the integral of a product of functions, and its explicitness makes it easy to explain how to apply the rule. The explanation is as follows. Since $f'$ and $\int g$ appear on the right side, then, when we are trying to compute $\int hk$ for functions $h$ and $k$, we should choose $f$ and $g$ with $hk = fg$, where $f$ is whichever of $h, k$ is easier to differentiate, and $g$ is whichever of $h, k$ is easier to integrate.
