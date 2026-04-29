@@ -132,7 +132,7 @@ $$
 Then we introduce notation for integrals analogous to that introduced for derivatives.
 
 $$
-\int g(f(x)) df(x) := \Big(\Big(\int g \Big) \circ f\Big)\Big|\_x
+\int g(f(x)) df(x) := \Big(\int g \Big)\Big|\_{f(x)}
 $$
 
 Just as was the case with derivatives, this notation leads to a much clearer "intuitive, but less explicit" version of the inverse chain rule:
