@@ -14,7 +14,7 @@ Calculus is about *measuring change* by thinking about the infinitely small. All
 
 ## Infinitesimals and limits
 
-In the late 1600s, even as this calculus transformed humanity's understanding of the world, a fully satisfactory understanding of the infinitesimals underpinning it was elusive. One confoundingly often had to claim that the same infinitesimal quantity was somehow nonzero at some times and equal to zero at others, with the distinction between the two being decided for no reason other than convenience.
+In the late 1600s, even as this calculus of infinitesimals transformed humanity's understanding of the world, a fully satisfactory understanding of the infinitesimals underpinning it was elusive. One confoundingly often had to claim that the same infinitesimal quantity was somehow nonzero at some times and equal to zero at others, with the distinction between the two being decided for no reason other than convenience.
 
 A completely valid theory of calculus was only first established in the 1800s, *after* the main ideas mentioned above had been in use for more than a hundred years! The solution was to replace each infinitesimal, which was an "infinitely small number", with a sequence of *actual* numbers that converge to a *limit* of zero.
 
