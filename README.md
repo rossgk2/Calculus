@@ -14,9 +14,9 @@ Calculus is about *measuring change* by thinking about the infinitely small. All
 
 ## Infinitesimals and limits
 
-In the late 1600s, even as this calculus transformed humanity's understanding of the world, a fully satisfactory understanding of the infinitesimals underpinning it was elusive. In order to derive results, one confoundingly often had to claim that the same infinitesimal quantity was somehow nonzero at some times and equal to zero at others, with the distinction between the two being decided for no reason other than convenience.
+In the late 1600s, even as this calculus transformed humanity's understanding of the world, a fully satisfactory understanding of the infinitesimals underpinning it was elusive. One confoundingly often had to claim that the same infinitesimal quantity was somehow nonzero at some times and equal to zero at others, with the distinction between the two being decided for no reason other than convenience.
 
-A completely valid theory of calculus was only first established in the 1800s, *after* the main ideas had been in use for more than a hundred years! The solution was to replace each infinitesimal, which was an "infinitely small number", with a sequence of *actual* numbers that converge to a *limit* of zero.
+A completely valid theory of calculus was only first established in the 1800s, *after* the main ideas mentioned above had been in use for more than a hundred years! The solution was to replace each infinitesimal, which was an "infinitely small number", with a sequence of *actual* numbers that converge to a *limit* of zero.
 
 This limit formalism for calculus took root... and is what's used today!
 
@@ -40,7 +40,7 @@ Since infinitesimals will always remain the spirit of calculus, understanding ca
 
 (One could argue that the chain rule is even more fundamental than the fundamental theorem of calculus because of this!)
 
-Standard texts do just fine in stating the "explicit, but less intuitive" version of the chain rule. But when it comes to the "intuitive, but less explicit" version, the totally botch things, giving this unintelligible presentation:
+Standard texts do just fine in stating the "explicit, but less intuitive" version of the chain rule. But when it comes to the "intuitive, but less explicit" version, they totally butcher things, giving this unintelligible presentation:
 
 $$
 \text{``If $y = g(u)$ and $u = f(x)$ are differentiable functions, then } \frac{dy}{dx} = \frac{dy}{du} \frac{du}{dx}\text{''}
@@ -117,7 +117,7 @@ Only after one knows that every antiderivative is a definite integral does it ma
 
 Similarly to how understanding infinitesimals in limit-based *differential* calculus requires understanding the *chain rule*, understanding infinitesimals in limit-base *integral* calculus requires understanding the *inverse chain rule*. 
 
-The presentation of the inverse chain rule in standard texts is even worse than the situation with the chain rule. At least with the chain rule, standard texts give an "explicit, but less intuitive" presentation for students to fall back upon when the botched "intuitive, but less explicit" version doesn't make any sense. With the inverse chain rule, *no* "explicit, but less intuitive" version is given. Students are left to rely on the "intuitive, but less explicit" version of the inverse chain rule, which is botched in an analagous way to the "intuitive, but less explicit" version of the chain rule:
+The presentation of the inverse chain rule in standard texts is even worse than the situation with the chain rule. At least with the chain rule, standard texts give an "explicit, but less intuitive" presentation for students to fall back upon when the butchered "intuitive, but less explicit" version doesn't make any sense. With the inverse chain rule, *no* "explicit, but less intuitive" version is given. Students are left to rely on the "intuitive, but less explicit" version of the inverse chain rule, which is butchered in an analagous way to the "intuitive, but less explicit" version of the chain rule:
 
 $$
 \text{``If $y = g(u)$ and $u = f(x)$ are differentiable functions, then } \int g\prime(f(x)) f\prime(x) dx = \int g(u) du \text{''}
@@ -132,7 +132,7 @@ $$
 Then we introduce notation for integrals analogous to that introduced for derivatives.
 
 $$
-\int g(f(x)) df(x) := \Big(\Big(\int g \Big) \circ f\Big)(x)
+\int g(f(x)) df(x) := \Big(\int g \Big)\Big|\_{f(x)}
 $$
 
 Just as was the case with derivatives, this notation leads to a much clearer "intuitive, but less explicit" version of the inverse chain rule:
