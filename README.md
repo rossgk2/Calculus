@@ -2,7 +2,7 @@
 
 Calculus is about *measuring change* by thinking about the infinitely small. All of calculus relies on intuition about "infinitely small numbers", or *infinitesimals*.
 
-**The first half of calculus is about using infinitesimals to compute *change* from *quantity*.** If we want to measure the rate at which the output of a function $f$ is changing in response to a changing input, *instantaneously* at a particular input $x$, we compare the ratio of an infinitesimal change in output, $df(x)$, to the infinitesimal change in input, $dx$, that caused it, and compute the ratio $\frac{df(x)}{dx}$. Geometrically, this ratio is the slope of the tangent line passing through $(x, f(x))$.
+**The first half of calculus is about using infinitesimals to compute *change* from *quantity*.** If we want to measure the rate at which the output of a function $f$ is changing in response to a changing input, *instantaneously* at a particular input $x$, we compare the ratio of an infinitesimal change in output, $df(x)$, to the infinitesimal change in input that caused it, $dx$, and compute the ratio $\frac{df(x)}{dx}$. Geometrically, this ratio is the slope of the tangent line passing through $(x, f(x))$.
 
 (The ratio $\frac{df(x)}{dx}$ is called the *derivative* of $f$ at $x$. Sometimes, it is denoted as $f\prime$. Computing the derivative of $f$ is called *differentiating* $f$. Thus, the first half of calculus is known as *differential calculus*.)
 
@@ -16,7 +16,7 @@ Calculus is about *measuring change* by thinking about the infinitely small. All
 
 In the late 1600s, even as this calculus transformed humanity's understanding of the world, a fully satisfactory understanding of the infinitesimals underpinning it was elusive. In order to derive results, one confoundingly often had to claim that the same infinitesimal quantity was somehow nonzero at some times and equal to zero at others, with the distinction between the two being decided for no reason other than convenience.
 
-A completely valid theory of calculus was only first established in the 1800s, *after* the ideas of calculus had been in use for more than a hundred years! The solution was to replace each infinitesimal, which was an "infinitely small number", with a sequence of *actual* numbers that converge to a *limit* of zero.
+A completely valid theory of calculus was only first established in the 1800s, *after* the main ideas had been in use for more than a hundred years! The solution was to replace each infinitesimal, which was an "infinitely small number", with a sequence of *actual* numbers that converge to a *limit* of zero.
 
 This limit formalism for calculus took root... and is what's used today!
 
@@ -34,11 +34,11 @@ This book gives an introduction to calculus that does these keys justice.
 
 ## Key #1: infinitesimals in limit-based differential calculus
 
-Infinitesimals may not be valid in limit-based calculus, but it is still extremely common to informally *think* about them. Infinitesimals will always remain the spirit of calculus.
+Infinitesimals may not be valid in limit-based calculus, but it is still extremely common to informally *think* about them. 
 
-Thus, understanding calculus requires understanding infinitesimals. And in limit-based differential calculus, understanding infinitesimals requires understanding the *chain rule*. This is because the *chain rule* serves as the bridge between informal heuristic arguments involving infinitesimals and formally valid concepts that use limits.
+Since infinitesimals will always remain the spirit of calculus, understanding calculus requires understanding infinitesimals. And, in limit-based differential calculus, understanding infinitesimals requires understanding the *chain rule*, the equation that serves as the bridge between informal heuristic arguments involving infinitesimals and formally valid concepts that use limits. 
 
-Because the chain rule underpins the understanding of infinitesimals, one could argue that it is even more fundamental than the fundamental theorem of calculus! 
+(One could argue that the chain rule is even more fundamental than the fundamental theorem of calculus because of this!)
 
 Standard texts do just fine in stating the "explicit, but less intuitive" version of the chain rule. But when it comes to the "intuitive, but less explicit" version, the totally botch things, giving this unintelligible presentation:
 
