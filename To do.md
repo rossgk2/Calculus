@@ -2,18 +2,14 @@
 
 # first, infinitesimals and chain rule
 
-* add 
-$$
-\lim_{\Delta x \rightarrow 0} \frac{\Delta f(\Delta x)}{\Delta x}
-$$
+* add $\lim_{\Delta x \rightarrow 0} \frac{\Delta f(\Delta x)}{\Delta x}$ as restatement of defn of derivative; add more explicit talk about infinitesimals
+  * make sure explanation of "$df(x)$ on its own isn't formally valid" explained for derivatives and integrals in book
 
-as restatement of defn of derivative; add more explicit talk about infinitesimals
-
-* make sure explanation of "$df(x)$ on its own isn't formally valid" explained for derivatives and integrals in book
 
 * change discussion of this in chain rule section, since it won't be first time concept is introduced
 * edit derivation of inverse chain rule: "just as the chain rule justifies intuitive infinitesimal calculations in differential calculus, the inverse chain rule justifies them in integral calculus"
-* make sure in chain rule and inverse chain rule, always using $g \circ f$, even in explanation of bad standard presentation
+* make sure in chain rule and inverse chain rule, always using $g(f(x))$ and $g \circ f$ instead of $f \circ g$, even in explanation of bad standard presentation
+* explain common convention to use $u$, or $u$ and $v$
 
 # next, ftc
 

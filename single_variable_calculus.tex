@@ -1540,7 +1540,7 @@ In this section, we derive several integration formulas. We often do so by start
 
 In spite of the above note about ``continuous differentibility'', I will not be a stickler about stating the conditions that must be satisfied for a fact about integrals to be applicable, just as was the case when deriving derivative formulas. I will make note of conditions when doing derivations, but will not restate them in final ``boxed'' formulas. Conditions for integral formulas are in general less self-evident than those for derivative formulas, but you can still determine good guesses as to what the conditions are by starting with the corresponding derivative formula and integrating both sides.
 
-\subsection*{The inverse chain rule}
+\subsection*{The inverse chain rule (``integration by substitution'')}
 
 Recall that the chain rule for derivatives can be stated as
 
@@ -1574,7 +1574,7 @@ Using the integral notation analogous to Leibniz notation, the primary result ca
 
 This theorem makes the idea of ``canceling differentials'' within integrals rigorous, since it appears as if the $dx$ in the ``denominator'' of the integrand on the left side is canceled by the $dx$ that is the placeholder of the left side's integrand\footnote{A quicker proof, which you might discover if you suspected the primary result to be true is as follows. First, notice that the chain rule implies $\Big( \Big( \int g \Big) \circ f \Big)' = (g \circ f)f'$. Then integrate both sides.}.
 
-The theorem is often stated with the substitutions $g = f$ and $f = u$:
+The theorem is traditionally stated with the substitutions $g = f$ and $f = u$:
 
 \begin{empheq}[box = \fbox]{align*}
     \int f(u(x)) \frac{du(x)}{dx} dx = \int f(u(x)) du(x)
@@ -1582,15 +1582,15 @@ The theorem is often stated with the substitutions $g = f$ and $f = u$:
 
 \subsection*{Separation of variables}
 
-One important application of the change of variables theorem is the solving of so-called \textit{separable differential equations}, which are equations of the form 
+One important application of the inverse chain rule is the solving of so-called \textit{separable differential equations}, which are equations of the form 
 
 \begin{align*}
     \frac{df(x)}{dx} = f(x) g(f(x)) \text{ for all $x$}.
 \end{align*}
 
-(In general, a \textit{differential equation} is an equation that involves a function and one or more of its derivatives).
+The above is an example of a \textit{differential equation}, an equation that involves a function and one or more of its derivatives.
 
-To solve the above equation, we will apply the change of variables theorem and ``cancel differentials''.
+To solve the above equation, we will use the inverse chain rule to ``cancel differentials''.
 
 Rephrasing the original equation, we have
 
@@ -1604,7 +1604,13 @@ Integrate both sides to obtain
     \int \frac{1}{g(f(x))} \frac{df(x)}{dx} dx = \int f(x) dx \text{ for all $x$ such that $g(f(x)) \neq 0$}.
 \end{align*}
  
-Now use the change of variables theorem to ``cancel the $dx$'s on the left side'':
+Now use the inverse chain rule to ``cancel the $dx$'s on the left side'':
+
+\begin{align*}
+	\int \frac{1}{g(f(x))} df(x) = \int f(x) dx \text{ for all $x$ such that $g(f(x)) \neq 0$}.
+\end{align*}
+
+We have proven:
 
 \begin{empheq}[box = \fbox]{align*}
     &\text{The solution to } \frac{df(x)}{dx} = f(x) g(f(x)) \text{ for all $x$ is } \\
@@ -1615,7 +1621,7 @@ In practice, we (attempt to) solve the separable differential equation by explic
 
 \subsubsection*{Mnemonic for separation of variables}
 
-The solution to the differential equation
+The solution to this differential equation
 
 \begin{align*}
     \frac{df(x)}{dx} = f(x) g(f(x)) \text{ for all $x$}
@@ -1635,9 +1641,9 @@ Now we ``integrate both sides'' of the above mnemonic expression to obtain
 
 exactly as before.
 
-\subsection*{Integration by parts}
+\subsection*{The inverse product rule (``integration by parts'')}
 
-Now we derive the inverse product rule. It's most commonly referred to as ``integration by parts'' in reference to the fact that it converts the problem of integrating a product into the problem of computing two integrals, where the second depends on the first. One has to do the first ``part'', and then the second.
+Now we derive the integral counterpart to the product rule for derivatives, which is most commonly- and very uninformatively- referred to as \textit{integration by parts}. 
 
 We start with the product rule,
 
@@ -1648,7 +1654,7 @@ We start with the product rule,
 Integrate both sides to obtain
 
 \begin{align*}
-	fg = \int (f'g + g'f) = \int f'g + \int g'f
+	fg = \int (f'g + fg') = \int f'g + \int fg'
 \end{align*}
 
 Now subtract one of the integrals on the right side to obtain either
@@ -1675,7 +1681,7 @@ Rewriting this in Leibniz notation, we have
 	\int f(x) \frac{dg(x)}{dx} dx &= f(x) g(x) - \int \frac{df(x)}{dx} g(x) dx.
 \end{align*}
 
-And then applying the inverse chain rule yields the integration by parts formula
+And then applying the inverse chain rule yields the inverse product rule formula
 
 \begin{align*}
 	\boxed
@@ -1684,15 +1690,18 @@ And then applying the inverse chain rule yields the integration by parts formula
 	}
 \end{align*}
 
-For some reason it is traditional to state the formula with the letters $u$ and $v$ instead of $f$ and $g$, like this:
+It's traditional to state the formula with the substitutions $f = u$ and $g = v$, like this:
 
 \begin{align*}
-	\text{``}\int u \spc dv = uv - \int v \spc du\text{''}.
+	\boxed
+	{
+		\int u(x) dv(x) = u(x) v(x) - \int v(x) du(x)
+	}
 \end{align*}
 
-While the above two formulas \textit{may} be memorable, they slightly obscure how to actually apply the rule, mostly because it is not obvious, when one has functions $h$ and $k$, that they are supposed to interpret integrals like $\int h(x) k(x) dx$ to be of the form $\int f(x) dg(x)$.
+While the above two formulas \textit{may} be memorable, they slightly obscure how to actually apply the rule, mostly because doing so involves some hidden extra steps. Suppose we're trying to compute $\int h(x) k(x) dx$. In doing so, the first hidden step is to interpret the integral to be of the form $\int f(x) dg(x)$. The second hidden step is to realize that since $dg(x)$ appears on the left while $g(x)$ is on the right, it is necessary to compute $g(x) = \int dg(x)$.
 
-For the most straightforward presentation of the idea, again consider the equation we derived above,
+For a more straightforward formula, again consider the equation we derived above,
 
 \begin{align*}
 	\int fg' = fg - \int f'g.
@@ -1713,4 +1722,6 @@ Rewriting the above with the letters $f, g$, and $G$, we have
     }
 \end{align*}
     
-This presentation is very clearly the integral of a product of functions, and its explicitness makes it easy to explain how to apply the rule. The explanation is as follows. Since $f'$ and $\int g$ appear on the right side, then, when we are trying to compute $\int hk$ for functions $h$ and $k$, we should choose $f$ and $g$ with $hk = fg$, where $f$ is whichever of $h, k$ is easier to differentiate, and $g$ is whichever of $h, k$ is easier to integrate.
+This presentation is very clearly the integral of a product of functions, and its explicitness makes it easy to explain how to apply the rule. The explanation is as follows. Since $f'$ and $\int g$ appear on the right side, then, when we have functions $h, k$ and are trying to $\int hk$, we should choose $f$ and $g$ with $hk = fg$, where $f$ is whichever of $h, k$ is easier to differentiate, and $g$ is whichever of $h, k$ is easier to integrate.
+
+A bit confusingly, the inverse product rule is most commonly referred to as \textit{integration by parts}, perhaps because, as we can see above, the calculation involves computing two integrals, and when done by hand is thus best done ``one integral at a time'', or ``part by part''. Pretty much every calculation ever can be performed ``part by part'', though, so ``integration by parts'' is not a very descriptive name.
