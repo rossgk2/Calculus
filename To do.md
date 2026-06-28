@@ -1,6 +1,6 @@
 # To do
 
-Writing the new README.md, which details the "keys to calculus", forced me to develop a precise organization of the ways in which the standard teaching of calculus can be improved upon. As the minibook hasn't yet been updated since I published the new README.md, it currently does not benefit as much as it could from this new understanding.
+Writing the new README.md, which details the "keys to calculus", forced me to develop a precise organization of the ways in which the standard teaching of calculus can be improved upon. I was of course aware enough of the *union* of those ways, so to speak, when I first wrote the minibook... but, as the minibook hasn't yet been updated since I published the new README.md, it does not benefit as much as it could from the new *partition* I've come to understand.
 
 It is still very good, but it also needs some work in order for it to truly fufill the promise of "the keys to calculus". Here are the edits I intend to make when I have time:
 
