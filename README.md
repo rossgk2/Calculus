@@ -36,7 +36,7 @@ This book gives an introduction to calculus that does these keys justice.
 
 Infinitesimals may not be valid in limit-based calculus, but it is still extremely common to informally *think* about them. 
 
-Since infinitesimals will always remain the spirit of calculus, understanding calculus requires understanding infinitesimals. And, in limit-based differential calculus, understanding infinitesimals requires understanding the *chain rule*, the equation that serves as the bridge between informal heuristic arguments involving infinitesimals and formally valid concepts that use limits. 
+Infinitesimals will always remain the spirit of calculus, and so understanding calculus requires understanding infinitesimals. In limit-based differential calculus, understanding infinitesimals requires understanding the *chain rule*, the equation that serves as the bridge between informal heuristic arguments involving infinitesimals and formally valid concepts that use limits. 
 
 (One could argue that the chain rule is even more fundamental than the fundamental theorem of calculus because of this!)
 
