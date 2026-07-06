@@ -103,7 +103,7 @@ The fundamental theorem of calculus expresses precisely in what sense the operat
 * Part I describes the sense in which we can integrate and then differentiate.
 * Part II describes the sense in which we can differentiate and then integrate.
 
-Unfortunately, whoever decided the ordering of the two parts made a mistake. They should swapped the labels, so that Part II is Part I and Part II is Part II! This is because it is much more intuitive to think about computing quantity from change, which is what Part II is about, than it is to think about "computing change in quantity, where that quantity is accumulated change", which is what Part I is about.
+Unfortunately, whoever decided the ordering of the two parts made a mistake. They should have swapped the labels, so that Part II is Part I and Part II is Part II! This is because it is much more intuitive to think about computing quantity from change, which is what Part II is about, than it is to think about "computing change in quantity, where that quantity is accumulated change", which is what Part I is about.
 
 Standard textbooks naively follow the ordering of the two parts. With little motivation, they establish Part I, and use it to prove Part II.
 
